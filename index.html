@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seamus Woodruff</title>
+  <meta name="description" content="Seamus Woodruff, Digital and Computational Studies senior at Bowdoin College. Tech is easy to build. Harder to get right.">
+  <meta property="og:title" content="Seamus Woodruff">
+  <meta property="og:description" content="Tech is easy to build. Harder to get right.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Design tokens ─── */
+    :root {
+      --bg:          #FAFAF8;
+      --bg-elevated: #F2EEE6;
+      --bg-card:     #FFFFFF;
+      --text:        #2C2C2A;
+      --text-muted:  #9A9590;
+      --accent:      #7A9E87;
+      --accent-dark: #5F8A72;
+      --accent-faint: rgba(122, 158, 135, 0.12);
+      --clay:        #C4886A;
+      --border:      rgba(44, 44, 42, 0.1);
+      --border-mid:  rgba(44, 44, 42, 0.18);
+      --shadow-sm:   0 1px 4px rgba(44,44,42,0.07), 0 2px 12px rgba(44,44,42,0.04);
+      --shadow-md:   0 4px 20px rgba(44,44,42,0.1), 0 1px 6px rgba(44,44,42,0.06);
+      --shadow-lg:   0 16px 48px rgba(44,44,42,0.12), 0 4px 16px rgba(44,44,42,0.06);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── Custom cursor ─── */
+    #cursor-dot {
+      position: fixed;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease;
+      will-change: left, top;
+    }
+    #cursor-ring {
+      position: fixed;
+      width: 28px; height: 28px;
+      border: 1.5px solid rgba(122, 158, 135, 0.45);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+      will-change: left, top;
+    }
+    body:has(a:hover) #cursor-ring,
+    body:has(button:hover) #cursor-ring { width: 44px; height: 44px; border-color: rgba(122,158,135,0.7); }
+    body:has(a:hover) #cursor-dot,
+    body:has(button:hover) #cursor-dot { width: 8px; height: 8px; }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 500;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.scrolled {
+      padding: 1rem 3rem;
+      background: rgba(250, 250, 248, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    nav ul { list-style: none; display: flex; gap: 2.25rem; }
+    nav a:not(.nav-logo) {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.2s;
+    }
+    nav a:not(.nav-logo)::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+    nav a:not(.nav-logo):hover { color: var(--text); }
+    nav a:not(.nav-logo):hover::after { width: 100%; }
+
+    .nav-availability {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--accent-dark);
+      letter-spacing: 0.06em;
+    }
+    .nav-availability::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 3px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: none;
+      border: none;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.25s ease,
+                  background 0.2s ease,
+                  color 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn:active { transform: scale(0.97) !important; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(122,158,135,0.3), 0 1px 3px rgba(122,158,135,0.2);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(122,158,135,0.35), 0 2px 8px rgba(122,158,135,0.2);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-mid);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ─── Section label ─── */
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--accent-dark);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+    .label::before {
+      content: '';
+      width: 1.5rem; height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ─── Scroll reveal ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.18s; }
+    .d3 { transition-delay: 0.28s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero-wrap {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Organic animated background blobs */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+    }
+    .blob-1 {
+      width: 55vw; height: 55vw;
+      background: radial-gradient(circle, rgba(122, 158, 135, 0.16) 0%, transparent 70%);
+      top: -15%; right: -10%;
+      animation: driftA 18s ease-in-out infinite;
+    }
+    .blob-2 {
+      width: 45vw; height: 45vw;
+      background: radial-gradient(circle, rgba(196, 136, 106, 0.09) 0%, transparent 70%);
+      bottom: -10%; left: 5%;
+      animation: driftB 22s ease-in-out infinite;
+    }
+    .blob-3 {
+      width: 30vw; height: 30vw;
+      background: radial-gradient(circle, rgba(122, 158, 135, 0.08) 0%, transparent 70%);
+      top: 30%; left: 20%;
+      animation: driftC 16s ease-in-out infinite;
+    }
+    @keyframes driftA {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      35% { transform: translate(-50px, 40px) scale(1.08); }
+      70% { transform: translate(30px, -30px) scale(0.94); }
+    }
+    @keyframes driftB {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      40% { transform: translate(45px, -35px) scale(1.1); }
+      75% { transform: translate(-25px, 20px) scale(0.92); }
+    }
+    @keyframes driftC {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(-30px, 20px) scale(1.05); }
+    }
+
+    /* Subtle dot-grid texture */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(44,44,42,0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 9rem 3rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent-dark);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 1.75rem; height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(4rem, 8vw, 7rem);
+      font-weight: 400;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 1.75rem;
+      overflow: hidden;
+    }
+
+    .hero-name .line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .hero-name .line-inner {
+      display: block;
+      transform: translateY(100%);
+      opacity: 0;
+      animation: slideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-name .line:nth-child(1) .line-inner { animation-delay: 0.35s; }
+    .hero-name .line:nth-child(2) .line-inner { animation-delay: 0.48s; }
+
+    .hero-name .italic { font-style: italic; color: var(--accent); }
+
+    @keyframes slideUp {
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.78;
+      max-width: 460px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    }
+
+    /* Hero image */
+    .hero-image-wrap {
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    }
+
+    .hero-img-accent {
+      position: absolute;
+      top: 1.5rem; right: -1.5rem;
+      bottom: -1.5rem; left: 1.5rem;
+      border: 1px solid rgba(122, 158, 135, 0.35);
+      border-radius: 6px;
+      z-index: 0;
+    }
+
+    .hero-img-frame {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      z-index: 1;
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+      will-change: transform;
+    }
+
+    /* Light warm overlay */
+    .hero-img-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 55%, rgba(250,250,248,0.5) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-img-caption {
+      position: absolute;
+      bottom: 1rem; left: 1.25rem;
+      z-index: 3;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: rgba(250,250,248,0.7);
+      letter-spacing: 0.07em;
+    }
+
+    /* ─── Marquee ticker ─── */
+    .marquee-wrap {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      padding: 0.85rem 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marqueeScroll 30s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0 2.5rem;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .marquee-item::after {
+      content: '·';
+      color: var(--accent);
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─────────────────────────────────────────
+       ABOUT
+    ───────────────────────────────────────── */
+    #about {
+      padding: 7rem 3rem;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+    .about-aside-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+    .about-aside-title em { font-style: italic; color: var(--accent); }
+
+    .stats { display: flex; flex-direction: column; gap: 1.75rem; }
+    .stat {
+      border-left: 2px solid var(--accent);
+      padding-left: 1rem;
+      transition: border-color 0.2s;
+    }
+    .stat:hover { border-color: var(--clay); }
+    .stat-val {
+      font-family: 'Fraunces', serif;
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1;
+    }
+    .stat-lbl { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+    .about-body p {
+      font-size: 1.02rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+    }
+    .about-body p:last-of-type { margin-bottom: 0; }
+    .about-body strong { color: var(--accent-dark); font-weight: 500; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 2.25rem;
+    }
+    .skill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      letter-spacing: 0.03em;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .skill:hover {
+      color: var(--accent-dark);
+      border-color: rgba(122,158,135,0.4);
+      background: var(--accent-faint);
+    }
+
+    /* ─────────────────────────────────────────
+       PROJECTS
+    ───────────────────────────────────────── */
+    #projects { padding: 7rem 3rem; }
+    .projects-inner { max-width: 1200px; margin: 0 auto; }
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    /* 3D tilt card */
+    .card {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2.25rem;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.25s, box-shadow 0.3s;
+      transform-style: preserve-3d;
+      transform: perspective(1200px);
+      will-change: transform;
+    }
+    .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .card-accent-line {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--clay));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .card:hover .card-accent-line { transform: scaleX(1); }
+    .card:hover { border-color: rgba(122,158,135,0.25); box-shadow: var(--shadow-lg); }
+
+    .card-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.63rem;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      margin-bottom: 1.1rem;
+    }
+    .card-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.68;
+      margin-bottom: 1.5rem;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.22rem 0.6rem;
+      border-radius: 2px;
+    }
+    .card-cta {
+      font-size: 0.8rem;
+      color: var(--accent-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 500;
+      position: relative;
+    }
+    .card-cta::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+    .card:hover .card-cta::after { width: 100%; }
+    .card-cta svg { transition: transform 0.2s ease; }
+    .card:hover .card-cta svg { transform: translate(2px, -2px); }
+
+    /* ─────────────────────────────────────────
+       EXPERIENCE
+    ───────────────────────────────────────── */
+    #experience {
+      padding: 7rem 3rem;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .experience-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+    .experience-aside {
+      position: sticky;
+      top: 7rem;
+    }
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.6rem; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent) 0%, var(--border) 100%);
+    }
+    .tl-item {
+      position: relative;
+      padding-bottom: 2.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tl-item:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: none; }
+
+    .tl-dot {
+      position: absolute;
+      left: -2rem;
+      top: 0.6rem;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 2px solid var(--accent);
+      transform: translateX(-4px);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .tl-item:hover .tl-dot { background: var(--accent); transform: translateX(-4px) scale(1.2); }
+
+    .tl-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.67rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .tl-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.18rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .tl-org {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    .tl-bullets { list-style: none; }
+    .tl-bullets li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      padding-left: 1.2rem;
+      position: relative;
+      margin-bottom: 0.3rem;
+    }
+    .tl-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      opacity: 0.6;
+    }
+
+    /* ─────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────── */
+    #contact { padding: 8rem 3rem; text-align: center; }
+    .contact-inner { max-width: 640px; margin: 0 auto; }
+
+    .contact-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .contact-title em { font-style: italic; color: var(--accent); }
+
+    .contact-body {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.78;
+      margin-bottom: 2.5rem;
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .contact-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+    .contact-link:hover { color: var(--accent-dark); }
+    .contact-link:hover::after { width: 100%; }
+
+    /* ─── Footer ─── */
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.71rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 1.5rem; }
+      nav.scrolled { padding: 1rem 1.5rem; }
+      nav ul { display: none; }
+      .hero-inner { grid-template-columns: 1fr; padding: 9rem 1.5rem 4rem; gap: 3rem; }
+      .hero-image-wrap { order: -1; max-width: 380px; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .experience-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .experience-aside { position: static; }
+      #about, #projects, #experience, #contact { padding: 5rem 1.5rem; }
+      footer { padding: 1.75rem 1.5rem; }
+      body { cursor: auto; }
+      #cursor-dot, #cursor-ring { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ░░ CURSOR ░░ -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ░░ NAV ░░ -->
+  <nav id="nav">
+    <a class="nav-logo" href="#">SW</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ░░ HERO ░░ -->
+  <div class="hero-wrap">
+    <div class="hero-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">DCS &amp; Dance · Bowdoin College</p>
+
+        <h1 class="hero-name">
+          <span class="line"><span class="line-inner">Seamus</span></span>
+          <span class="line"><span class="line-inner italic">Woodruff.</span></span>
+        </h1>
+
+        <p class="hero-sub">
+          I study how technology shapes the world, and how to make it do better. At the intersection of data, ethics, and human consequence.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">
+            See my work
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5h10M6.5 1.5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="mailto:seamuswoodruff@outlook.com" class="btn btn-ghost">Let's talk</a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <div class="hero-img-accent"></div>
+        <div class="hero-img-frame" id="heroFrame">
+          <img src="Photos/profile.jpeg" alt="Seamus Woodruff" id="heroImg">
+          <span class="hero-img-caption">Brunswick, ME · Bowdoin '26</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ░░ MARQUEE ░░ -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack">
+      <!-- items duplicated in JS for seamless loop -->
+    </div>
+  </div>
+
+  <!-- ░░ ABOUT ░░ -->
+  <section id="about">
+    <div class="about-inner">
+
+      <div class="reveal">
+        <div class="label">About</div>
+        <h2 class="about-aside-title">Tech is easy to build.<br><em>Harder to get right.</em></h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-val">3.7</div>
+            <div class="stat-lbl">GPA · Bowdoin College</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">2</div>
+            <div class="stat-lbl">Majors: DCS + Dance</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">May '26</div>
+            <div class="stat-lbl">Graduating &amp; ready</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-body reveal d1">
+        <p>
+          I'm a Digital and Computational Studies senior at Bowdoin College, studying a major that asks not just what technology can do, but <strong>what it should do and who it affects.</strong> I've spent four years at the intersection of data analysis, AI ethics, and digital humanities, looking for work where that question actually matters.
+        </p>
+        <p>
+          Right now, AI is compressing the time between idea and deployment faster than any technology in history. That pace doesn't make people who ask <em>should we?</em> less relevant. It makes them <strong>more necessary than ever.</strong> The bottleneck is not building quickly. It's understanding what you are building, for whom, and what happens when it scales. That's the work I'm trained for, and the work I want to do.
+        </p>
+        <p>
+          In practice that means experience in data analysis and NLP pipelines, geospatial visualization, behavioral design research, UX methodology, digital text analysis. Different tools, same question: <em>what is this system actually doing, and to whom?</em> I move between the technical and the interpretive because I think that the problems we are facing as a society do not fit neatly on one side.
+        </p>
+        <p>
+          I also double-major in Dance, which has expanded how I think about bodies, systems, and what it means to communicate something to another person. Outside the classroom I've worked as a farm intern, a carpenter's assistant, a bike mechanic, and an outdoor guide. That breadth of experience is, I think, exactly the kind of thing that makes someone better at the work of thinking critically about technology, about people, about what we're actually building.
+        </p>
+
+        <div class="skills">
+          <span class="skill">Python</span>
+          <span class="skill">Data Analysis</span>
+          <span class="skill">NLP</span>
+          <span class="skill">ArcGIS</span>
+          <span class="skill">AI Ethics</span>
+          <span class="skill">Digital Text Analysis</span>
+          <span class="skill">Clustering & Classification</span>
+          <span class="skill">Stata</span>
+          <span class="skill">UX Research</span>
+          <span class="skill">Adobe Premiere Pro</span>
+          <span class="skill">Claude Code</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ PROJECTS ░░ -->
+  <section id="projects">
+    <div class="projects-inner">
+      <div class="projects-header">
+        <div>
+          <div class="label reveal">Projects</div>
+          <h2 class="section-title reveal d1">Things I've <em>built.</em></h2>
+        </div>
+        <a href="https://github.com/seamuswoodruff" class="btn btn-ghost reveal d1" target="_blank" rel="noopener" style="cursor:none;">
+          GitHub
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10L10 1.5M3 1.5h7.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="projects-grid">
+
+        <a href="https://arcg.is/1KrfrL3" target="_blank" rel="noopener" class="card reveal d1" style="cursor:none;">
+          <div class="card-accent-line"></div>
+          <div class="card-num">01 &nbsp;·&nbsp; FALL 2025</div>
+          <h3 class="card-title">Apple Screen Time: From Passive Tracking to Proactive Wellness</h3>
+          <p class="card-desc">
+            A research-grounded redesign of Apple's Screen Time, arguing that the feature fails because it measures behavior without actually changing it. Proposes a new model built on behavioral design, user agency, and ethical defaults.
+          </p>
+          <div class="card-tags">
+            <span class="tag">UX Research</span>
+            <span class="tag">Behavioral Design</span>
+            <span class="tag">Product Ethics</span>
+            <span class="tag">ArcGIS StoryMaps</span>
+          </div>
+          <span class="card-cta">
+            View project
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10L10 1.5M3 1.5h7.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <a href="https://arcg.is/0TfeWO0" target="_blank" rel="noopener" class="card reveal d2" style="cursor:none;">
+          <div class="card-accent-line"></div>
+          <div class="card-num">02 &nbsp;·&nbsp; FALL 2024</div>
+          <h3 class="card-title">Ecology of Violence: Weather, Climate &amp; Crime in NYC</h3>
+          <p class="card-desc">
+            An interactive geospatial analysis exploring how weather patterns correlate with violent crime rates across New York City, using ArcGIS to visualize temporal and environmental factors that influence social behavior at scale.
+          </p>
+          <div class="card-tags">
+            <span class="tag">ArcGIS</span>
+            <span class="tag">Geospatial Analysis</span>
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Visualization</span>
+          </div>
+          <span class="card-cta">
+            View project
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10L10 1.5M3 1.5h7.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ EXPERIENCE ░░ -->
+  <section id="experience">
+    <div class="experience-inner">
+
+      <div class="experience-aside reveal">
+        <div class="label">Experience</div>
+        <h2 class="section-title" style="margin-bottom: 1rem;">Where I've<br><em>been.</em></h2>
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 2rem;">
+          A mix of data, land, and leadership. Exactly what makes me a more interesting analyst.
+        </p>
+        <a href="Resume_Woodruff_current.pdf" download class="btn btn-ghost" style="font-size: 0.82rem; cursor: none;">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 1v8M2.5 7l4 4 4-4M1.5 12h10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download Resume
+        </a>
+      </div>
+
+      <div class="timeline reveal d1">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">MAY 2025 – NOV 2025</div>
+          <h3 class="tl-title">Independent Land Manager</h3>
+          <p class="tl-org">Harpswell, ME</p>
+          <ul class="tl-bullets">
+            <li>Managed forestry, landscaping, carpentry, and property maintenance across a 20-acre property</li>
+            <li>Operated chainsaws, chippers, tractors, portable sawmills, and aerial lifts. End-to-end project ownership.</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">MAY 2024 – AUG 2024</div>
+          <h3 class="tl-title">Farm Operations Intern</h3>
+          <p class="tl-org">Crystal Spring Farm, Brunswick, ME</p>
+          <ul class="tl-bullets">
+            <li>Worked directly with a 21-year veteran farmer from harvest through distribution, every step of the supply chain</li>
+            <li>Developed value-added products (syrups, jams) and learned labeling compliance, co-packing, and logistics</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">MAY 2023 – AUG 2023</div>
+          <h3 class="tl-title">Carpenter's Assistant</h3>
+          <p class="tl-org">NE Construction, Topsham, ME</p>
+          <ul class="tl-bullets">
+            <li>Framing, window installation, and demolition across residential projects</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">MAY 2022 – SEP 2022</div>
+          <h3 class="tl-title">Bike Mechanic</h3>
+          <p class="tl-org">Gorham Bike and Ski, Brunswick, ME</p>
+          <ul class="tl-bullets">
+            <li>Built and maintained retail bike inventory, serviced customer bikes, worked the sales floor</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">NOV 2021 – MAY 2022</div>
+          <h3 class="tl-title">Ski Instructor</h3>
+          <p class="tl-org">Deer Valley, Park City, UT</p>
+          <ul class="tl-bullets">
+            <li>Taught skiing to children ages 3–14; communicated regularly with parents on individualized progress</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">2022 – PRESENT</div>
+          <h3 class="tl-title">Trip Leader · Raft Guide · Ski Instructor</h3>
+          <p class="tl-org">Bowdoin Outing Club, Brunswick, ME</p>
+          <ul class="tl-bullets">
+            <li>Plan and lead outdoor trips for student groups: mountain biking, whitewater rafting, backcountry skiing</li>
+            <li>Maintain a fleet of 20+ mountain bikes and full ski inventory; coordinate logistics, safety protocols, and equipment</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ CONTACT ░░ -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="label reveal" style="justify-content: center; margin-bottom: 1.25rem;">Get in touch</div>
+      <h2 class="contact-title reveal d1">
+        Let's talk about<br>what <em>technology</em><br>should do.
+      </h2>
+      <p class="contact-body reveal d2">
+        I'm graduating in May 2026 and looking for roles in tech policy, data analysis, research, or digital strategy. If your work sits at the intersection of technology and people, I'd genuinely love to hear from you.
+      </p>
+      <a href="mailto:seamuswoodruff@outlook.com" class="btn btn-primary reveal d3" style="margin: 0 auto; cursor: none;">
+        seamuswoodruff@outlook.com
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5h10M6.5 1.5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <div class="contact-links reveal d4">
+        <a href="https://www.linkedin.com/in/seamus-woodruff-21b6561a9/" class="contact-link" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 01.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/seamuswoodruff" class="contact-link" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a href="Resume_Woodruff_current.pdf" download class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 1v9M3.5 7l3.5 4 3.5-4M1 13h12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Resume PDF
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer>
+    <span>© 2026 Seamus Woodruff</span>
+    <span>Bowdoin College · Brunswick, ME · May 2026</span>
+  </footer>
+
+  <script>
+    /* ═══ Custom cursor ═══ */
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    });
+
+    // Ring lags slightly for elegance
+    function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    /* ═══ Nav on scroll ═══ */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ═══ Marquee ═══ */
+    const items = [
+      'AI Ethics', 'Data Analysis', 'Digital Policy', 'Geospatial Research',
+      'Behavioral Design', 'Technology & Society', 'DCS · Bowdoin',
+      'NLP', 'UX Research', 'Digital Strategy', 'Available May 2026'
+    ];
+    const track = document.getElementById('marqueeTrack');
+    // Double for seamless loop
+    [...items, ...items].forEach(text => {
+      const el = document.createElement('span');
+      el.className = 'marquee-item';
+      el.textContent = text;
+      track.appendChild(el);
+    });
+
+    /* ═══ Scroll reveal ═══ */
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    /* ═══ 3D card tilt ═══ */
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `perspective(1200px) rotateX(${-y * 5}deg) rotateY(${x * 5}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) translateY(0)';
+        setTimeout(() => { card.style.transform = ''; }, 300);
+      });
+    });
+
+    /* ═══ Hero parallax on scroll ═══ */
+    const heroImg = document.getElementById('heroImg');
+    window.addEventListener('scroll', () => {
+      if (!heroImg) return;
+      const scrolled = window.scrollY;
+      heroImg.style.transform = `translateY(${scrolled * 0.12}px)`;
+    }, { passive: true });
+
+    /* ═══ Magnetic buttons (subtle) ═══ */
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.18;
+        const y = (e.clientY - r.top - r.height / 2) * 0.18;
+        btn.style.transform = `translate(${x}px, ${y}px) translateY(-2px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
