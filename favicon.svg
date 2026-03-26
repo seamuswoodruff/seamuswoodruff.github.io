@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Warm off-white background with rounded corners -->
+  <rect width="100" height="100" rx="20" fill="#F5F1EA"/>
+  <!-- Sage border -->
+  <rect width="100" height="100" rx="20" fill="none" stroke="#7A9E87" stroke-width="5"/>
+  <!-- Italic serif SW monogram -->
+  <text
+    x="50"
+    y="67"
+    text-anchor="middle"
+    font-family="Georgia, 'Palatino Linotype', serif"
+    font-size="44"
+    font-style="italic"
+    fill="#7A9E87"
+    letter-spacing="-2"
+  >SW</text>
+</svg>
