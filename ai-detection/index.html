@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>The AI Detection Study — Can you still tell what's real?</title>
+    <meta name="description" content="A DCS3850 study on how well people distinguish real photographs from AI-generated images. Take the test, explore the findings, view the dataset." />
+    <script src="assets/js/theme-init.js"></script>
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
+  </head>
+  <body data-page="home">
+    <header id="site-nav"></header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="shell hero__inner">
+          <div class="hero__meta" data-reveal data-reveal-delay="0">
+            <span class="pill"><span class="pill__dot"></span> DCS3850 · Bowdoin · Spring 2026</span>
+          </div>
+
+          <h1 class="hero__title" data-reveal data-reveal-delay="80">
+            Can you still<br />
+            <span class="hero__title-accent display-wonk"><em>tell what's real?</em></span>
+          </h1>
+
+          <p class="hero__lede lede" data-reveal data-reveal-delay="180">
+            Real photograph or AI-generated? We asked 508 people to decide, then tracked what actually separates the ones who got it right from the ones who didn't. Take the same test, then see what the data says about how the human eye is holding up in <span class="mono">2026</span>.
+          </p>
+
+          <div class="hero__cta" data-reveal data-reveal-delay="260">
+            <a class="btn btn--primary" href="quiz/">
+              <span>Take the test</span>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="findings/">
+              <span>Read the findings</span>
+            </a>
+          </div>
+
+          <!-- Stat strip -->
+          <div class="hero__stats" data-reveal data-reveal-delay="360">
+            <div class="stat">
+              <div class="stat__label">Mean score — laptop</div>
+              <div class="stat__num stat__num--accent">7.2<span class="stat__unit">/10</span></div>
+            </div>
+            <div class="stat">
+              <div class="stat__label">Mean score — mobile</div>
+              <div class="stat__num">6.6<span class="stat__unit">/10</span></div>
+            </div>
+            <div class="stat">
+              <div class="stat__label">Mean score — over 25</div>
+              <div class="stat__num">6.4<span class="stat__unit">/10</span></div>
+            </div>
+            <div class="stat">
+              <div class="stat__label">Margin of error (95% CI)</div>
+              <div class="stat__num">&lt;5<span class="stat__unit">%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative image grid -->
+        <div class="hero__grid" aria-hidden="true" data-reveal data-reveal-delay="120">
+          <div class="hero__grid-track">
+            <!-- filled by home.js -->
+          </div>
+          <div class="hero__grid-fade"></div>
+        </div>
+      </section>
+
+      <!-- PROMPT -->
+      <section class="tight">
+        <div class="shell">
+          <div class="prompt">
+            <span class="eyebrow">The study</span>
+            <h2 class="section">
+              Two questions. One surprising answer<span class="text-accent">.</span>
+            </h2>
+            <p class="body-copy">
+              Our team set out to answer two questions: does the device you view images on affect your ability to spot AI-generated ones? And does familiarity with AI technology make you better at detecting it?            </p>
+            <p class="body-copy">
+              Everything here is built from the same data. The quiz uses the same 80-image pool participants saw. The dataset is our final cleaned dataset prior to narrowing it down to our analytical sample, with some demographic information withheld for privacy purposes. The findings page is what we concluded, and what surprised us.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPLORE GRID -->
+      <section class="tight">
+        <div class="shell">
+          <div class="explore-head">
+            <span class="eyebrow">Explore</span>
+            <h2 class="section">Five ways in<span class="text-accent">.</span></h2>
+          </div>
+
+          <div class="explore-grid">
+            <a class="card card--link explore-card" href="quiz/">
+              <div class="card__eyebrow">
+                <span class="card__label">01 · Quiz</span>
+                <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </div>
+              <h3 class="card__title">Take the test.</h3>
+              <p class="card__desc">Ten randomly selected images from the same pool participants saw. Rate your confidence as you go. See every one of your answers at the end.</p>
+              <div class="explore-card__meta mono">10 images · ~4 min</div>
+            </a>
+
+            <a class="card card--link explore-card" href="survey/">
+              <div class="card__eyebrow">
+                <span class="card__label">02 · Survey design</span>
+                <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </div>
+              <h3 class="card__title">See how it was built.</h3>
+              <p class="card__desc">Survey flow, sampling pipeline, variables measured, and bias controls: the full study design in visual form.</p>
+              <div class="explore-card__meta mono">4 sections · interactive</div>
+            </a>
+
+            <a class="card card--link explore-card" href="findings/">
+              <div class="card__eyebrow">
+                <span class="card__label">03 · Findings</span>
+                <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </div>
+              <h3 class="card__title">Read the findings.</h3>
+              <p class="card__desc">A general-audience write-up of what the data actually says: device type, age, confidence, response time, and the surprise null result on AI familiarity.</p>
+              <div class="explore-card__meta mono">6 findings · limitations</div>
+            </a>
+
+            <a class="card card--link explore-card" href="distribution/">
+              <div class="card__eyebrow">
+                <span class="card__label">04 · Distribution</span>
+                <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </div>
+              <h3 class="card__title">See the score distribution.</h3>
+              <p class="card__desc">Histogram of all 508 participants, filterable by device, class year, and AI familiarity.</p>
+              <div class="explore-card__meta mono">n = 508</div>
+            </a>
+
+            <a class="card card--link explore-card" href="dataset/">
+              <div class="card__eyebrow">
+                <span class="card__label">05 · Dataset</span>
+                <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </div>
+              <h3 class="card__title">Dig into the dataset.</h3>
+              <p class="card__desc">Every response, searchable and sortable. CSV download available for anyone who wants to run their own analysis.</p>
+              <div class="explore-card__meta mono">CSV · public</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="assets/js/nav.js"></script>
+    <script type="module" src="assets/js/home.js"></script>
+  </body>
+</html>

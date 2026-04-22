@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <title>About — AI Detection Study</title>
+    <meta name="description" content="Methodology, team, and acknowledgments for the Bowdoin DCS3850 AI image detection study." />
+    <script src="../assets/js/theme-init.js"></script>
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/about.css" />
+  </head>
+  <body data-page="about">
+    <header id="site-nav"></header>
+
+    <main>
+
+      <!-- Hero -->
+      <section class="about-hero">
+        <div class="shell">
+          <span class="pill" data-reveal><span class="pill__dot"></span> DCS3850 · Bowdoin College · 2026</span>
+          <h1 class="hero display-wonk about-hero__h1" data-reveal data-reveal-delay="80">
+            About this study.
+          </h1>
+          <p class="lede about-hero__lede" data-reveal data-reveal-delay="160">
+            A Bowdoin College senior seminar project on how people distinguish real photographs from AI-generated images, and what that reveals about perception, trust, and visual literacy in 2026.
+          </p>
+        </div>
+      </section>
+
+      <!-- Research question -->
+      <section class="tight">
+        <div class="shell about-prose">
+          <div class="about-section" data-reveal>
+            <h2 class="section about-section__title">Research question.</h2>
+            <div class="about-section__body">
+              <p class="body-copy">
+                This study asks two related questions. First: does the device you use to view an image (laptop versus mobile phone) affect how accurately you can detect whether it's AI-generated? Second: does familiarity with AI technology predict better detection?              </p>
+              <p class="body-copy">
+                AI-generated imagery has become nearly indistinguishable from real photography, and most of us encounter it constantly: in news feeds, advertising, social media, and journalism. Most of that exposure happens on phones. If mobile users are systematically worse at spotting synthetic imagery, and knowing more about AI doesn't close that gap, those are real vulnerabilities for how misinformation spreads. Understanding what actually predicts performance, and what doesn't, matters for how we think about visual literacy.
+              </p>
+              <h3 class="about-sub">Hypotheses</h3>
+              <div class="about-hypotheses">
+                <div class="about-hypothesis">
+                  <div class="about-hypothesis__head">
+                    <span class="about-hypothesis__label mono-label">H1</span>
+                    <span class="about-hypothesis__outcome about-hypothesis__outcome--null">Falsified</span>
+                  </div>
+                  <p class="about-hypothesis__text">Greater AI usage and familiarity with AI image generation increases detection ability.</p>
+                  <p class="about-hypothesis__result">Familiarity was measured four ways (a self-rated familiarity scale, an AI literacy scale, hours per week of usage, and AI course enrollment), plus an interaction term. None predicted accuracy. The null result held across all measures.</p>
+                </div>
+                <div class="about-hypothesis">
+                  <div class="about-hypothesis__head">
+                    <span class="about-hypothesis__label mono-label">H2</span>
+                    <span class="about-hypothesis__outcome about-hypothesis__outcome--confirmed">Partially confirmed</span>
+                  </div>
+                  <p class="about-hypothesis__text">Viewing on a mobile phone, compared to a laptop, decreases detection ability.</p>
+                  <p class="about-hypothesis__result">The full-sample t-test supports this (laptop 7.16 vs. mobile 6.63, p = 0.0008). However, subgroup tests for Juniors and First-years, the two classes with the most balanced device split, were not significant, and device type did not reach significance in the ordered probit model once age was controlled for. The gap is real in aggregate but partly entangled with the age effect.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- Prior work / literature review -->
+      <section class="tight">
+        <div class="shell about-prose">
+          <div class="about-section" data-reveal>
+            <h2 class="section about-section__title">Prior research.</h2>
+            <div class="about-section__body">
+              <p class="body-copy">
+                Humans are not reliable detectors of AI-generated content — the research is settled on that. Josephs, Fosco &amp; Oliva (2023) put average detection accuracy at roughly 51% (barely above chance) and found that making AI artifacts more visible improved both accuracy and confidence. Detection is perceptual, not intellectual: people notice things, or they don't.
+              </p>
+              <p class="body-copy">
+                Three bodies of work motivated the specific focus on device type. Sütterlin et al. (2023), in a study primarily about political orientation and deepfake detection, found a substantial incidental gap between mobile and desktop viewers: mobile recognition rates averaged 63.9 versus 82.9 on desktop. That gap was never the point of their paper, and they couldn't isolate it — but it was too large to ignore.
+              </p>
+              <p class="body-copy">
+                Two cognitive science papers help explain why such a gap might exist. Figl &amp; Remus (2023) showed that smartphones prime System 1 thinking (the fast, associative, low-effort mode) compared to laptops, which tend to engage more deliberate analysis. Careful AI detection is exactly the kind of task that benefits from slow, analytical processing, which phones actively work against. Ward et al. (2017) found something that takes it further: the mere <em>presence</em> of a smartphone on a desk, face-down and silent, reduces working memory capacity and fluid intelligence in tasks that require sustained attention.
+              </p>
+              <p class="body-copy">
+                No study had made device type the primary research question. Prior work either found the device effect incidentally, focused on deepfakes rather than still images, lacked ecological validity, or couldn't obtain device metadata. <strong>Smartphone versus laptop detection of AI-generated still images, tested head-to-head</strong> — that was the gap. This study was built around it, using a within-institution sample to hold demographic factors roughly constant while varying device type.
+              </p>
+              <h3 class="about-sub">References</h3>
+              <ul class="about-refs">
+                <li class="about-ref">Figl, K., &amp; Remus, U. (2023). Thinking fast and thinking slow: Digital devices' effects on cognitive reflection. <em>Journal of Management Information Systems, 40</em>(2), 580–623.</li>
+                <li class="about-ref">Josephs, E., Fosco, C. L., &amp; Oliva, A. (2023). Artifact magnification on deepfake videos increases human detection and subjective confidence. <em>Journal of Vision, 23</em>(9), 5327.</li>
+                <li class="about-ref">Sütterlin, S., Ask, T. F., Mägerle, S., Glöckler, S., Wolf, L., Schray, J., … &amp; Lugo, R. G. (2023). Individual deep fake recognition skills are affected by viewer's political orientation, agreement with content and device used. In D. D. Schmorrow &amp; C. M. Fidopiastis (Eds.), <em>Augmented Cognition</em> (LNCS, Vol. 14019, pp. 269–284). Springer.</li>
+                <li class="about-ref">Ward, A. F., Duke, K., Gneezy, A., &amp; Bos, M. W. (2017). Brain drain: The mere presence of one's own smartphone reduces available cognitive capacity. <em>Journal of the Association for Consumer Research, 2</em>(2), 140–154.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- Methodology -->
+      <section class="tight">
+        <div class="shell about-prose">
+          <div class="about-section" data-reveal>
+            <h2 class="section about-section__title">Methodology.</h2>
+            <div class="about-section__body">
+              <h3 class="about-sub">Image dataset</h3>
+              <p class="body-copy">
+                Existing image datasets weren't usable for this study: they were built to train automated AI detectors, not to test human perception. The practical differences matter: those datasets typically hold 10,000+ images per category, far more than a survey where each participant sees only ~10 images. And most freely available sets failed on quality grounds: images either had obvious AI artifacts that anyone could spot, or were paintings and artworks requiring domain expertise to evaluate. Neither extreme would tell us much about ordinary detection ability.
+              </p>
+              <p class="body-copy">
+                We assembled a custom pool of 80 images (40 real, 40 AI-generated) curated from a Kaggle dataset of 12,000 images (6,000 per category). Selection criteria aimed for a middle difficulty range: images that looked plausibly real but rewarded careful attention, without relying on stylistic tells that would make the task trivially easy or unfairly hard.
+              </p>
+              <h3 class="about-sub">Survey design</h3>
+              <p class="body-copy">
+                Each participant saw 10 images drawn from that pool, delivered across three blocks (3 images → attention check → 3 images → attention check → 4 images), followed by AI-use questions and demographics. The two attention checks were unambiguous images intended to catch participants not engaging with the task. For each image, participants indicated whether it was a "Real photograph" or "AI-generated image" and rated their confidence on a 1–10 slider.
+              </p>
+              <h3 class="about-sub">Participants</h3>
+              <p class="body-copy">
+                We collected 508 complete responses from Bowdoin College students and faculty. Recruitment was done via class-year email lists (first-years and juniors to the mobile link, sophomores and seniors to the laptop link), plus word-of-mouth and a Student Digest post. The sample is a convenience sample, skewing young (18–24) and academically engaged relative to the general population.
+              </p>
+              <p class="body-copy">
+                By affiliation, the analytic sample (n = 419) comprised: Seniors (108), First-years (93), Sophomores (89), Faculty &amp; Staff (74), and Juniors (54). By device, 260 participants completed the survey on a laptop and 157 on a mobile phone. With a target population of approximately 3,200, the 508-response collection yields a margin of error under 5% at the 95% confidence level, sufficient for population-level inferences about the Bowdoin community.
+              </p>
+              <h3 class="about-sub">Scoring and cleaning</h3>
+              <p class="body-copy">
+                Each participant's score (2–10, observed range) reflects the number of images they correctly classified out of 10. The full 508-response dataset is published here. The analytic sample used in our statistical models is <strong>n = 419</strong>, after removing 89 responses across three filtering steps: attention-check failures (508 → 434), unresolved device-type records (434 → 424), and response-time outliers at ±3 SD (424 → 419). The score distribution is virtually unchanged by this cleaning (mean 6.95 → 6.98).
+              </p>
+              <h3 class="about-sub">Analysis</h3>
+              <p class="body-copy">
+                We began with descriptive statistics and unpaired t-tests comparing device subgroups: first across the full sample, then separately for Juniors and First-years, the two class years with the most balanced device split. Multivariate analysis used an ordered probit model: the outcome variable (number correct out of 10) is discrete, ordered, and bounded, which makes ordered probit preferable to OLS: it respects the ordinal structure without assuming equal distances between score values.
+              </p>
+              <p class="body-copy">
+                We tested nine model specifications of increasing complexity, from a baseline of gender and race controls through specifications adding age, device type, AI familiarity measures, social media time, and response time. Model selection used the Akaike Information Criterion (AIC), which balances fit against complexity. The best-performing specification (model m2: gender, race, age over 25, and device type) achieved the lowest AIC of 1507.66. Adding further predictors (AI familiarity, social media time, response time) did not improve fit enough to justify the added complexity.
+              </p>
+              <p class="body-copy">
+                Model diagnostics supported the specification: cut-point spacing was approximately even across the score range, and variance inflation factors were all below 5 (mean VIF 1.10) — no multicollinearity worth flagging. The analysis also covered confidence–accuracy relationships, response-time correlations, and per-image difficulty rankings.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- Team -->
+      <section class="tight">
+        <div class="shell about-prose">
+          <div class="about-section" data-reveal>
+            <h2 class="section about-section__title">Team.</h2>
+            <div class="about-section__body">
+              <div class="about-team">
+                <div class="about-team-member">
+                  <div class="about-team-member__name">Lulu Linkas</div>
+                  <div class="about-team-member__role">Survey design, image curation</div>
+                </div>
+                <div class="about-team-member">
+                  <div class="about-team-member__name">Maddy Ohta</div>
+                  <div class="about-team-member__role">Statistical analysis, T-tests, exploratory findings</div>
+                </div>
+                <div class="about-team-member">
+                  <div class="about-team-member__name">Seamus Woodruff</div>
+                  <div class="about-team-member__role">Website, data pipeline, visualisations</div>
+                  <a class="about-team-member__contact" href="mailto:swoodruff@bowdoin.edu">swoodruff@bowdoin.edu</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- Limitations -->
+      <section class="tight">
+        <div class="shell about-prose">
+          <div class="about-section" data-reveal>
+            <h2 class="section about-section__title">Limitations.</h2>
+            <div class="about-section__body">
+              <h3 class="about-sub">Device-year confound</h3>
+              <p class="body-copy">
+                Device type was not randomly assigned. Recruitment routed First-years and Juniors to a mobile-formatted link and Sophomores and Seniors to a laptop-formatted link via class-year email lists, while Faculty and Staff received a split. This means device type is structurally correlated with class year, and therefore with age, by design rather than by chance. Disentangling the effect of the device from the effect of class year and age is inherently difficult under this structure, which is reflected in device type losing statistical significance in the ordered probit model once age is controlled for. Residual self-selection also applies: participants could access the survey from any device regardless of which link they received, and word-of-mouth recruits had no device routing at all. The planned RCT described in Future Directions is designed to resolve this by assigning device condition directly.
+              </p>
+              <h3 class="about-sub">Sample bias</h3>
+              <p class="body-copy">
+                Our sample is heavily Bowdoin-skewed: overwhelmingly young, college-educated, and exposed to academic discourse about AI. This likely inflates our headline scores relative to a truly general population, and may distort which factors appear to predict performance.
+              </p>
+              <h3 class="about-sub">Non-randomised image difficulty</h3>
+              <p class="body-copy">
+                The 80 images were not selected to be uniformly difficult. Some AI images are obviously synthetic; others are nearly indistinguishable. The mix is not calibrated, which means our headline mean score depends heavily on the image selection and doesn't generalise cleanly to "how good are people at detecting AI images."
+              </p>
+              <h3 class="about-sub">Self-reported AI familiarity</h3>
+              <p class="body-copy">
+                AI familiarity was measured four ways (a 1–5 familiarity scale, a 1–5 AI literacy scale, hours-per-week usage bins, and AI course enrollment), plus an interaction term between familiarity and usage. None of these predicted detection accuracy. While the null result is robust given the breadth of measurement, all four variables are still self-reported and subject to social-desirability inflation.
+              </p>
+              <h3 class="about-sub">Survey framing effects</h3>
+              <p class="body-copy">
+                Participants knew they were in a study about distinguishing real from AI-generated images. This framing likely heightened attention and changed the nature of the task compared to how people naturally encounter images in the wild. Real-world image encounters happen without the prompt to be sceptical.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- Future directions -->
+      <section class="tight">
+        <div class="shell about-prose">
+          <div class="about-section" data-reveal>
+            <h2 class="section about-section__title">Future directions.</h2>
+            <div class="about-section__body">
+              <p class="body-copy">
+                This study establishes that a device gap exists across the full sample and that age predicts performance, but it can't establish causality. Device condition was partially structured by class-year email routing rather than randomly assigned, meaning device type, class year, and age are correlated by design. A randomised controlled trial that assigns device condition directly would isolate the causal effect of the device from everything tangled up with it.
+              </p>
+              <p class="body-copy">
+                The planned design would assign participants to device condition rather than letting them self-select, using standardised hardware to eliminate variation in screen size and quality. A laptop group would form the control; a mobile group the treatment. The study would be single-blind (participants unaware of the device hypothesis), block-randomised by class year and gender to ensure balanced groups, and would include a five-minute AI detection training video to test whether brief instruction can meaningfully shift detection accuracy.
+              </p>
+              <p class="body-copy">
+                If the device effect survives randomisation under those conditions, it strengthens the case that screen size and cognitive mode, not user characteristics, are doing the causal work. If it doesn't, the aggregate gap observed here is more likely explained by who uses each device than by the device itself.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- Acknowledgments -->
+      <section class="tight">
+        <div class="shell about-prose">
+          <div class="about-section" data-reveal>
+            <h2 class="section about-section__title">Acknowledgments.</h2>
+            <div class="about-section__body">
+              <p class="body-copy">
+                This project was completed as part of DCS3850: Advanced Data Science at Bowdoin College, Spring 2026. We thank all 508 participants who took the time to complete the survey. We also thank the course instructor for feedback on survey design and analysis.
+              </p>
+              <p class="body-copy">
+                Image sourcing, survey distribution, and all data collection were conducted in accordance with Bowdoin College guidelines. No personally identifiable information is published in the public dataset.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="../assets/js/nav.js"></script>
+  </body>
+</html>

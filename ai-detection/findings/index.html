@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <title>Findings — AI Detection Study</title>
+    <meta name="description" content="What 508 Bowdoin participants revealed about the human eye's ability to spot AI-generated images." />
+    <script src="../assets/js/theme-init.js"></script>
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/findings.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </head>
+  <body data-page="findings">
+    <header id="site-nav"></header>
+
+    <main>
+
+      <!-- ① Hero / lede -->
+      <section class="findings-hero">
+        <div class="shell">
+          <span class="pill" data-reveal><span class="pill__dot"></span> 508 participants · 80 images · 10 per person</span>
+          <h1 class="hero display-wonk findings-hero__h1" data-reveal data-reveal-delay="80">
+            Can you tell<br />what's real?
+          </h1>
+          <p class="lede findings-hero__lede" data-reveal data-reveal-delay="160">
+            We asked 508 people to sort photographs (real or AI-generated) and track their confidence. Device type shapes your score. So does your age. What has no effect whatsoever is how much you know about AI.
+          </p>
+          <div class="findings-hero__stats" data-reveal data-reveal-delay="240">
+            <div class="stat">
+              <div><span class="stat__num stat__num--accent" id="stat-mean">7.0</span><span class="stat__unit">/10</span></div>
+              <div class="stat__label">Mean score</div>
+            </div>
+            <div class="findings-hero__stat-divider" aria-hidden="true"></div>
+            <div class="stat">
+              <div><span class="stat__num">508</span></div>
+              <div class="stat__label">Participants</div>
+            </div>
+            <div class="findings-hero__stat-divider" aria-hidden="true"></div>
+            <div class="stat">
+              <div><span class="stat__num">80</span></div>
+              <div class="stat__label">Images tested</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ② Device-type headline -->
+      <section id="section-device">
+        <div class="shell findings-two-col">
+          <div class="findings-copy">
+            <span class="eyebrow" data-reveal>Finding 01 — Device type</span>
+            <h2 class="section" data-reveal data-reveal-delay="60">What screen you use matters more than what you know.</h2>
+            <div class="findings-stat-split" data-reveal data-reveal-delay="120">
+              <div class="findings-stat-block">
+                <div><span class="stat__num text-accent" id="stat-laptop">7.2</span><span class="stat__unit">/10</span></div>
+                <div class="stat__label">Laptop</div>
+              </div>
+              <div class="findings-stat-vs" aria-hidden="true">vs</div>
+              <div class="findings-stat-block">
+                <div><span class="stat__num" id="stat-mobile">6.6</span><span class="stat__unit">/10</span></div>
+                <div class="stat__label">Mobile phone</div>
+              </div>
+            </div>
+            <p class="body-copy" data-reveal data-reveal-delay="180">
+              Across the full sample, laptop users averaged 0.53 points higher than mobile users (7.16 vs. 6.63, n = 260 vs. 157, t = 3.36, p = 0.0008). Screen size almost certainly plays a role: a laptop's larger display makes artifacts, lighting inconsistencies, and the subtle wrongness of AI-generated detail easier to catch: detail that compresses away on a smaller screen.
+            </p>
+            <p class="body-copy" data-reveal data-reveal-delay="220">
+              The picture is more complicated at the subgroup level. When the same t-test was run separately for Juniors and First-years, the two class years with the most even device split, neither result was statistically significant (p = 0.51 and p = 0.23 respectively). And in the ordered probit model, which controls for age and demographics, device type alone does not reach significance. The aggregate gap is real, but it is partly entangled with who uses each device, particularly the age effect described in Finding 04.
+            </p>
+          </div>
+          <div class="findings-chart-wrap" data-reveal data-reveal-delay="120">
+            <div class="findings-chart-card surface">
+              <div class="findings-chart-head">
+                <span class="eyebrow">Score distribution by device</span>
+                <div class="findings-chart-legend">
+                  <span class="findings-legend-item findings-legend-item--laptop">Laptop</span>
+                  <span class="findings-legend-item findings-legend-item--mobile">Mobile</span>
+                </div>
+              </div>
+              <canvas id="chart-device"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ③ Confidence vs accuracy -->
+      <section id="section-confidence">
+        <div class="shell findings-two-col findings-two-col--rev">
+          <div class="findings-chart-wrap" data-reveal>
+            <div class="findings-chart-card surface">
+              <div class="findings-chart-head">
+                <span class="eyebrow">Confidence bucket → % correct</span>
+              </div>
+              <canvas id="chart-confidence"></canvas>
+              <p class="findings-chart-caption" id="conf-caption">Pooled across all image-answer pairs</p>
+            </div>
+          </div>
+          <div class="findings-copy">
+            <span class="eyebrow" data-reveal>Finding 02 — Confidence</span>
+            <h2 class="section" data-reveal data-reveal-delay="60">High confidence is a signal. Medium confidence is noise.</h2>
+            <p class="body-copy" data-reveal data-reveal-delay="120">
+              The relationship between confidence and accuracy is real but messier than you'd expect. Highly confident answers (9–10 on the confidence scale) were correct substantially more often than uncertain ones, but the middle buckets reveal something murkier: people were equally confident in wrong answers as in right ones.
+            </p>
+            <p class="body-copy" data-reveal data-reveal-delay="160">
+              The takeaway: your gut is worth trusting when it's very strong, but moderate confidence is nearly meaningless as a signal. The hardest images, the ones that fooled the most people, were often accompanied by high confidence in the wrong direction.
+            </p>
+            <p class="body-copy" data-reveal data-reveal-delay="200">
+              There's also an asymmetry in <em>how</em> people erred. Participants were more consistent at correctly identifying AI-generated images as AI; true positive rates skewed toward the high end. True negative rates, correctly confirming that a real photograph is real, were more spread out and less reliable. When uncertain, people tended to call things AI rather than real. Whether that reflects a general suspicion of imagery in 2026, or bias introduced by the fact that they were taking the survey, is impossible to know.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ④ Response time vs score -->
+      <section id="section-timing">
+        <div class="shell findings-two-col">
+          <div class="findings-copy">
+            <span class="eyebrow" data-reveal>Finding 03 — Response time</span>
+            <h2 class="section" data-reveal data-reveal-delay="60">Slow down, and you won't improve.</h2>
+            <p class="body-copy" data-reveal data-reveal-delay="120">
+              Intuitively, you'd expect careful, deliberate responses to produce better scores. The data disagrees. There's essentially no relationship between how long someone spent on the survey and how well they did.
+            </p>
+            <p class="body-copy" data-reveal data-reveal-delay="160">
+              This suggests that detecting AI imagery is more about perceptual training than analytical effort. You either notice the artifacts quickly or you don't. Spending more time second-guessing yourself doesn't help.
+            </p>
+          </div>
+          <div class="findings-chart-wrap" data-reveal data-reveal-delay="100">
+            <div class="findings-chart-card surface">
+              <div class="findings-chart-head">
+                <span class="eyebrow">Survey duration vs. score</span>
+              </div>
+              <canvas id="chart-timing"></canvas>
+              <p class="findings-chart-caption" id="timing-caption">Loading…</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ⑤ Age finding -->
+      <section id="section-age">
+        <div class="shell findings-two-col findings-two-col--rev">
+          <div class="findings-chart-wrap" data-reveal>
+            <div class="findings-chart-card surface">
+              <div class="findings-chart-head">
+                <span class="eyebrow">Mean score by affiliation</span>
+              </div>
+              <canvas id="chart-affiliation"></canvas>
+            </div>
+          </div>
+          <div class="findings-copy">
+            <span class="eyebrow" data-reveal>Finding 04 — Age</span>
+            <h2 class="section" data-reveal data-reveal-delay="60">Older participants scored lower — consistently.</h2>
+            <p class="body-copy" data-reveal data-reveal-delay="120">
+              In the ordered probit model, being over 25 is the only demographic variable to reach statistical significance. Participants above that threshold were 3–5 percentage points less likely to score 8, 9, or 10, and 1–2 percentage points more likely to land in the 4–6 range.
+            </p>
+            <p class="body-copy" data-reveal data-reveal-delay="160">
+              The affiliation breakdown makes the pattern visible: Faculty and Staff averaged 6.43/10, the lowest of any group, while students across all four class years clustered between 6.93 and 7.19. The Bowdoin population holds many confounders roughly constant; when age still emerges as a predictor in that context, it suggests that exposure to AI imagery during formative years builds informal visual instincts that older users haven't developed the same way.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ⑤ AI familiarity — null result -->
+      <section id="section-familiarity" class="findings-null-section">
+        <div class="shell">
+          <div class="findings-null__inner">
+            <div class="findings-null__header">
+              <span class="pill findings-null__pill" data-reveal>
+                <span class="pill__dot" style="background:var(--fake);box-shadow:0 0 8px var(--fake)"></span>
+                Finding 05 — Surprise result
+              </span>
+              <h2 class="section" data-reveal data-reveal-delay="60">Knowing about AI doesn't help you spot it.</h2>
+              <p class="lede findings-null__lede" data-reveal data-reveal-delay="120">
+                We expected familiarity with AI-generated imagery to track with accuracy. It doesn't.
+              </p>
+            </div>
+            <div class="findings-null__body-cols" data-reveal data-reveal-delay="160">
+              <p class="body-copy">
+                We measured AI familiarity four different ways: a self-rated familiarity scale, a literacy scale, hours per week of AI usage, and whether someone had taken an AI course at Bowdoin. We also tested a familiarity × usage interaction. Across all five familiarity levels, mean scores cluster tightly in the 6–7 range.
+              </p>
+              <p class="body-copy">
+                Knowing that AI images exist, understanding how diffusion models work, even building with them daily — none of it translates to better detection at the perceptual level. The null result held across all four measures. The eye is not trained by the intellect.
+              </p>
+            </div>
+            <div class="findings-null__bars" id="familiarity-bars" data-reveal data-reveal-delay="220">
+              <!-- filled by findings.js -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ⑥ Most-fooled images -->
+      <section id="section-fooled">
+        <div class="shell">
+          <div class="findings-fooled__header">
+            <span class="eyebrow" data-reveal>Finding 06 — Hardest images</span>
+            <h2 class="section" data-reveal data-reveal-delay="60">The images that broke the most brains.</h2>
+            <p class="lede findings-fooled__lede" data-reveal data-reveal-delay="120">
+              Three real photographs most often mistaken for AI-generated, and three AI images most often mistaken for real.
+            </p>
+          </div>
+          <div class="findings-fooled-grid" id="fooled-grid" data-reveal data-reveal-delay="180">
+            <!-- filled by findings.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ⑦ Limitations -->
+      <section id="section-limits" class="tight">
+        <div class="shell">
+          <div class="findings-limits">
+            <span class="eyebrow" data-reveal>Limitations</span>
+            <h2 class="section" data-reveal data-reveal-delay="60">What this study can't tell you.</h2>
+            <div class="findings-limits__grid" data-reveal data-reveal-delay="120">
+              <div class="findings-limits__item">
+                <h3 class="findings-limits__head">Device-year confound</h3>
+                <p class="body-copy">Device type was not randomly assigned. First-years and Juniors received a mobile-formatted link; Sophomores and Seniors received a laptop-formatted link; Faculty and Staff were split. This means device type is structurally correlated with class year, and therefore with age, by design. Separating the effect of the device from the effect of age and class year is difficult, which is part of why device type loses significance in the ordered probit model once age is controlled for. Residual self-selection also exists: participants could access the survey from any device regardless of the link they received, and word-of-mouth recruits had no device routing at all.</p>
+              </div>
+              <div class="findings-limits__item">
+                <h3 class="findings-limits__head">Sample composition</h3>
+                <p class="body-copy">Nearly all participants were drawn from Bowdoin College, a small, highly-educated liberal arts institution. 508 responses were collected; the analytic sample is 419 after three filtering passes: attention-check failures, device-type ambiguity, and response-time outliers (±3 SD). The sample skews young (18–24), academically engaged, and technologically literate relative to the general population. Findings may not generalize beyond similar demographics.</p>
+              </div>
+              <div class="findings-limits__item">
+                <h3 class="findings-limits__head">Image difficulty</h3>
+                <p class="body-copy">Our 80 images were not randomly sampled or difficulty-calibrated. Some AI images are visually obvious; others are nearly indistinguishable. The mix shapes our headline numbers in ways we can't fully control for.</p>
+              </div>
+              <div class="findings-limits__item">
+                <h3 class="findings-limits__head">Self-reported familiarity</h3>
+                <p class="body-copy">AI familiarity was measured four ways (a familiarity scale, a literacy scale, weekly usage, and AI course enrollment), plus an interaction term. None predicted accuracy. The null result is robust, but all four are still self-reported and subject to inflation.</p>
+              </div>
+              <div class="findings-limits__item">
+                <h3 class="findings-limits__head">Survey framing</h3>
+                <p class="body-copy">Participants knew they were in a study about AI detection. Real-world exposure to AI images happens without that framing. The stakes of a quiz may produce different behaviour than casual social-media scrolling, where no one is counting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="../assets/js/nav.js"></script>
+    <script type="module" src="../assets/js/findings.js"></script>
+  </body>
+</html>

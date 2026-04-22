@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <title>Score Distribution — AI Detection Study</title>
+    <meta name="description" content="Score histogram across 508 participants, filterable by device, class year, and AI familiarity." />
+    <script src="../assets/js/theme-init.js"></script>
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/distribution.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </head>
+  <body data-page="distribution">
+    <header id="site-nav"></header>
+
+    <main>
+      <section class="dist-hero">
+        <div class="shell">
+          <span class="pill" data-reveal><span class="pill__dot"></span> Score distribution · n = 508</span>
+          <h1 class="hero display-wonk dist-hero__h1" data-reveal data-reveal-delay="80">
+            How everyone<br />scored.
+          </h1>
+          <p class="lede dist-hero__lede" data-reveal data-reveal-delay="160">
+            A histogram of all 508 scores. Filter by device, class year, or AI familiarity to see how subgroups compare. The overall mean is <strong id="dist-mean-display">—</strong>/10.
+          </p>
+        </div>
+      </section>
+
+      <!-- Filter bar -->
+      <section class="dist-filters-section tight">
+        <div class="shell">
+          <div class="dist-filters" data-reveal>
+            <div class="dist-filter-group">
+              <span class="dist-filter-label eyebrow">Device</span>
+              <div class="dist-filter-btns" id="filter-device">
+                <button class="dist-filter-btn is-active" data-value="all" type="button">All</button>
+                <button class="dist-filter-btn" data-value="Laptop" type="button">Laptop</button>
+                <button class="dist-filter-btn" data-value="Mobile phone" type="button">Mobile</button>
+              </div>
+            </div>
+            <div class="dist-filter-sep" aria-hidden="true"></div>
+            <div class="dist-filter-group">
+              <span class="dist-filter-label eyebrow">Class year</span>
+              <div class="dist-filter-btns" id="filter-class">
+                <button class="dist-filter-btn is-active" data-value="all" type="button">All</button>
+                <button class="dist-filter-btn" data-value="Class of 2029" type="button">First-years</button>
+                <button class="dist-filter-btn" data-value="Class of 2028" type="button">Sophomores</button>
+                <button class="dist-filter-btn" data-value="Class of 2027" type="button">Juniors</button>
+                <button class="dist-filter-btn" data-value="Class of 2026" type="button">Seniors</button>
+                <button class="dist-filter-btn" data-value="Faculty/Staff" type="button">Faculty/Staff</button>
+              </div>
+            </div>
+            <div class="dist-filter-sep" aria-hidden="true"></div>
+            <div class="dist-filter-group">
+              <span class="dist-filter-label eyebrow">AI familiarity</span>
+              <div class="dist-filter-btns" id="filter-familiarity">
+                <button class="dist-filter-btn is-active" data-value="all" type="button">All</button>
+                <button class="dist-filter-btn" data-value="Somewhat familiar (I understand the basics)" type="button">Somewhat</button>
+                <button class="dist-filter-btn" data-value="Very familiar (I actively use/create/work with AI-generated images)" type="button">Very</button>
+                <button class="dist-filter-btn" data-value="Extremely familiar (In addition to the above, I could explain how it works to someone else)" type="button">Extremely</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chart -->
+      <section class="dist-chart-section tight">
+        <div class="shell">
+          <div class="dist-chart-card surface" data-reveal>
+            <div class="dist-chart-meta">
+              <div class="dist-chart-meta__stats">
+                <div class="stat">
+                  <div><span class="stat__num stat__num--accent" id="dist-n">508</span></div>
+                  <div class="stat__label">Participants</div>
+                </div>
+                <div class="dist-chart-meta__divider" aria-hidden="true"></div>
+                <div class="stat">
+                  <div><span class="stat__num" id="dist-mean">7.0</span><span class="stat__unit">/10</span></div>
+                  <div class="stat__label">Mean score</div>
+                </div>
+                <div class="dist-chart-meta__divider" aria-hidden="true"></div>
+                <div class="stat">
+                  <div><span class="stat__num" id="dist-median">7</span><span class="stat__unit">/10</span></div>
+                  <div class="stat__label">Median</div>
+                </div>
+              </div>
+              <div class="dist-chart-meta__active" id="dist-active-filters">All participants</div>
+            </div>
+            <div class="dist-chart-wrap">
+              <canvas id="dist-chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Most-fooled grid -->
+      <section class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>Hardest images</span>
+          <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-3)">Images that tripped people up most.</h2>
+          <p class="lede" data-reveal data-reveal-delay="120" style="margin-bottom: var(--s-6)">Top five real photos mistaken for AI, and top five AI images mistaken for real — computed from the full unfiltered dataset.</p>
+          <div class="dist-fooled-tabs" data-reveal data-reveal-delay="160">
+            <button class="dist-tab is-active" data-tab="real" type="button">
+              <span class="pill__dot" style="background:var(--real);box-shadow:0 0 6px var(--real)"></span>
+              Real photos mistaken for AI
+            </button>
+            <button class="dist-tab" data-tab="fake" type="button">
+              <span class="pill__dot" style="background:var(--fake);box-shadow:0 0 6px var(--fake)"></span>
+              AI images mistaken for real
+            </button>
+          </div>
+          <div class="dist-fooled-grid" id="dist-fooled-grid" data-reveal data-reveal-delay="200">
+            <!-- filled by distribution.js -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="../assets/js/nav.js"></script>
+    <script type="module" src="../assets/js/distribution.js"></script>
+  </body>
+</html>

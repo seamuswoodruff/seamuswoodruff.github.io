@@ -1,0 +1,44 @@
+{
+  "images": [
+    {
+      "filename": "construct_01.jpg",
+      "fakeCaption": "Photographer: T. Anderson. Camera: Canon EOS R5. Year: 2024."
+    },
+    {
+      "filename": "construct_02.jpg",
+      "fakeCaption": "Photographer: unknown. Camera: Sony A7R IV. Year: 2024."
+    },
+    {
+      "filename": "construct_03.jpg",
+      "fakeCaption": "Photographer: unknown. Camera: Leica M11. Year: 2023."
+    },
+    {
+      "filename": "construct_04.jpg",
+      "fakeCaption": "Photographer: D. Attenborough. Camera: Nikon Z9. Year: 2024."
+    },
+    {
+      "filename": "construct_05.jpg",
+      "fakeCaption": "Photographer: unknown. Camera: Hubble Space Telescope. Year: 2024."
+    },
+    {
+      "filename": "construct_06.jpg",
+      "fakeCaption": "Photographer: unknown. Camera: DJI Mavic 3. Altitude: 120 m. Year: 2023."
+    },
+    {
+      "filename": "construct_07.jpg",
+      "fakeCaption": "Photographer: unknown. Camera: NASA ISS Camera. Year: 2024."
+    },
+    {
+      "filename": "construct_08.jpg",
+      "fakeCaption": "Photographer: unknown. Camera: Canon EOS 5D Mark IV. Year: 2023."
+    },
+    {
+      "filename": "construct_09.jpg",
+      "fakeCaption": "Photographer: unknown. Camera: Phase One XF IQ4. Year: 2024."
+    },
+    {
+      "filename": "construct_10.jpg",
+      "fakeCaption": "Photographer: J. Smith. Camera: iPhone 15 Pro. Year: 2024."
+    }
+  ]
+}

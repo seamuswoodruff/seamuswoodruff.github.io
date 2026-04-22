@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <title>Survey Design — AI Detection Study</title>
+    <meta name="description" content="How the study was built: survey flow, sampling pipeline, variables measured, and bias controls." />
+    <script src="../assets/js/theme-init.js"></script>
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/survey.css" />
+  </head>
+  <body data-page="survey">
+    <header id="site-nav"></header>
+
+    <main>
+
+      <!-- Hero -->
+      <section class="survey-hero">
+        <div class="shell">
+          <span class="pill" data-reveal><span class="pill__dot"></span> Study design · DCS3850 · Spring 2026</span>
+          <h1 class="hero display-wonk survey-hero__h1" data-reveal data-reveal-delay="80">
+            How the study<br>worked.
+          </h1>
+          <p class="lede survey-hero__lede" data-reveal data-reveal-delay="160">
+            Designed to isolate perception from knowledge, and defend against every source of bias we could anticipate. Survey flow, sampling pipeline, variables, and bias controls.
+          </p>
+          <div class="survey-hero__stats" data-reveal data-reveal-delay="240">
+            <div class="stat">
+              <div><span class="stat__num stat__num--accent">508</span></div>
+              <div class="stat__label">Responses collected</div>
+            </div>
+            <div class="survey-hero__stat-div" aria-hidden="true"></div>
+            <div class="stat">
+              <div><span class="stat__num">419</span></div>
+              <div class="stat__label">Analytic sample</div>
+            </div>
+            <div class="survey-hero__stat-div" aria-hidden="true"></div>
+            <div class="stat">
+              <div><span class="stat__num">80</span></div>
+              <div class="stat__label">Images in pool</div>
+            </div>
+            <div class="survey-hero__stat-div" aria-hidden="true"></div>
+            <div class="stat">
+              <div><span class="stat__num">10</span></div>
+              <div class="stat__label">Per participant</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- 01 Survey Flow -->
+      <section class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>01 · Survey structure</span>
+          <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">Ten images across three blocks.</h2>
+          <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-5); max-width: 60ch">
+            Each block followed the same four-step loop. Two attention checks, placed after the 3rd and 6th image, caught disengaged respondents before they reached the next set.
+          </p>
+          <div data-reveal data-reveal-delay="160">
+            <div class="sflow-scroll-hint mono-label" aria-hidden="true">← scroll to see full flow →</div>
+            <div class="sflow-wrap">
+              <ol class="sflow">
+
+                <li class="sflow-node" data-type="bookend">
+                  <div class="sflow-card">
+                    <span class="sflow-tag eyebrow">Start</span>
+                    <span class="sflow-title">Intro &amp;<br>consent</span>
+                  </div>
+                </li>
+
+                <li class="sflow-conn" aria-hidden="true"><span></span></li>
+
+                <li class="sflow-node" data-type="block">
+                  <div class="sflow-card">
+                    <span class="sflow-badge">×3</span>
+                    <span class="sflow-title">Image block</span>
+                    <ul class="sflow-steps">
+                      <li>Image display</li>
+                      <li>Real vs. AI</li>
+                      <li>Confidence (1–10)</li>
+                      <li>Response time</li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li class="sflow-conn" aria-hidden="true"><span></span></li>
+
+                <li class="sflow-node" data-type="attn">
+                  <div class="sflow-card">
+                    <span class="sflow-tag eyebrow">Checkpoint</span>
+                    <span class="sflow-title">Attention<br>check 1</span>
+                  </div>
+                </li>
+
+                <li class="sflow-conn" aria-hidden="true"><span></span></li>
+
+                <li class="sflow-node" data-type="block">
+                  <div class="sflow-card">
+                    <span class="sflow-badge">×3</span>
+                    <span class="sflow-title">Image block</span>
+                    <ul class="sflow-steps">
+                      <li>Image display</li>
+                      <li>Real vs. AI</li>
+                      <li>Confidence (1–10)</li>
+                      <li>Response time</li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li class="sflow-conn" aria-hidden="true"><span></span></li>
+
+                <li class="sflow-node" data-type="attn">
+                  <div class="sflow-card">
+                    <span class="sflow-tag eyebrow">Checkpoint</span>
+                    <span class="sflow-title">Attention<br>check 2</span>
+                  </div>
+                </li>
+
+                <li class="sflow-conn" aria-hidden="true"><span></span></li>
+
+                <li class="sflow-node" data-type="block">
+                  <div class="sflow-card">
+                    <span class="sflow-badge">×4</span>
+                    <span class="sflow-title">Image block</span>
+                    <ul class="sflow-steps">
+                      <li>Image display</li>
+                      <li>Real vs. AI</li>
+                      <li>Confidence (1–10)</li>
+                      <li>Response time</li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li class="sflow-conn" aria-hidden="true"><span></span></li>
+
+                <li class="sflow-node" data-type="bookend">
+                  <div class="sflow-card">
+                    <span class="sflow-tag eyebrow">Wrap-up</span>
+                    <span class="sflow-title">AI use &amp;<br>demographics</span>
+                  </div>
+                </li>
+
+                <li class="sflow-conn" aria-hidden="true"><span></span></li>
+
+                <li class="sflow-node" data-type="end">
+                  <div class="sflow-card">
+                    <span class="sflow-tag eyebrow">End</span>
+                    <span class="sflow-title">Score &amp;<br>raffle entry</span>
+                  </div>
+                </li>
+
+              </ol>
+            </div>
+          </div>
+          <p class="sflow-caption mono-label" data-reveal>3 + 3 + 4 = 10 test images &nbsp;·&nbsp; each block: image → choice → confidence → timing</p>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- 02 Sampling Pipeline -->
+      <section class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>02 · Sampling pipeline</span>
+          <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">From campus to analytic sample.</h2>
+          <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-6); max-width: 60ch">
+            Recruitment was structured by class year, which also partially determined device type. First-years and juniors received a mobile-formatted link; sophomores and seniors received a laptop-formatted link.
+          </p>
+          <div class="sfunnel" data-reveal data-reveal-delay="140">
+
+            <div class="sfunnel-step">
+              <div class="sfunnel-card">
+                <div class="sfunnel-card__left">
+                  <span class="sfunnel-label eyebrow">Target population</span>
+                  <span class="sfunnel-desc">Bowdoin students, faculty &amp; staff</span>
+                </div>
+                <div class="sfunnel-card__right">
+                  <span class="sfunnel-n">~3,200</span>
+                </div>
+              </div>
+              <p class="sfunnel-note">Students (~2,000) · Faculty &amp; Staff (~1,200)</p>
+            </div>
+
+            <div class="sfunnel-arrow" aria-hidden="true"></div>
+
+            <div class="sfunnel-step">
+              <div class="sfunnel-card">
+                <div class="sfunnel-card__left">
+                  <span class="sfunnel-label eyebrow">Sampling frame</span>
+                  <span class="sfunnel-desc">Class-year email lists + Student Digest</span>
+                </div>
+                <div class="sfunnel-card__right">
+                  <span class="sfunnel-tag">convenience</span>
+                </div>
+              </div>
+              <p class="sfunnel-note">First-years &amp; Juniors → mobile link &nbsp;·&nbsp; Sophomores &amp; Seniors → laptop link &nbsp;·&nbsp; Faculty/Staff → Student Digest + QR</p>
+            </div>
+
+            <div class="sfunnel-arrow" aria-hidden="true"></div>
+
+            <div class="sfunnel-step">
+              <div class="sfunnel-card sfunnel-card--planned">
+                <div class="sfunnel-card__left">
+                  <span class="sfunnel-label eyebrow">Planned sample</span>
+                  <span class="sfunnel-desc">Voluntary opt-in with raffle incentive</span>
+                </div>
+                <div class="sfunnel-card__right">
+                  <span class="sfunnel-n">300</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sfunnel-arrow" aria-hidden="true"></div>
+
+            <div class="sfunnel-step">
+              <div class="sfunnel-card sfunnel-card--actual">
+                <div class="sfunnel-card__left">
+                  <span class="sfunnel-label eyebrow">Actual respondents</span>
+                  <span class="sfunnel-desc">Complete responses received</span>
+                </div>
+                <div class="sfunnel-card__right">
+                  <span class="sfunnel-n sfunnel-n--accent" data-count="508">508</span>
+                </div>
+              </div>
+              <p class="sfunnel-note">169% of target (the raffle drove over-recruitment)</p>
+            </div>
+
+            <div class="sfunnel-arrow" aria-hidden="true"></div>
+
+            <div class="sfunnel-step">
+              <div class="sfunnel-card sfunnel-card--analytic">
+                <div class="sfunnel-card__left">
+                  <span class="sfunnel-label eyebrow">Analytic sample</span>
+                  <span class="sfunnel-desc">Passed both attention checks · within ±3 SD response time</span>
+                </div>
+                <div class="sfunnel-card__right">
+                  <span class="sfunnel-n" data-count="419">419</span>
+                </div>
+              </div>
+              <p class="sfunnel-note sfunnel-note--drop">−89 removed · score distribution virtually unchanged (mean 6.95 → 6.98)</p>
+            </div>
+
+          </div>
+          <p class="body-copy" style="margin-top: var(--s-5); max-width: 60ch; color: var(--text-muted);">
+            With a target population of approximately 3,200 (Bowdoin students, faculty, and staff) and 508 respondents, the margin of error is under 5% at the 95% confidence level, large enough to draw population-level inferences about the Bowdoin community.
+          </p>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- 03 Variables -->
+      <section class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>03 · Variables &amp; measurement</span>
+          <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-5)">One outcome. Nine predictors. Five controls.</h2>
+          <div class="svars" data-reveal data-reveal-delay="120">
+
+            <div class="svars-col">
+              <div class="svars-col__head eyebrow">Dependent variable</div>
+              <div class="svars-item svars-item--dv">
+                <div class="svars-item__name">Score</div>
+                <span class="svars-type svars-type--ordinal">Ordinal · 0–10</span>
+                <div class="svars-item__desc">count correct of 10 images</div>
+              </div>
+            </div>
+
+            <div class="svars-div" aria-hidden="true"></div>
+
+            <div class="svars-col">
+              <div class="svars-col__head eyebrow">Predictors</div>
+              <div class="svars-item">
+                <div class="svars-item__name">Device type</div>
+                <span class="svars-type svars-type--cat">Categorical</span>
+                <div class="svars-item__desc">Mobile / Laptop — primary predictor</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">Age ≥ 25</div>
+                <span class="svars-type svars-type--binary">Binary</span>
+                <div class="svars-item__desc">dummy from self-reported age</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">AI familiarity</div>
+                <span class="svars-type svars-type--ordinal">Ordinal 1–5</span>
+                <div class="svars-item__desc">self-reported Likert</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">AI weekly usage</div>
+                <span class="svars-type svars-type--ordinal">Ordinal bins</span>
+                <div class="svars-item__desc">hours/week bucket</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">AI literacy</div>
+                <span class="svars-type svars-type--ordinal">Ordinal 1–5</span>
+                <div class="svars-item__desc">self-rated</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">AI course taken</div>
+                <span class="svars-type svars-type--binary">Binary Y/N</span>
+                <div class="svars-item__desc">took AI class at Bowdoin</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">Social media time</div>
+                <span class="svars-type svars-type--ordinal">Ordinal bins</span>
+                <div class="svars-item__desc">hours/week bucket</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">Familiarity × Usage</div>
+                <span class="svars-type svars-type--interaction">Interaction</span>
+                <div class="svars-item__desc">product of the two</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">Response time (ln)</div>
+                <span class="svars-type svars-type--numeric">Numeric</span>
+                <div class="svars-item__desc">ln(avg sec / image)</div>
+              </div>
+            </div>
+
+            <div class="svars-div" aria-hidden="true"></div>
+
+            <div class="svars-col">
+              <div class="svars-col__head eyebrow">Controls</div>
+              <div class="svars-item">
+                <div class="svars-item__name">Gender</div>
+                <span class="svars-type svars-type--cat">Categorical</span>
+                <div class="svars-item__desc">self-reported</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">Race</div>
+                <span class="svars-type svars-type--cat">Categorical</span>
+                <div class="svars-item__desc">self-reported</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">Affiliation</div>
+                <span class="svars-type svars-type--cat">Categorical</span>
+                <div class="svars-item__desc">Student / Faculty / Staff</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">International</div>
+                <span class="svars-type svars-type--binary">Binary</span>
+                <div class="svars-item__desc">int'l student or faculty</div>
+              </div>
+              <div class="svars-item">
+                <div class="svars-item__name">Disability / ADHD</div>
+                <span class="svars-type svars-type--binary">Binary</span>
+                <div class="svars-item__desc">self-disclosed</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- 04 Bias Controls -->
+      <section class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>04 · Bias controls</span>
+          <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">Defended at every stage.</h2>
+          <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-5); max-width: 60ch">
+            The survey guards against bias at every stage: from instrument design through data cleaning.
+          </p>
+          <div class="sbias" data-reveal data-reveal-delay="140">
+
+            <div class="sbias-phase">
+              <div class="sbias-phase__head">
+                <span class="sbias-phase__label eyebrow">Pre-survey</span>
+                <span class="sbias-phase__sub">Instrument design</span>
+              </div>
+              <ul class="sbias-list">
+                <li class="sbias-item">
+                  <div class="sbias-item__name">Acquiescence</div>
+                  <div class="sbias-item__fix">Neutral "real or fake?" wording throughout</div>
+                </li>
+                <li class="sbias-item">
+                  <div class="sbias-item__name">Experimenter demand</div>
+                  <div class="sbias-item__fix">True hypothesis hidden from participants</div>
+                </li>
+                <li class="sbias-item">
+                  <div class="sbias-item__name">Order effects</div>
+                  <div class="sbias-item__fix">Demographics collected last; images randomized per participant</div>
+                </li>
+                <li class="sbias-item">
+                  <div class="sbias-item__name">Fatigue</div>
+                  <div class="sbias-item__fix">Short survey (~4 min); varied question types</div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="sbias-div" aria-hidden="true"></div>
+
+            <div class="sbias-phase">
+              <div class="sbias-phase__head">
+                <span class="sbias-phase__label eyebrow">During survey</span>
+                <span class="sbias-phase__sub">Respondent behavior</span>
+              </div>
+              <ul class="sbias-list">
+                <li class="sbias-item">
+                  <div class="sbias-item__name">Response bias</div>
+                  <div class="sbias-item__fix">Fully anonymous; raffle entry submitted separately</div>
+                </li>
+                <li class="sbias-item">
+                  <div class="sbias-item__name">Social desirability</div>
+                  <div class="sbias-item__fix">Reframed as motivation to perform well</div>
+                </li>
+                <li class="sbias-item">
+                  <div class="sbias-item__name">Ex-ante quality</div>
+                  <div class="sbias-item__fix">Two disguised attention checks embedded in image flow</div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="sbias-div" aria-hidden="true"></div>
+
+            <div class="sbias-phase">
+              <div class="sbias-phase__head">
+                <span class="sbias-phase__label eyebrow">Post-survey</span>
+                <span class="sbias-phase__sub">Data cleaning</span>
+              </div>
+              <ul class="sbias-list">
+                <li class="sbias-item">
+                  <div class="sbias-item__name">Ex-post quality</div>
+                  <div class="sbias-item__fix">Removed responses failing either attention check or outside ±3 SD of mean response time per image</div>
+                </li>
+                <li class="sbias-item">
+                  <div class="sbias-item__name">Impact</div>
+                  <div class="sbias-item__fix">508 → 419 responses across three filtering steps; score distribution virtually unchanged (mean 6.95 → 6.98)</div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="../assets/js/nav.js"></script>
+    <script type="module" src="../assets/js/survey.js"></script>
+  </body>
+</html>

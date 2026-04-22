@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <title>Take the test — AI Detection Study</title>
+    <meta name="description" content="A 10-image test: can you tell real photographs from AI-generated images?" />
+    <script src="../assets/js/theme-init.js"></script>
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/quiz.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  </head>
+  <body data-page="quiz">
+    <header id="site-nav"></header>
+
+    <main>
+      <section class="quiz-wrap">
+        <div class="shell">
+
+          <!-- INTRO -->
+          <div class="quiz-stage quiz-intro" id="stage-intro" data-stage="intro">
+            <div class="quiz-intro__hands" aria-hidden="true">
+              <img class="quiz-intro__hand quiz-intro__hand--left" src="../assets/img/hero/RightHand_transparent.png" alt="">
+              <img class="quiz-intro__hand quiz-intro__hand--right" src="../assets/img/hero/LeftHand_transparent.png" alt="">
+            </div>
+
+            <div class="quiz-intro__content">
+              <span class="pill" data-reveal><span class="pill__dot"></span> 10 images randomly selected</span>
+              <h1 class="section quiz-intro__title" data-reveal data-reveal-delay="80">
+                Would you know the difference between<br />
+                <em class="accent-text quiz-intro__courier">the Dream World and the Real World?</em>
+              </h1>
+            </div>
+
+            <button class="pill-btn pill-btn--red" id="pill-red" type="button" aria-label="Take the test (red pill)">
+              <img src="../assets/img/hero/RedPill.png" alt="" />
+              <span class="pill-btn__label">Take the test</span>
+            </button>
+            <button class="pill-btn pill-btn--blue" id="pill-blue" type="button" aria-label="Stay in the construct (blue pill)">
+              <img src="../assets/img/hero/BluePill.png" alt="" />
+              <span class="pill-btn__label">Or don't...</span>
+            </button>
+          </div>
+
+          <!-- RUN -->
+          <div class="quiz-stage" id="stage-run" data-stage="run" hidden>
+            <div class="quiz-progress">
+              <div class="quiz-progress__meta">
+                <span class="mono-label">Image <span id="q-idx">1</span> of <span id="q-total">10</span></span>
+                <span class="mono-label" id="q-score">0 answered</span>
+              </div>
+              <div class="quiz-progress__bar">
+                <div class="quiz-progress__fill" id="q-fill"></div>
+              </div>
+            </div>
+
+            <div class="quiz-card surface">
+              <div class="quiz-card__media">
+                <div class="quiz-card__imgwrap">
+                  <img id="q-img" src="" alt="Test image" />
+                  <div class="quiz-card__scan"></div>
+                </div>
+              </div>
+              <div class="quiz-card__actions">
+                <div class="quiz-question">
+                  <h2 class="quiz-question__title display">Real photograph — or AI-generated?</h2>
+                </div>
+                <div class="quiz-choices">
+                  <button class="quiz-choice quiz-choice--real" data-answer="REAL" type="button">
+                    <span class="quiz-choice__key mono">R</span>
+                    <span class="quiz-choice__label">Real</span>
+                    <span class="quiz-choice__sub mono">photograph</span>
+                  </button>
+                  <button class="quiz-choice quiz-choice--fake" data-answer="FAKE" type="button">
+                    <span class="quiz-choice__key mono">A</span>
+                    <span class="quiz-choice__label">AI</span>
+                    <span class="quiz-choice__sub mono">generated</span>
+                  </button>
+                </div>
+
+                <button class="btn btn--primary quiz-next" id="q-next" type="button" disabled hidden>
+                  <span>Next image</span>
+                  <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULTS -->
+          <div class="quiz-stage" id="stage-results" data-stage="results" hidden>
+            <div class="quiz-results">
+              <div class="quiz-results__head">
+                <span class="eyebrow">Your result</span>
+                <h1 class="section quiz-results__title">
+                  You scored <span class="text-accent" id="r-score">–</span>
+                  <span class="quiz-results__out">/ 10</span>
+                </h1>
+                <p class="lede quiz-results__lede">
+                  <span id="r-percentile">–</span>
+                </p>
+                <div class="quiz-results__meta">
+                  <div class="quiz-results__pill"><span class="mono-label">Real, correct</span><span class="mono text-real" id="r-real-correct">–</span></div>
+                  <div class="quiz-results__pill"><span class="mono-label">AI, correct</span><span class="mono text-fake" id="r-fake-correct">–</span></div>
+                </div>
+                <div class="quiz-results__cta">
+                  <button class="btn btn--primary" id="r-again" type="button">
+                    <span>Try again</span>
+                    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                  </button>
+                  <a class="btn btn--ghost" href="../distribution/">See full distribution</a>
+                </div>
+                <p class="quiz-results__pool-hint">
+                  Curious about all 80 images in the study?
+                  <a href="../dataset/#image-pool">Browse the full labeled image pool</a>
+                </p>
+              </div>
+
+              <div class="quiz-reel" id="r-reel">
+                <!-- filled by quiz.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- CONSTRUCT (blue pill fake results) -->
+          <div class="quiz-stage" id="stage-construct" data-stage="construct" hidden>
+            <div class="quiz-results">
+              <div class="quiz-results__head">
+                <span class="eyebrow">Welcome to the construct</span>
+                <h1 class="section quiz-results__title">
+                  You scored <span class="text-accent">10</span>
+                  <span class="quiz-results__out">/ 10</span>
+                </h1>
+                <p class="lede quiz-results__lede">
+                  Perfect score. All photographs confirmed real. You beat <strong>100%</strong> of participants.
+                </p>
+                <div class="quiz-results__cta">
+                  <button class="btn btn--primary" id="construct-wake" type="button">
+                    <span>Knock, knock, Neo.</span>
+                    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="quiz-reel" id="construct-reel">
+                <!-- filled by quiz.js -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <!-- Scanline glitch transition overlay -->
+    <div class="construct-glitch" id="construct-glitch" aria-hidden="true"></div>
+
+    <script type="module" src="../assets/js/nav.js"></script>
+    <script type="module" src="../assets/js/quiz.js"></script>
+  </body>
+</html>

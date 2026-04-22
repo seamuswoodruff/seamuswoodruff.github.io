@@ -1,0 +1,201 @@
+/* ==========================================================================
+   About page — clean editorial typography
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+.about-hero {
+  padding: var(--s-10) 0 var(--s-8);
+}
+.about-hero__h1 {
+  margin: var(--s-5) 0 var(--s-5);
+  max-width: 14ch;
+}
+.about-hero__lede {
+  max-width: 62ch;
+}
+
+/* ---------- Prose layout ---------- */
+.about-prose {
+  max-width: 860px;
+}
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-6);
+}
+@media (min-width: 700px) {
+  .about-section {
+    grid-template-columns: 260px 1fr;
+    gap: var(--s-8);
+    align-items: start;
+  }
+}
+h2.about-section__title {
+  font-size: clamp(22px, 2.2vw, 28px);
+  color: var(--text);
+  padding-top: 4px;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
+}
+.about-section__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.about-sub {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-top: var(--s-2);
+  margin-bottom: calc(var(--s-3) * -1);
+}
+
+/* ---------- Team ---------- */
+.about-team {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+}
+@media (min-width: 540px) {
+  .about-team {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.about-team-member {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  padding: var(--s-4) var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.about-team-member__name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.about-team-member__role {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.about-team-member__contact {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  margin-top: var(--s-1);
+  transition: opacity 160ms var(--ease-smooth);
+  align-self: flex-start;
+}
+.about-team-member__contact:hover {
+  opacity: 0.75;
+}
+
+/* ---------- Hypotheses ---------- */
+.about-hypotheses {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.about-hypothesis {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  padding: var(--s-4) var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.about-hypothesis__head {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin-bottom: var(--s-1);
+}
+.about-hypothesis__label {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+.about-hypothesis__outcome {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.about-hypothesis__outcome--null {
+  color: var(--fake);
+  background: color-mix(in srgb, var(--fake) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fake) 30%, transparent);
+}
+.about-hypothesis__outcome--confirmed {
+  color: var(--real);
+  background: color-mix(in srgb, var(--real) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--real) 30%, transparent);
+}
+.about-hypothesis__text {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--text);
+  font-style: italic;
+}
+.about-hypothesis__result {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-top: var(--s-1);
+}
+
+/* ---------- References ---------- */
+.about-refs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  border-left: 2px solid var(--hairline);
+  padding-left: var(--s-4);
+}
+.about-ref {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.about-ref em {
+  color: var(--text);
+  font-style: italic;
+}
+
+/* ---------- Contact banner ---------- */
+.about-contact {
+  padding-bottom: var(--s-10);
+}
+.about-contact__inner {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-xl);
+  padding: var(--s-7) var(--s-8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-5);
+}
+.about-contact__title {
+  font-size: clamp(28px, 3vw, 40px);
+}
+.about-contact__lede {
+  margin-top: var(--s-2);
+  font-size: 16px;
+}

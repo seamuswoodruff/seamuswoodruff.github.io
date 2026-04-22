@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <title>Dataset — AI Detection Study</title>
+    <meta name="description" content="Searchable, sortable, paginated table of the 508 cleaned survey responses." />
+    <script src="../assets/js/theme-init.js"></script>
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/dataset.css" />
+  </head>
+  <body data-page="dataset">
+    <header id="site-nav"></header>
+
+    <main>
+      <section class="ds-hero">
+        <div class="shell">
+          <span class="pill" data-reveal><span class="pill__dot"></span> 508 rows · privacy-safe</span>
+          <h1 class="hero display-wonk ds-hero__h1" data-reveal data-reveal-delay="80">The full dataset.</h1>
+          <p class="lede ds-hero__lede" data-reveal data-reveal-delay="160">
+            All 508 cleaned responses, prior to analytic-sample filtering. Identifying demographic variables have been withheld for privacy. Search, filter, sort, and download.
+          </p>
+        </div>
+      </section>
+
+      <section class="ds-table-section tight">
+        <div class="shell">
+
+          <!-- Controls bar -->
+          <div class="ds-controls" data-reveal>
+            <div class="ds-search-wrap">
+              <svg class="ds-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <input type="search" id="ds-search" class="ds-search" placeholder="Search all columns…" aria-label="Search dataset" autocomplete="off" />
+            </div>
+            <div class="ds-controls__right">
+              <span class="ds-row-count" id="ds-row-count">— rows</span>
+              <button class="btn btn--ghost btn--inline ds-download" id="ds-download" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Column filters -->
+          <div class="ds-col-filters" id="ds-col-filters" data-reveal data-reveal-delay="60">
+            <!-- filled by dataset.js -->
+          </div>
+
+          <!-- Table -->
+          <div class="ds-table-wrap surface" data-reveal data-reveal-delay="120">
+            <table class="ds-table" id="ds-table" role="grid">
+              <thead id="ds-thead"></thead>
+              <tbody id="ds-tbody">
+                <tr class="ds-loading-row">
+                  <td colspan="10">
+                    <div class="ds-loading">
+                      <div class="ds-loading__dot"></div>
+                      <div class="ds-loading__dot" style="animation-delay:.15s"></div>
+                      <div class="ds-loading__dot" style="animation-delay:.3s"></div>
+                      <span class="ds-loading__text">Loading dataset…</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="ds-pagination" id="ds-pagination" data-reveal data-reveal-delay="180">
+            <button class="ds-page-btn" id="ds-prev" type="button" aria-label="Previous page" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+              Prev
+            </button>
+            <div class="ds-page-info" id="ds-page-info">Page 1 of 1</div>
+            <button class="ds-page-btn" id="ds-next" type="button" aria-label="Next page">
+              Next
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+      <!-- Image pool -->
+      <section id="image-pool" class="ds-imgpool-section">
+        <div class="shell">
+          <details class="ds-imgpool-details" id="ds-imgpool-details">
+            <summary class="ds-imgpool-summary">
+              <div class="ds-imgpool-summary__left">
+                <svg class="ds-imgpool-warn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <div>
+                  <div class="ds-imgpool-summary__title">Full image pool — all 80 images with correct labels</div>
+                  <div class="ds-imgpool-summary__sub">Contains spoilers &nbsp;·&nbsp; Take the quiz before opening this</div>
+                </div>
+              </div>
+              <div class="ds-imgpool-summary__right">
+                <span class="ds-imgpool-spoiler-badge">spoilers</span>
+                <svg class="ds-imgpool-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+              </div>
+            </summary>
+            <div class="ds-imgpool-body">
+              <div id="ds-imgpool-grid">
+                <div class="ds-loading">
+                  <div class="ds-loading__dot"></div>
+                  <div class="ds-loading__dot" style="animation-delay:.15s"></div>
+                  <div class="ds-loading__dot" style="animation-delay:.3s"></div>
+                  <span class="ds-loading__text">Loading images…</span>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="../assets/js/nav.js"></script>
+    <script type="module" src="../assets/js/dataset.js"></script>
+  </body>
+</html>

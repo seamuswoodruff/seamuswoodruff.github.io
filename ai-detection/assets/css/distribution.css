@@ -1,0 +1,262 @@
+/* ==========================================================================
+   Distribution page
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+.dist-hero {
+  padding: var(--s-10) 0 var(--s-8);
+}
+.dist-hero__h1 {
+  margin: var(--s-5) 0 var(--s-5);
+  max-width: 14ch;
+}
+.dist-hero__lede strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ---------- Filters ---------- */
+.dist-filters-section {
+  padding-top: 0;
+}
+.dist-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+}
+@media (min-width: 860px) {
+  .dist-filters {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+  }
+}
+.dist-filter-sep {
+  display: none;
+}
+@media (min-width: 860px) {
+  .dist-filter-sep {
+    display: block;
+    width: 1px;
+    align-self: stretch;
+    background: var(--hairline);
+    margin: 0 var(--s-5);
+    flex-shrink: 0;
+  }
+}
+.dist-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  flex: 1;
+  min-width: 0;
+}
+.dist-filter-label {
+  color: var(--text-faint);
+}
+.dist-filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+.dist-filter-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--hairline);
+  color: var(--text-muted);
+  background: transparent;
+  transition: color 160ms var(--ease-smooth),
+    background 160ms var(--ease-smooth),
+    border-color 160ms var(--ease-smooth);
+  white-space: nowrap;
+}
+.dist-filter-btn:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+  border-color: var(--hairline-strong);
+}
+.dist-filter-btn.is-active {
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.dist-filter-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-glow), 0 0 0 1px var(--accent);
+}
+
+/* ---------- Chart ---------- */
+.dist-chart-section {
+  padding-top: 0;
+}
+.dist-chart-card {
+  border-radius: var(--r-xl);
+  padding: var(--s-6);
+}
+.dist-chart-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-bottom: var(--s-6);
+}
+.dist-chart-meta__stats {
+  display: flex;
+  align-items: center;
+  gap: var(--s-6);
+  flex-wrap: wrap;
+}
+.dist-chart-meta__divider {
+  width: 1px;
+  height: 40px;
+  background: var(--hairline);
+  flex-shrink: 0;
+}
+.dist-chart-meta__active {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-sm);
+  align-self: flex-start;
+  transition: color 200ms var(--ease-smooth);
+}
+.dist-chart-wrap {
+  position: relative;
+  min-height: 320px;
+}
+
+/* ---------- Fooled grid ---------- */
+.dist-fooled-tabs {
+  display: flex;
+  gap: var(--s-3);
+  margin-bottom: var(--s-5);
+  flex-wrap: wrap;
+}
+.dist-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 9px 16px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--hairline);
+  color: var(--text-muted);
+  background: transparent;
+  transition: color 160ms var(--ease-smooth),
+    background 160ms var(--ease-smooth),
+    border-color 160ms var(--ease-smooth);
+}
+.dist-tab:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+  border-color: var(--hairline-strong);
+}
+.dist-tab.is-active {
+  color: var(--text);
+  background: var(--surface-elevated);
+  border-color: var(--hairline-strong);
+}
+.dist-tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-glow), 0 0 0 1px var(--accent);
+}
+.dist-fooled-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-4);
+}
+@media (min-width: 540px) {
+  .dist-fooled-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .dist-fooled-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Reuse fooled-card styles from findings.css */
+.fooled-card {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: border-color 220ms var(--ease-smooth),
+    transform 280ms var(--ease-spring),
+    box-shadow 280ms var(--ease-smooth);
+}
+.fooled-card:hover {
+  border-color: var(--hairline-strong);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-mid);
+}
+.fooled-card__img-wrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--surface-elevated);
+}
+.fooled-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms var(--ease-smooth);
+}
+.fooled-card:hover .fooled-card__img-wrap img {
+  transform: scale(1.04);
+}
+.fooled-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 50%);
+  pointer-events: none;
+}
+.fooled-card__pct {
+  position: absolute;
+  bottom: var(--s-2);
+  left: var(--s-3);
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.fooled-card__pct-sub {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 2px;
+}
+.fooled-card__body {
+  padding: var(--s-2) var(--s-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+.fooled-card__filename {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
