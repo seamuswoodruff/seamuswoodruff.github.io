@@ -177,6 +177,25 @@ h2.about-section__title {
   font-style: italic;
 }
 
+/* ---------- Search strategy code blocks ---------- */
+.about-refs--code {
+  border-left-color: var(--accent);
+  gap: var(--s-2);
+}
+.about-ref--code {
+  font-size: 12px;
+}
+.about-ref--code code {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  padding: var(--s-1) var(--s-2);
+  border-radius: var(--r-sm);
+  display: block;
+  line-height: 1.7;
+  word-break: break-word;
+}
+
 /* ---------- Contact banner ---------- */
 .about-contact {
   padding-bottom: var(--s-10);

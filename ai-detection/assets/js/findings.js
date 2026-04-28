@@ -374,6 +374,21 @@ function buildFooledGrid(realMistakes, fakeMistakes) {
   container.innerHTML = realSection;
 }
 
+// ---------- Animate scale-bars on scroll ----------
+function animateScaleBars(selector) {
+  const bars = document.querySelectorAll(selector);
+  if (!bars.length) return;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("is-animated");
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  bars.forEach((b) => obs.observe(b));
+}
+
 // ---------- Main ----------
 async function init() {
   try {
@@ -485,6 +500,8 @@ async function init() {
     }
     buildFamiliarityBars(FAM_ORDER, FAM_SHORT, famScores);
     buildAffiliationChart();
+    animateScaleBars(".findings-who__bar");
+    animateScaleBars(".findings-ladder__bar");
 
     // Most-fooled images — uses full responses (Q80/Q81_1 pattern)
     const fullRows = fullResponses.filter((r) => r.CalculatedScore && r.CalculatedScore !== "");

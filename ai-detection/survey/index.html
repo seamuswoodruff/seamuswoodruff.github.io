@@ -51,14 +51,103 @@
 
       <hr class="hr shell" />
 
+      <!-- 01 Why this study -->
+      <section class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>01 · Why this study</span>
+          <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">Built to test one question.</h2>
+          <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-5); max-width: 60ch">
+            No prior study had made device type the primary research question in AI image detection. We built one.
+          </p>
+          <div class="swhy-cards" data-reveal data-reveal-delay="140">
+            <div class="swhy-card">
+              <div class="swhy-card__head">The gap.</div>
+              <p class="swhy-card__body">No prior study has directly tested smartphone vs. laptop detection of AI content. The closest existing finding — Sütterlin et al. (2023) — saw mobile viewers significantly less accurate than desktop (mean rank 63.9 vs. 82.9), but that was incidental to a study about political orientation. Other papers either lacked ecological validity or couldn't capture device metadata at all.</p>
+            </div>
+            <div class="swhy-card">
+              <div class="swhy-card__head">Our contribution.</div>
+              <p class="swhy-card__body">A survey built with device type as the primary predictor. Participants completed the task on their own phone or laptop, in the environment they normally use it. The Bowdoin population holds demographic factors roughly constant — isolating device type as the variable of interest.</p>
+            </div>
+            <div class="swhy-card">
+              <div class="swhy-card__head">Why it matters.</div>
+              <p class="swhy-card__body">AI content is encountered primarily on phones, via social media. If mobile users are systematically worse at spotting it, that is a direct vulnerability for misinformation spread.</p>
+            </div>
+          </div>
+          <div class="swhy-rqs" data-reveal data-reveal-delay="200">
+            <div class="swhy-rq">
+              <div class="swhy-rq__label">RQ1</div>
+              <div class="swhy-rq__q">What factors affect detection of AI-generated images?</div>
+              <div class="swhy-rq__h">Hypothesis: Greater AI usage and familiarity with AI image generation increases detection ability.</div>
+            </div>
+            <div class="swhy-rq">
+              <div class="swhy-rq__label">RQ2</div>
+              <div class="swhy-rq__q">Does device type affect ability to detect AI-generated images?</div>
+              <div class="swhy-rq__h">Hypothesis: Viewing on a mobile phone — compared to a laptop — decreases detection ability.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- 02 Building the image pool -->
+      <section class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>02 · Building the image pool</span>
+          <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">Existing datasets didn't fit.</h2>
+          <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-5); max-width: 60ch">
+            Existing datasets were built to train AI detectors, not to test human perception. We assembled a custom set.
+          </p>
+          <div class="swhy-cards" data-reveal data-reveal-delay="140">
+            <div class="swhy-card">
+              <div class="swhy-card__head">No usable datasets.</div>
+              <p class="swhy-card__body">Existing datasets were built to train AI detectors, not to test human perception. No freely accessible option existed for human-detection studies at the time.</p>
+            </div>
+            <div class="swhy-card">
+              <div class="swhy-card__head">Dataset scale.</div>
+              <p class="swhy-card__body">Typical datasets hold 10,000+ images per category — far too large for a survey where each participant only sees ~10 images.</p>
+            </div>
+            <div class="swhy-card">
+              <div class="swhy-card__head">Image quality.</div>
+              <p class="swhy-card__body">Many images were too easy (obvious AI artifacts anyone could spot) or too hard (paintings and artworks requiring prior expertise). Neither suited an average participant.</p>
+            </div>
+          </div>
+          <div class="spool-source" data-reveal data-reveal-delay="200">
+            <strong>Source:</strong> Kaggle — 6,000 AI-generated + 6,000 real photographs (12,000 total), curated down to 80. <a href="https://www.kaggle.com/datasets/tristanzhang32/ai-generated-images-vs-real-images" target="_blank" rel="noopener">kaggle.com/datasets/tristanzhang32/ai-generated-images-vs-real-images</a>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
       <!-- 01 Survey Flow -->
       <section class="tight">
         <div class="shell">
-          <span class="eyebrow" data-reveal>01 · Survey structure</span>
+          <span class="eyebrow" data-reveal>03 · Survey structure</span>
           <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">Ten images across three blocks.</h2>
           <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-5); max-width: 60ch">
             Each block followed the same four-step loop. Two attention checks, placed after the 3rd and 6th image, caught disengaged respondents before they reached the next set.
           </p>
+          <p class="sstacks-step-label" data-reveal data-reveal-delay="130">Step 1 — From pool to stacks</p>
+          <div class="sstacks" data-reveal data-reveal-delay="140">
+            <div class="sstack-card">
+              <div class="sstack-card__label">Stack A</div>
+              <div class="sstack-card__comp">14 AI-generated · 13 real</div>
+              <div class="sstack-card__n">n = 27 images</div>
+            </div>
+            <div class="sstack-card">
+              <div class="sstack-card__label">Stack B</div>
+              <div class="sstack-card__comp">13 AI-generated · 14 real</div>
+              <div class="sstack-card__n">n = 27 images</div>
+            </div>
+            <div class="sstack-card">
+              <div class="sstack-card__label">Stack C</div>
+              <div class="sstack-card__comp">13 AI-generated · 13 real</div>
+              <div class="sstack-card__n">n = 26 images</div>
+            </div>
+          </div>
+          <div class="sstacks-divider" aria-hidden="true"></div>
+          <p class="sstacks-step-label" data-reveal data-reveal-delay="150">Step 2 — From stacks to respondent</p>
           <div data-reveal data-reveal-delay="160">
             <div class="sflow-scroll-hint mono-label" aria-hidden="true">← scroll to see full flow →</div>
             <div class="sflow-wrap">
@@ -164,7 +253,7 @@
       <!-- 02 Sampling Pipeline -->
       <section class="tight">
         <div class="shell">
-          <span class="eyebrow" data-reveal>02 · Sampling pipeline</span>
+          <span class="eyebrow" data-reveal>04 · Sampling pipeline</span>
           <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">From campus to analytic sample.</h2>
           <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-6); max-width: 60ch">
             Recruitment was structured by class year, which also partially determined device type. First-years and juniors received a mobile-formatted link; sophomores and seniors received a laptop-formatted link.
@@ -255,7 +344,7 @@
       <!-- 03 Variables -->
       <section class="tight">
         <div class="shell">
-          <span class="eyebrow" data-reveal>03 · Variables &amp; measurement</span>
+          <span class="eyebrow" data-reveal>05 · Variables &amp; measurement</span>
           <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-5)">One outcome. Nine predictors. Five controls.</h2>
           <div class="svars" data-reveal data-reveal-delay="120">
 
@@ -359,7 +448,7 @@
       <!-- 04 Bias Controls -->
       <section class="tight">
         <div class="shell">
-          <span class="eyebrow" data-reveal>04 · Bias controls</span>
+          <span class="eyebrow" data-reveal>06 · Bias controls</span>
           <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">Defended at every stage.</h2>
           <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-5); max-width: 60ch">
             The survey guards against bias at every stage: from instrument design through data cleaning.
@@ -434,6 +523,169 @@
             </div>
 
           </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- 07 Data cleaning -->
+      <section class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>07 · Data cleaning</span>
+          <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">From a 508×639 raw export to a 419×61 analytic dataset.</h2>
+          <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-5); max-width: 60ch">
+            Eight steps, from the Qualtrics export to a Stata-ready dataset.
+          </p>
+          <div class="sclean-grid" data-reveal data-reveal-delay="140">
+            <div class="sclean-step">
+              <div class="sclean-step__num">01</div>
+              <div>
+                <div class="sclean-step__name">Qualtrics export</div>
+                <div class="sclean-step__desc">All responses above 99% completion exported as CSV — 508 responses × 639 columns.</div>
+              </div>
+            </div>
+            <div class="sclean-step">
+              <div class="sclean-step__num">02</div>
+              <div>
+                <div class="sclean-step__name">Remove columns</div>
+                <div class="sclean-step__desc">Manually removed 157 unnecessary columns.</div>
+              </div>
+            </div>
+            <div class="sclean-step">
+              <div class="sclean-step__num">03</div>
+              <div>
+                <div class="sclean-step__name">Python classifier</div>
+                <div class="sclean-step__desc">A per-image outcome classifier determined TP / TN / FP / FN for each respondent × image. Added 10 outcome columns.</div>
+              </div>
+            </div>
+            <div class="sclean-step">
+              <div class="sclean-step__num">04</div>
+              <div>
+                <div class="sclean-step__name">Rename &amp; reorder</div>
+                <div class="sclean-step__desc">Renamed columns for readability, reordered so outcomes follow questions, dropped image blocks (×80), imported to Stata.</div>
+              </div>
+            </div>
+            <div class="sclean-step">
+              <div class="sclean-step__num">05</div>
+              <div>
+                <div class="sclean-step__name">Variable names</div>
+                <div class="sclean-step__desc">All variables renamed to snake_case; long names shortened (aidetectionwaseasy → detect_easy).</div>
+              </div>
+            </div>
+            <div class="sclean-step">
+              <div class="sclean-step__num">06</div>
+              <div>
+                <div class="sclean-step__name">Recode</div>
+                <div class="sclean-step__desc">Binary, ordinal, and nominal string variables recoded to numbers; relabeled; missing and "other" replaced with system missing.</div>
+              </div>
+            </div>
+            <div class="sclean-step">
+              <div class="sclean-step__num">07</div>
+              <div>
+                <div class="sclean-step__name">Derived variables</div>
+                <div class="sclean-step__desc">Computed tp/tn/fp/fn_count, tp/tn/fp/fn_rate, avg_conf, pass_attn.</div>
+              </div>
+            </div>
+            <div class="sclean-step">
+              <div class="sclean-step__num">08</div>
+              <div>
+                <div class="sclean-step__name">Final dataset</div>
+                <div class="sclean-step__desc">61 variables, 419 observations — ready for analysis.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- 08 Filtering to the analytic sample -->
+      <section class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>08 · Filtering to the analytic sample</span>
+          <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">508 down to 419 in three passes.</h2>
+          <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-6); max-width: 60ch">
+            Three sequential filters removed low-quality responses without meaningfully shifting the score distribution.
+          </p>
+          <div class="sfunnel" data-reveal data-reveal-delay="140">
+
+            <div class="sfunnel-step">
+              <div class="sfunnel-card">
+                <div class="sfunnel-card__left">
+                  <span class="sfunnel-label eyebrow">Starting sample</span>
+                  <span class="sfunnel-desc">All responses above 99% completion</span>
+                </div>
+                <div class="sfunnel-card__right">
+                  <span class="sfunnel-n sfunnel-n--accent">508</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sfunnel-arrow" aria-hidden="true"></div>
+
+            <div class="sfunnel-step">
+              <div class="sfunnel-card">
+                <div class="sfunnel-card__left">
+                  <span class="sfunnel-label eyebrow">Filter 1 — Attention checks</span>
+                  <span class="sfunnel-desc">Removed responses failing at least one of two attention checks</span>
+                </div>
+                <div class="sfunnel-card__right">
+                  <span class="sfunnel-n">434</span>
+                </div>
+              </div>
+              <p class="sfunnel-note sfunnel-note--drop">−74 removed</p>
+            </div>
+
+            <div class="sfunnel-arrow" aria-hidden="true"></div>
+
+            <div class="sfunnel-step">
+              <div class="sfunnel-card">
+                <div class="sfunnel-card__left">
+                  <span class="sfunnel-label eyebrow">Filter 2 — Device type</span>
+                  <span class="sfunnel-desc">Removed respondents who selected "Other" device (neither mobile nor laptop)</span>
+                </div>
+                <div class="sfunnel-card__right">
+                  <span class="sfunnel-n">424</span>
+                </div>
+              </div>
+              <p class="sfunnel-note sfunnel-note--drop">−10 removed</p>
+            </div>
+
+            <div class="sfunnel-arrow" aria-hidden="true"></div>
+
+            <div class="sfunnel-step">
+              <div class="sfunnel-card sfunnel-card--analytic">
+                <div class="sfunnel-card__left">
+                  <span class="sfunnel-label eyebrow">Filter 3 — Response time outliers</span>
+                  <span class="sfunnel-desc">Removed log time per question outside ±3 SD of the mean</span>
+                </div>
+                <div class="sfunnel-card__right">
+                  <span class="sfunnel-n">419</span>
+                </div>
+              </div>
+              <p class="sfunnel-note sfunnel-note--drop">−5 removed · analytic sample</p>
+            </div>
+
+          </div>
+          <div class="sfunnel-callout" data-reveal>
+            Score distribution before vs. after cleaning was virtually unchanged: <strong>mean 6.95 → 6.98, SD 1.60 → 1.59.</strong> The three filters removed noise without distorting the signal.
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- 09 The timing variable -->
+      <section class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>09 · The timing variable</span>
+          <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-2)">Why we log-transformed response time.</h2>
+          <p class="body-copy" data-reveal data-reveal-delay="120" style="max-width: 66ch">
+            Average seconds per image was right-skewed in raw form — a handful of very slow respondents pulled the tail out. We used ln(seconds per image) instead. After log-transforming and trimming ±3 SD, the distribution is approximately normal, making it usable as a continuous predictor in the ordered probit model.
+          </p>
+          <p class="body-copy" data-reveal data-reveal-delay="160" style="max-width: 66ch">
+            The trim drops 5 respondents and changes the overall score statistics negligibly (mean 6.95 → 6.98). In the final model, log response time did not improve fit enough to justify including it — but the transformation was necessary to evaluate it fairly.
+          </p>
         </div>
       </section>
 

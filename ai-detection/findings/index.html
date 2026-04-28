@@ -45,6 +45,64 @@
         </div>
       </section>
 
+      <!-- WHO TOOK THE SURVEY -->
+      <section id="section-who">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>Who took the survey</span>
+          <h2 class="section" data-reveal data-reveal-delay="60">418 Bowdoin participants, two device groups.</h2>
+          <div class="findings-who__grid" data-reveal data-reveal-delay="120">
+
+            <div class="findings-who__block">
+              <div class="findings-who__head">By affiliation <span style="font-weight:400;opacity:.6">(n = 418)</span></div>
+              <div class="findings-who__rows">
+                <div class="findings-who__row">
+                  <span class="findings-who__label">Seniors</span>
+                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:100%"></div></div>
+                  <span class="findings-who__n">108</span>
+                </div>
+                <div class="findings-who__row">
+                  <span class="findings-who__label">First-years</span>
+                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:86%"></div></div>
+                  <span class="findings-who__n">93</span>
+                </div>
+                <div class="findings-who__row">
+                  <span class="findings-who__label">Sophomores</span>
+                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:82%"></div></div>
+                  <span class="findings-who__n">89</span>
+                </div>
+                <div class="findings-who__row">
+                  <span class="findings-who__label">Faculty / Staff</span>
+                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:69%"></div></div>
+                  <span class="findings-who__n">74</span>
+                </div>
+                <div class="findings-who__row">
+                  <span class="findings-who__label">Juniors</span>
+                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:50%"></div></div>
+                  <span class="findings-who__n">54</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="findings-who__block">
+              <div class="findings-who__head">By device type <span style="font-weight:400;opacity:.6">(n = 417)</span></div>
+              <div class="findings-who__rows">
+                <div class="findings-who__row">
+                  <span class="findings-who__label">Laptop</span>
+                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:100%"></div></div>
+                  <span class="findings-who__n">260</span>
+                </div>
+                <div class="findings-who__row">
+                  <span class="findings-who__label">Mobile phone</span>
+                  <div class="findings-who__bar-wrap"><div class="findings-who__bar findings-who__bar--mobile" style="width:60%"></div></div>
+                  <span class="findings-who__n">157</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <!-- ② Device-type headline -->
       <section id="section-device">
         <div class="shell findings-two-col">
@@ -68,6 +126,24 @@
             <p class="body-copy" data-reveal data-reveal-delay="220">
               The picture is more complicated at the subgroup level. When the same t-test was run separately for Juniors and First-years, the two class years with the most even device split, neither result was statistically significant (p = 0.51 and p = 0.23 respectively). And in the ordered probit model, which controls for age and demographics, device type alone does not reach significance. The aggregate gap is real, but it is partly entangled with who uses each device, particularly the age effect described in Finding 04.
             </p>
+            <div class="findings-ttest" data-reveal data-reveal-delay="260">
+              <div class="findings-ttest__head">Three t-tests on score, splitting by device type</div>
+              <div class="findings-ttest__row">
+                <span class="findings-ttest__cohort">Juniors only</span>
+                <span class="findings-ttest__means">Laptop 7.08 vs. mobile 6.79 <span class="findings-ttest__delta">— Δ 0.29</span></span>
+                <span class="findings-ttest__p findings-ttest__p--ns">p = 0.510</span>
+              </div>
+              <div class="findings-ttest__row">
+                <span class="findings-ttest__cohort">First-years only</span>
+                <span class="findings-ttest__means">Laptop 7.53 vs. mobile 6.95 <span class="findings-ttest__delta">— Δ 0.59</span></span>
+                <span class="findings-ttest__p findings-ttest__p--ns">p = 0.229</span>
+              </div>
+              <div class="findings-ttest__row">
+                <span class="findings-ttest__cohort">Everyone</span>
+                <span class="findings-ttest__means">Laptop 7.16 vs. mobile 6.64 <span class="findings-ttest__delta">— Δ 0.53</span></span>
+                <span class="findings-ttest__p findings-ttest__p--sig">p = 0.0008</span>
+              </div>
+            </div>
           </div>
           <div class="findings-chart-wrap" data-reveal data-reveal-delay="120">
             <div class="findings-chart-card surface">
@@ -137,6 +213,52 @@
         </div>
       </section>
 
+      <!-- METHOD INTERLUDE -->
+      <section id="section-method" class="findings-method">
+        <div class="shell">
+          <div class="findings-method__inner">
+            <div>
+              <span class="eyebrow" data-reveal>Method — Ordered probit</span>
+              <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-3)">Why ordered probit.</h2>
+              <p class="body-copy" data-reveal data-reveal-delay="100" style="max-width:66ch">
+                Score is the number of correct identifications out of 10 — discrete, ordered, bounded, and approximately normally distributed. That makes ordered probit the right tool: it respects the ordinal structure of the outcome without assuming the distance between a 6 and a 7 is the same as the distance between a 9 and a 10. The dependent variable satisfies all three conditions:
+              </p>
+            </div>
+            <div class="findings-method__conditions" data-reveal data-reveal-delay="140">
+              <div class="findings-method__cond">
+                <div class="findings-method__cond-num">01</div>
+                <div class="findings-method__cond-name">Discrete and finite</div>
+                <p class="findings-method__cond-desc">Eleven levels (0–10) — not continuous, not unbounded.</p>
+              </div>
+              <div class="findings-method__cond">
+                <div class="findings-method__cond-num">02</div>
+                <div class="findings-method__cond-name">Ordered</div>
+                <p class="findings-method__cond-desc">A higher score is unambiguously better. The ranking is meaningful.</p>
+              </div>
+              <div class="findings-method__cond">
+                <div class="findings-method__cond-num">03</div>
+                <div class="findings-method__cond-name">Approximately normal</div>
+                <p class="findings-method__cond-desc">Confirmed in the score histogram — no extreme skew or multimodality.</p>
+              </div>
+            </div>
+            <details class="findings-method__detail" data-reveal data-reveal-delay="160">
+              <summary>Assumptions &amp; diagnostics</summary>
+              <div class="findings-method__detail-body">
+                <p>The ordered probit's parallel-regression assumption holds across all five score cutoffs (Brant-style p-values 0.302–0.372, all &gt; 0.30). Variance inflation factors are mean 1.27 / max 1.62 — no collinearity worth flagging.</p>
+                <p>Subsample tests on the faculty-only and student-only models also pass (all p &gt; 0.33). Standard errors use <code>vce(robust)</code> to handle heteroskedasticity. Observations are independent — respondents could not retake the survey.</p>
+              </div>
+            </details>
+            <details class="findings-method__detail" data-reveal data-reveal-delay="180">
+              <summary>Model selection — AIC / BIC</summary>
+              <div class="findings-method__detail-body">
+                <p>We compared seven nested specifications of increasing complexity — from a baseline of gender and race controls through specifications adding age, device type, AI familiarity measures, social media time, and log response time.</p>
+                <p><strong style="color:var(--text)">Lowest AIC (1507.66) was m2</strong> — gender + race + age + device — which we used as the primary specification. Lowest BIC (1573.25) was m1a (m2 minus device); BIC's stronger complexity penalty favors the simpler model. Adding AI-use time, AI familiarity, the familiarity × usage interaction, social media time, or ln(response time) did not improve fit enough to justify the complexity.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <!-- ⑤ Age finding -->
       <section id="section-age">
         <div class="shell findings-two-col findings-two-col--rev">
@@ -151,6 +273,33 @@
           <div class="findings-copy">
             <span class="eyebrow" data-reveal>Finding 04 — Age</span>
             <h2 class="section" data-reveal data-reveal-delay="60">Older participants scored lower — consistently.</h2>
+            <div class="findings-ladder" data-reveal data-reveal-delay="100">
+              <div class="findings-ladder__row">
+                <span class="findings-ladder__label">Seniors</span>
+                <div class="findings-ladder__bar-wrap"><div class="findings-ladder__bar" style="width:100%"></div></div>
+                <span class="findings-ladder__val">7.19</span>
+              </div>
+              <div class="findings-ladder__row">
+                <span class="findings-ladder__label">First-years</span>
+                <div class="findings-ladder__bar-wrap"><div class="findings-ladder__bar" style="width:97%"></div></div>
+                <span class="findings-ladder__val">7.15</span>
+              </div>
+              <div class="findings-ladder__row">
+                <span class="findings-ladder__label">Sophomores</span>
+                <div class="findings-ladder__bar-wrap"><div class="findings-ladder__bar" style="width:85%"></div></div>
+                <span class="findings-ladder__val">6.96</span>
+              </div>
+              <div class="findings-ladder__row">
+                <span class="findings-ladder__label">Juniors</span>
+                <div class="findings-ladder__bar-wrap"><div class="findings-ladder__bar" style="width:82%"></div></div>
+                <span class="findings-ladder__val">6.92</span>
+              </div>
+              <div class="findings-ladder__row">
+                <span class="findings-ladder__label">Faculty / Staff</span>
+                <div class="findings-ladder__bar-wrap"><div class="findings-ladder__bar" style="width:50%"></div></div>
+                <span class="findings-ladder__val">6.43</span>
+              </div>
+            </div>
             <p class="body-copy" data-reveal data-reveal-delay="120">
               In the ordered probit model, being over 25 is the only demographic variable to reach statistical significance. Participants above that threshold were 3–5 percentage points less likely to score 8, 9, or 10, and 1–2 percentage points more likely to land in the 4–6 range.
             </p>
@@ -202,6 +351,54 @@
           </div>
           <div class="findings-fooled-grid" id="fooled-grid" data-reveal data-reveal-delay="180">
             <!-- filled by findings.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- FINDING 07 — Faculty-only model -->
+      <section id="section-faculty">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>Finding 07 — Faculty-only model</span>
+          <h2 class="section" data-reveal data-reveal-delay="60">The device gap disappears for faculty.</h2>
+          <div class="findings-submodel" data-reveal data-reveal-delay="100">
+            <div class="findings-submodel__callout">
+              <div class="findings-submodel__callout-n">subsample</div>
+              <div class="findings-submodel__callout-val">n=66</div>
+              <div class="findings-submodel__callout-label">Faculty &amp; Staff respondents</div>
+            </div>
+            <div class="findings-submodel__copy">
+              <p class="body-copy">When the ordered probit model is restricted to faculty and staff (n = 66), device type does not reach statistical significance for any score cutoff. The device gap that appears in the full sample is absent here — consistent with the interpretation that the gap is partly driven by age and experience rather than the device itself.</p>
+              <p class="body-copy">One structural pattern stands out in the faculty-only model: the cut-point gap between scores 7 and 8 is significantly wider than the others. The probability jump from scoring a 9 to scoring a 10 is the single hardest step for faculty to make — a ceiling effect that doesn't appear as clearly in the student subsample.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINDING 08 — Student-only model -->
+      <section id="section-students">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>Finding 08 — Student-only model</span>
+          <h2 class="section" data-reveal data-reveal-delay="60">Among students, the device effect survives the model.</h2>
+          <div class="findings-submodel" data-reveal data-reveal-delay="100">
+            <div class="findings-submodel__callout">
+              <div class="findings-submodel__callout-n">effect at top scores</div>
+              <div class="findings-submodel__callout-val">3–4pp</div>
+              <div class="findings-submodel__callout-label">reduction in P(score 9 or 10) for mobile users</div>
+            </div>
+            <div class="findings-submodel__copy">
+              <p class="body-copy">Restricted to students (n = 343), with age, device, and a familiarity × usage interaction, device type reaches statistical significance at scores 9 and 10 (p &lt; 0.05). Using a phone rather than a laptop reduces the probability of scoring a 9 or 10 by 3–4 percentage points.</p>
+              <p class="body-copy">This is where the device effect lives: not spread evenly across the score range, but concentrated at the top. Mobile users aren't broadly worse — they're specifically less likely to achieve near-perfect detection. Within individual student cohorts the effect doesn't reach significance, because cell sizes become too small to power the test. But across the student body as a whole, the signal is real.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONCLUSION -->
+      <section id="section-conclusion" class="tight">
+        <div class="shell">
+          <span class="eyebrow" data-reveal>In short</span>
+          <div class="findings-conclusion" data-reveal data-reveal-delay="60">
+            <p class="body-copy">A real device gap appears in the pooled sample (laptop ≈ 0.5 points higher, p &lt; 0.001). The age effect is robust: being over 25 measurably reduces the chance of a top-three score. Within students, the device effect survives the model and concretely lowers the probability of scoring a 9 or 10. AI familiarity, by every measure we tried, doesn't help. The next step is a randomised controlled trial that assigns device condition directly — turning this correlational finding into a clean causal estimate. See <a href="../about/" style="color:var(--accent)">Future directions</a>.</p>
           </div>
         </div>
       </section>

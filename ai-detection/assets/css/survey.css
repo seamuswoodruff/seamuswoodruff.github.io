@@ -431,3 +431,244 @@
   color: var(--text-muted);
   line-height: 1.5;
 }
+
+
+/* ============================================================
+   01 · WHY THIS STUDY
+   ============================================================ */
+
+.swhy-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-4);
+  margin-bottom: var(--s-5);
+}
+@media (max-width: 720px) {
+  .swhy-cards { grid-template-columns: 1fr; }
+}
+
+.swhy-card {
+  padding: var(--s-4);
+  border-radius: var(--r-md);
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.swhy-card:hover {
+  border-color: var(--hairline-strong);
+  box-shadow: var(--shadow-mid);
+}
+.swhy-card__head {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+.swhy-card__body {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.swhy-rqs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+  border-top: 1px solid var(--hairline);
+  padding-top: var(--s-5);
+}
+@media (max-width: 600px) {
+  .swhy-rqs { grid-template-columns: 1fr; }
+}
+
+.swhy-rq {
+  padding: var(--s-4);
+  border-radius: var(--r-md);
+  border: 1px solid var(--hairline);
+  background: var(--surface-elevated);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.swhy-rq__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.swhy-rq__q {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+}
+.swhy-rq__h {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  font-style: italic;
+}
+
+
+/* ============================================================
+   02 · BUILDING THE IMAGE POOL
+   ============================================================ */
+
+.spool-source {
+  margin-top: var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  border: 1px solid var(--hairline);
+  background: var(--surface-elevated);
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.spool-source a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.spool-source a:hover { opacity: 0.8; }
+
+
+/* ============================================================
+   03 · STACK CONSTRUCTION (inside survey-structure section)
+   ============================================================ */
+
+.sstacks-step-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+  margin: 0 0 var(--s-3);
+}
+.sstacks-step-label + .sstacks-step-label {
+  margin-top: var(--s-5);
+}
+
+.sstacks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-3);
+  margin-bottom: var(--s-2);
+}
+@media (max-width: 600px) {
+  .sstacks { grid-template-columns: 1fr; }
+}
+
+.sstack-card {
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 2px solid var(--accent);
+}
+.sstack-card__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.sstack-card__comp {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+}
+.sstack-card__n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.sstacks-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--hairline-strong);
+  margin: 0 0 var(--s-3) calc(var(--s-4) + 2px);
+  position: relative;
+}
+.sstacks-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -3px;
+  border-top: 5px solid var(--hairline-strong);
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+}
+
+
+/* ============================================================
+   07 · DATA CLEANING
+   ============================================================ */
+
+.sclean-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+@media (max-width: 680px) {
+  .sclean-grid { grid-template-columns: 1fr; }
+}
+
+.sclean-step {
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  display: flex;
+  gap: var(--s-3);
+  align-items: flex-start;
+  transition: border-color 0.18s;
+}
+.sclean-step:hover { border-color: var(--hairline-strong); }
+
+.sclean-step__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 20px;
+  padding-top: 3px;
+}
+.sclean-step__name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.sclean-step__desc {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+
+/* ============================================================
+   08 · FILTERING FUNNEL  (extends sfunnel)
+   ============================================================ */
+
+.sfunnel-callout {
+  margin-top: var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 660px;
+}
+.sfunnel-callout strong { color: var(--text); }
