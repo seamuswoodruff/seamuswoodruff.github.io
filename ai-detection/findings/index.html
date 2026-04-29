@@ -107,8 +107,8 @@
       <section id="section-device">
         <div class="shell findings-two-col">
           <div class="findings-copy">
-            <span class="eyebrow" data-reveal>Finding 01 — Device type</span>
-            <h2 class="section" data-reveal data-reveal-delay="60">What screen you use matters more than what you know.</h2>
+            <span class="eyebrow" data-reveal>Finding 01</span>
+            <h2 class="section" data-reveal data-reveal-delay="60">How device type affects score.</h2>
             <div class="findings-stat-split" data-reveal data-reveal-delay="120">
               <div class="findings-stat-block">
                 <div><span class="stat__num text-accent" id="stat-laptop">7.2</span><span class="stat__unit">/10</span></div>
@@ -173,8 +173,8 @@
             </div>
           </div>
           <div class="findings-copy">
-            <span class="eyebrow" data-reveal>Finding 02 — Confidence</span>
-            <h2 class="section" data-reveal data-reveal-delay="60">High confidence is a signal. Medium confidence is noise.</h2>
+            <span class="eyebrow" data-reveal>Finding 02</span>
+            <h2 class="section" data-reveal data-reveal-delay="60">The effects of confidence on how you score.</h2>
             <p class="body-copy" data-reveal data-reveal-delay="120">
               The relationship between confidence and accuracy is real but messier than you'd expect. Highly confident answers (9–10 on the confidence scale) were correct substantially more often than uncertain ones, but the middle buckets reveal something murkier: people were equally confident in wrong answers as in right ones.
             </p>
@@ -192,8 +192,8 @@
       <section id="section-timing">
         <div class="shell findings-two-col">
           <div class="findings-copy">
-            <span class="eyebrow" data-reveal>Finding 03 — Response time</span>
-            <h2 class="section" data-reveal data-reveal-delay="60">Slow down, and you won't improve.</h2>
+            <span class="eyebrow" data-reveal>Finding 03</span>
+            <h2 class="section" data-reveal data-reveal-delay="60">Response time vs. accuracy.</h2>
             <p class="body-copy" data-reveal data-reveal-delay="120">
               Intuitively, you'd expect careful, deliberate responses to produce better scores. The data disagrees. There's essentially no relationship between how long someone spent on the survey and how well they did.
             </p>
@@ -218,8 +218,8 @@
         <div class="shell">
           <div class="findings-method__inner">
             <div>
-              <span class="eyebrow" data-reveal>Method — Ordered probit</span>
-              <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-3)">Why ordered probit.</h2>
+              <span class="eyebrow" data-reveal>Regression method</span>
+              <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-3)">How we selected ordered probit.</h2>
               <p class="body-copy" data-reveal data-reveal-delay="100" style="max-width:66ch">
                 Score is the number of correct identifications out of 10 — discrete, ordered, bounded, and approximately normally distributed. That makes ordered probit the right tool: it respects the ordinal structure of the outcome without assuming the distance between a 6 and a 7 is the same as the distance between a 9 and a 10. The dependent variable satisfies all three conditions:
               </p>

@@ -132,6 +132,17 @@
   min-width: 156px;
 }
 
+.sflow-badge-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.sflow-stack-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
 .sflow-badge {
   display: inline-flex;
   align-items: center;
