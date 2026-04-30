@@ -217,6 +217,7 @@
   flex-grow: 1;
   margin-bottom: var(--s-4);
 }
+
 .explore-card__meta {
   font-size: 11.5px;
   color: var(--text-faint);

@@ -356,6 +356,23 @@ async function init() {
           buildImagePool();
         }
       });
+
+      // Auto-open and scroll if arriving via #image-pool hash
+      if (window.location.hash === "#image-pool") {
+        poolDetails.open = true;
+        // Kill the browser's native hash-scroll so it doesn't fight us
+        history.replaceState(null, "", window.location.pathname);
+        // Wait for layout to settle, then scroll to just below the nav
+        setTimeout(() => {
+          const target = document.getElementById("image-pool");
+          const nav = document.getElementById("site-nav");
+          if (!target) return;
+          const navH = nav ? nav.getBoundingClientRect().height : 72;
+          const gap = 12;
+          const top = target.getBoundingClientRect().top + window.scrollY - navH - gap;
+          window.scrollTo({ top, behavior: "smooth" });
+        }, 50);
+      }
     }
 
   } catch (err) {

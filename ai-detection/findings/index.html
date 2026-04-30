@@ -45,71 +45,18 @@
         </div>
       </section>
 
-      <!-- WHO TOOK THE SURVEY -->
-      <section id="section-who">
-        <div class="shell">
-          <span class="eyebrow" data-reveal>Who took the survey</span>
-          <h2 class="section" data-reveal data-reveal-delay="60">418 Bowdoin participants, two device groups.</h2>
-          <div class="findings-who__grid" data-reveal data-reveal-delay="120">
-
-            <div class="findings-who__block">
-              <div class="findings-who__head">By affiliation <span style="font-weight:400;opacity:.6">(n = 418)</span></div>
-              <div class="findings-who__rows">
-                <div class="findings-who__row">
-                  <span class="findings-who__label">Seniors</span>
-                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:100%"></div></div>
-                  <span class="findings-who__n">108</span>
-                </div>
-                <div class="findings-who__row">
-                  <span class="findings-who__label">First-years</span>
-                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:86%"></div></div>
-                  <span class="findings-who__n">93</span>
-                </div>
-                <div class="findings-who__row">
-                  <span class="findings-who__label">Sophomores</span>
-                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:82%"></div></div>
-                  <span class="findings-who__n">89</span>
-                </div>
-                <div class="findings-who__row">
-                  <span class="findings-who__label">Faculty / Staff</span>
-                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:69%"></div></div>
-                  <span class="findings-who__n">74</span>
-                </div>
-                <div class="findings-who__row">
-                  <span class="findings-who__label">Juniors</span>
-                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:50%"></div></div>
-                  <span class="findings-who__n">54</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="findings-who__block">
-              <div class="findings-who__head">By device type <span style="font-weight:400;opacity:.6">(n = 417)</span></div>
-              <div class="findings-who__rows">
-                <div class="findings-who__row">
-                  <span class="findings-who__label">Laptop</span>
-                  <div class="findings-who__bar-wrap"><div class="findings-who__bar" style="width:100%"></div></div>
-                  <span class="findings-who__n">260</span>
-                </div>
-                <div class="findings-who__row">
-                  <span class="findings-who__label">Mobile phone</span>
-                  <div class="findings-who__bar-wrap"><div class="findings-who__bar findings-who__bar--mobile" style="width:60%"></div></div>
-                  <span class="findings-who__n">157</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       <!-- ② Device-type headline -->
       <section id="section-device">
         <div class="shell findings-two-col">
-          <div class="findings-copy">
-            <span class="eyebrow" data-reveal>Finding 01</span>
-            <h2 class="section" data-reveal data-reveal-delay="60">How device type affects score.</h2>
-            <div class="findings-stat-split" data-reveal data-reveal-delay="120">
+          <div class="findings-copy__head" data-reveal>
+            <span class="pill findings-null__pill">
+              <span class="pill__dot" style="background:var(--accent);box-shadow:0 0 8px var(--accent)"></span>
+              Finding 01 — Hypothesis 1
+            </span>
+            <h2 class="section">How device type affects score</h2>
+          </div>
+          <div class="findings-copy__body">
+            <div class="findings-stat-split" data-reveal data-reveal-delay="60">
               <div class="findings-stat-block">
                 <div><span class="stat__num text-accent" id="stat-laptop">7.2</span><span class="stat__unit">/10</span></div>
                 <div class="stat__label">Laptop</div>
@@ -120,12 +67,24 @@
                 <div class="stat__label">Mobile phone</div>
               </div>
             </div>
-            <p class="body-copy" data-reveal data-reveal-delay="180">
+            <p class="body-copy" data-reveal data-reveal-delay="120">
               Across the full sample, laptop users averaged 0.53 points higher than mobile users (7.16 vs. 6.63, n = 260 vs. 157, t = 3.36, p = 0.0008). Screen size almost certainly plays a role: a laptop's larger display makes artifacts, lighting inconsistencies, and the subtle wrongness of AI-generated detail easier to catch: detail that compresses away on a smaller screen.
             </p>
-            <p class="body-copy" data-reveal data-reveal-delay="220">
-              The picture is more complicated at the subgroup level. When the same t-test was run separately for Juniors and First-years, the two class years with the most even device split, neither result was statistically significant (p = 0.51 and p = 0.23 respectively). And in the ordered probit model, which controls for age and demographics, device type alone does not reach significance. The aggregate gap is real, but it is partly entangled with who uses each device, particularly the age effect described in Finding 04.
+            <p class="body-copy" data-reveal data-reveal-delay="160">
+              The picture is more complicated at the subgroup level. When the same t-test was run separately for Juniors and First-years, the two class years with the most even device split, neither result was statistically significant (p = 0.51 and p = 0.23 respectively). And in the ordered probit model, which controls for age and demographics, device type alone does not reach significance. The aggregate gap is real, but it is partly entangled with who uses each device, particularly the age effect described in Finding 05.
             </p>
+          </div>
+          <div class="findings-chart-wrap" data-reveal data-reveal-delay="120">
+            <div class="findings-chart-card surface">
+              <div class="findings-chart-head">
+                <span class="eyebrow">Score distribution by device</span>
+                <div class="findings-chart-legend">
+                  <span class="findings-legend-item findings-legend-item--laptop">Laptop</span>
+                  <span class="findings-legend-item findings-legend-item--mobile">Mobile</span>
+                </div>
+              </div>
+              <canvas id="chart-device"></canvas>
+            </div>
             <div class="findings-ttest" data-reveal data-reveal-delay="260">
               <div class="findings-ttest__head">Three t-tests on score, splitting by device type</div>
               <div class="findings-ttest__row">
@@ -145,16 +104,77 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- FINDING 02 A — Faculty submodel -->
+      <section id="section-faculty">
+        <div class="shell findings-two-col findings-two-col--rev">
+          <div class="findings-copy__head" data-reveal>
+            <span class="eyebrow">Finding 02 A</span>
+            <h2 class="section">The effect of device type on faculty scores</h2>
+          </div>
+          <div class="findings-copy__body">
+            <p class="body-copy" data-reveal data-reveal-delay="60">When the ordered probit model is restricted to faculty and staff (n = 66), device type does not reach statistical significance for any score cutoff. The device gap that appears in the full sample is absent here — consistent with the interpretation that the gap is partly driven by age and experience rather than the device itself.</p>
+            <p class="body-copy" data-reveal data-reveal-delay="100">One structural pattern stands out in the faculty-only model: the cut-point gap between scores 7 and 8 is significantly wider than the others. The probability jump from scoring a 9 to scoring a 10 is the single hardest step for faculty to make — a ceiling effect that doesn't appear as clearly in the student subsample.</p>
+          </div>
+          <div class="findings-chart-wrap" data-reveal>
+            <div class="findings-chart-card surface" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:var(--s-3)">
+              <div class="findings-submodel__callout-n">subsample</div>
+              <div class="findings-submodel__callout-val">n=66</div>
+              <div class="findings-submodel__callout-label">Faculty &amp; Staff respondents</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINDING 02 B — Student submodel -->
+      <section id="section-students">
+        <div class="shell findings-two-col">
+          <div class="findings-copy__head" data-reveal>
+            <span class="eyebrow">Finding 02 B</span>
+            <h2 class="section">The effect of device type on student scores</h2>
+          </div>
+          <div class="findings-copy__body">
+            <p class="body-copy" data-reveal data-reveal-delay="60">Restricted to students (n = 343), with age, device, and a familiarity × usage interaction, device type reaches statistical significance at scores 9 and 10 (p &lt; 0.05). Using a phone rather than a laptop reduces the probability of scoring a 9 or 10 by 3–4 percentage points.</p>
+            <p class="body-copy" data-reveal data-reveal-delay="100">This is where the device effect lives: not spread evenly across the score range, but concentrated at the top. Mobile users aren't broadly worse — they're specifically less likely to achieve near-perfect detection. Within individual student cohorts the effect doesn't reach significance, because cell sizes become too small to power the test. But across the student body as a whole, the signal is real.</p>
+          </div>
+          <div class="findings-chart-wrap" data-reveal data-reveal-delay="60">
+            <div class="findings-chart-card surface" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:var(--s-3)">
+              <div class="findings-submodel__callout-n">effect at top scores</div>
+              <div class="findings-submodel__callout-val">3–4pp</div>
+              <div class="findings-submodel__callout-label">reduction in P(score 9 or 10) for mobile users</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ③ AI familiarity — null result -->
+      <section id="section-familiarity">
+        <div class="shell findings-two-col findings-two-col--rev">
+          <div class="findings-copy__head" data-reveal>
+            <span class="pill findings-null__pill">
+              <span class="pill__dot" style="background:var(--fake);box-shadow:0 0 8px var(--fake)"></span>
+              Finding 03 — Hypothesis 2
+            </span>
+            <h2 class="section">Effect of AI usage and familiarity on AI image detection</h2>
+          </div>
+          <div class="findings-copy__body">
+            <p class="body-copy" data-reveal data-reveal-delay="60">
+              We measured AI familiarity four different ways: a self-rated familiarity scale, a literacy scale, hours per week of AI usage, and whether someone had taken an AI course at Bowdoin. We also tested a familiarity × usage interaction. Across all five familiarity levels, mean scores cluster tightly in the 6–7 range.
+            </p>
+            <p class="body-copy" data-reveal data-reveal-delay="100">
+              Knowing that AI images exist, understanding how diffusion models work, even building with them daily — none of it translates to better detection at the perceptual level. The null result held across all four measures. The eye is not trained by the intellect.
+            </p>
+          </div>
           <div class="findings-chart-wrap" data-reveal data-reveal-delay="120">
             <div class="findings-chart-card surface">
               <div class="findings-chart-head">
-                <span class="eyebrow">Score distribution by device</span>
-                <div class="findings-chart-legend">
-                  <span class="findings-legend-item findings-legend-item--laptop">Laptop</span>
-                  <span class="findings-legend-item findings-legend-item--mobile">Mobile</span>
-                </div>
+                <span class="eyebrow">Mean score by AI familiarity level</span>
               </div>
-              <canvas id="chart-device"></canvas>
+              <div class="findings-null__bars" id="familiarity-bars">
+                <!-- filled by findings.js -->
+              </div>
             </div>
           </div>
         </div>
@@ -162,8 +182,23 @@
 
       <!-- ③ Confidence vs accuracy -->
       <section id="section-confidence">
-        <div class="shell findings-two-col findings-two-col--rev">
-          <div class="findings-chart-wrap" data-reveal>
+        <div class="shell findings-two-col">
+          <div class="findings-copy__head" data-reveal>
+            <span class="eyebrow">Finding 04</span>
+            <h2 class="section">The effects of confidence on how you score</h2>
+          </div>
+          <div class="findings-copy__body">
+            <p class="body-copy" data-reveal data-reveal-delay="60">
+              The relationship between confidence and accuracy is real but messier than you'd expect. Highly confident answers (9–10 on the confidence scale) were correct substantially more often than uncertain ones, but the middle buckets reveal something murkier: people were equally confident in wrong answers as in right ones.
+            </p>
+            <p class="body-copy" data-reveal data-reveal-delay="100">
+              The takeaway: your gut is worth trusting when it's very strong, but moderate confidence is nearly meaningless as a signal. The hardest images, the ones that fooled the most people, were often accompanied by high confidence in the wrong direction.
+            </p>
+            <p class="body-copy" data-reveal data-reveal-delay="140">
+              There's also an asymmetry in <em>how</em> people erred. Participants were more consistent at correctly identifying AI-generated images as AI; true positive rates skewed toward the high end. True negative rates, correctly confirming that a real photograph is real, were more spread out and less reliable. When uncertain, people tended to call things AI rather than real. Whether that reflects a general suspicion of imagery in 2026, or bias introduced by the fact that they were taking the survey, is impossible to know.
+            </p>
+          </div>
+          <div class="findings-chart-wrap" data-reveal data-reveal-delay="120">
             <div class="findings-chart-card surface">
               <div class="findings-chart-head">
                 <span class="eyebrow">Confidence bucket → % correct</span>
@@ -172,32 +207,21 @@
               <p class="findings-chart-caption" id="conf-caption">Pooled across all image-answer pairs</p>
             </div>
           </div>
-          <div class="findings-copy">
-            <span class="eyebrow" data-reveal>Finding 02</span>
-            <h2 class="section" data-reveal data-reveal-delay="60">The effects of confidence on how you score.</h2>
-            <p class="body-copy" data-reveal data-reveal-delay="120">
-              The relationship between confidence and accuracy is real but messier than you'd expect. Highly confident answers (9–10 on the confidence scale) were correct substantially more often than uncertain ones, but the middle buckets reveal something murkier: people were equally confident in wrong answers as in right ones.
-            </p>
-            <p class="body-copy" data-reveal data-reveal-delay="160">
-              The takeaway: your gut is worth trusting when it's very strong, but moderate confidence is nearly meaningless as a signal. The hardest images, the ones that fooled the most people, were often accompanied by high confidence in the wrong direction.
-            </p>
-            <p class="body-copy" data-reveal data-reveal-delay="200">
-              There's also an asymmetry in <em>how</em> people erred. Participants were more consistent at correctly identifying AI-generated images as AI; true positive rates skewed toward the high end. True negative rates, correctly confirming that a real photograph is real, were more spread out and less reliable. When uncertain, people tended to call things AI rather than real. Whether that reflects a general suspicion of imagery in 2026, or bias introduced by the fact that they were taking the survey, is impossible to know.
-            </p>
-          </div>
         </div>
       </section>
 
       <!-- ④ Response time vs score -->
       <section id="section-timing">
-        <div class="shell findings-two-col">
-          <div class="findings-copy">
-            <span class="eyebrow" data-reveal>Finding 03</span>
-            <h2 class="section" data-reveal data-reveal-delay="60">Response time vs. accuracy.</h2>
-            <p class="body-copy" data-reveal data-reveal-delay="120">
+        <div class="shell findings-two-col findings-two-col--rev">
+          <div class="findings-copy__head" data-reveal>
+            <span class="eyebrow">Finding 05</span>
+            <h2 class="section">Response time vs. accuracy</h2>
+          </div>
+          <div class="findings-copy__body">
+            <p class="body-copy" data-reveal data-reveal-delay="60">
               Intuitively, you'd expect careful, deliberate responses to produce better scores. The data disagrees. There's essentially no relationship between how long someone spent on the survey and how well they did.
             </p>
-            <p class="body-copy" data-reveal data-reveal-delay="160">
+            <p class="body-copy" data-reveal data-reveal-delay="100">
               This suggests that detecting AI imagery is more about perceptual training than analytical effort. You either notice the artifacts quickly or you don't. Spending more time second-guessing yourself doesn't help.
             </p>
           </div>
@@ -213,67 +237,29 @@
         </div>
       </section>
 
-      <!-- METHOD INTERLUDE -->
-      <section id="section-method" class="findings-method">
-        <div class="shell">
-          <div class="findings-method__inner">
-            <div>
-              <span class="eyebrow" data-reveal>Regression method</span>
-              <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-4) 0 var(--s-3)">How we selected ordered probit.</h2>
-              <p class="body-copy" data-reveal data-reveal-delay="100" style="max-width:66ch">
-                Score is the number of correct identifications out of 10 — discrete, ordered, bounded, and approximately normally distributed. That makes ordered probit the right tool: it respects the ordinal structure of the outcome without assuming the distance between a 6 and a 7 is the same as the distance between a 9 and a 10. The dependent variable satisfies all three conditions:
-              </p>
-            </div>
-            <div class="findings-method__conditions" data-reveal data-reveal-delay="140">
-              <div class="findings-method__cond">
-                <div class="findings-method__cond-num">01</div>
-                <div class="findings-method__cond-name">Discrete and finite</div>
-                <p class="findings-method__cond-desc">Eleven levels (0–10) — not continuous, not unbounded.</p>
-              </div>
-              <div class="findings-method__cond">
-                <div class="findings-method__cond-num">02</div>
-                <div class="findings-method__cond-name">Ordered</div>
-                <p class="findings-method__cond-desc">A higher score is unambiguously better. The ranking is meaningful.</p>
-              </div>
-              <div class="findings-method__cond">
-                <div class="findings-method__cond-num">03</div>
-                <div class="findings-method__cond-name">Approximately normal</div>
-                <p class="findings-method__cond-desc">Confirmed in the score histogram — no extreme skew or multimodality.</p>
-              </div>
-            </div>
-            <details class="findings-method__detail" data-reveal data-reveal-delay="160">
-              <summary>Assumptions &amp; diagnostics</summary>
-              <div class="findings-method__detail-body">
-                <p>The ordered probit's parallel-regression assumption holds across all five score cutoffs (Brant-style p-values 0.302–0.372, all &gt; 0.30). Variance inflation factors are mean 1.27 / max 1.62 — no collinearity worth flagging.</p>
-                <p>Subsample tests on the faculty-only and student-only models also pass (all p &gt; 0.33). Standard errors use <code>vce(robust)</code> to handle heteroskedasticity. Observations are independent — respondents could not retake the survey.</p>
-              </div>
-            </details>
-            <details class="findings-method__detail" data-reveal data-reveal-delay="180">
-              <summary>Model selection — AIC / BIC</summary>
-              <div class="findings-method__detail-body">
-                <p>We compared seven nested specifications of increasing complexity — from a baseline of gender and race controls through specifications adding age, device type, AI familiarity measures, social media time, and log response time.</p>
-                <p><strong style="color:var(--text)">Lowest AIC (1507.66) was m2</strong> — gender + race + age + device — which we used as the primary specification. Lowest BIC (1573.25) was m1a (m2 minus device); BIC's stronger complexity penalty favors the simpler model. Adding AI-use time, AI familiarity, the familiarity × usage interaction, social media time, or ln(response time) did not improve fit enough to justify the complexity.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-      </section>
-
       <!-- ⑤ Age finding -->
       <section id="section-age">
-        <div class="shell findings-two-col findings-two-col--rev">
-          <div class="findings-chart-wrap" data-reveal>
+        <div class="shell findings-two-col">
+          <div class="findings-copy__head" data-reveal>
+            <span class="eyebrow">Finding 06</span>
+            <h2 class="section">Age vs score</h2>
+          </div>
+          <div class="findings-copy__body">
+            <p class="body-copy" data-reveal data-reveal-delay="60">
+              In the ordered probit model, being over 25 is the only demographic variable to reach statistical significance. Participants above that threshold were 3–5 percentage points less likely to score 8, 9, or 10, and 1–2 percentage points more likely to land in the 4–6 range.
+            </p>
+            <p class="body-copy" data-reveal data-reveal-delay="100">
+              The affiliation breakdown makes the pattern visible: Faculty and Staff averaged 6.43/10, the lowest of any group, while students across all four class years clustered between 6.93 and 7.19. The Bowdoin population holds many confounders roughly constant; when age still emerges as a predictor in that context, it suggests that exposure to AI imagery during formative years builds informal visual instincts that older users haven't developed the same way.
+            </p>
+          </div>
+          <div class="findings-chart-wrap" data-reveal data-reveal-delay="60">
             <div class="findings-chart-card surface">
               <div class="findings-chart-head">
                 <span class="eyebrow">Mean score by affiliation</span>
               </div>
               <canvas id="chart-affiliation"></canvas>
             </div>
-          </div>
-          <div class="findings-copy">
-            <span class="eyebrow" data-reveal>Finding 04 — Age</span>
-            <h2 class="section" data-reveal data-reveal-delay="60">Older participants scored lower — consistently.</h2>
-            <div class="findings-ladder" data-reveal data-reveal-delay="100">
+            <div class="findings-ladder" data-reveal data-reveal-delay="160">
               <div class="findings-ladder__row">
                 <span class="findings-ladder__label">Seniors</span>
                 <div class="findings-ladder__bar-wrap"><div class="findings-ladder__bar" style="width:100%"></div></div>
@@ -300,95 +286,6 @@
                 <span class="findings-ladder__val">6.43</span>
               </div>
             </div>
-            <p class="body-copy" data-reveal data-reveal-delay="120">
-              In the ordered probit model, being over 25 is the only demographic variable to reach statistical significance. Participants above that threshold were 3–5 percentage points less likely to score 8, 9, or 10, and 1–2 percentage points more likely to land in the 4–6 range.
-            </p>
-            <p class="body-copy" data-reveal data-reveal-delay="160">
-              The affiliation breakdown makes the pattern visible: Faculty and Staff averaged 6.43/10, the lowest of any group, while students across all four class years clustered between 6.93 and 7.19. The Bowdoin population holds many confounders roughly constant; when age still emerges as a predictor in that context, it suggests that exposure to AI imagery during formative years builds informal visual instincts that older users haven't developed the same way.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ⑤ AI familiarity — null result -->
-      <section id="section-familiarity" class="findings-null-section">
-        <div class="shell">
-          <div class="findings-null__inner">
-            <div class="findings-null__header">
-              <span class="pill findings-null__pill" data-reveal>
-                <span class="pill__dot" style="background:var(--fake);box-shadow:0 0 8px var(--fake)"></span>
-                Finding 05 — Surprise result
-              </span>
-              <h2 class="section" data-reveal data-reveal-delay="60">Knowing about AI doesn't help you spot it.</h2>
-              <p class="lede findings-null__lede" data-reveal data-reveal-delay="120">
-                We expected familiarity with AI-generated imagery to track with accuracy. It doesn't.
-              </p>
-            </div>
-            <div class="findings-null__body-cols" data-reveal data-reveal-delay="160">
-              <p class="body-copy">
-                We measured AI familiarity four different ways: a self-rated familiarity scale, a literacy scale, hours per week of AI usage, and whether someone had taken an AI course at Bowdoin. We also tested a familiarity × usage interaction. Across all five familiarity levels, mean scores cluster tightly in the 6–7 range.
-              </p>
-              <p class="body-copy">
-                Knowing that AI images exist, understanding how diffusion models work, even building with them daily — none of it translates to better detection at the perceptual level. The null result held across all four measures. The eye is not trained by the intellect.
-              </p>
-            </div>
-            <div class="findings-null__bars" id="familiarity-bars" data-reveal data-reveal-delay="220">
-              <!-- filled by findings.js -->
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ⑥ Most-fooled images -->
-      <section id="section-fooled">
-        <div class="shell">
-          <div class="findings-fooled__header">
-            <span class="eyebrow" data-reveal>Finding 06 — Hardest images</span>
-            <h2 class="section" data-reveal data-reveal-delay="60">The images that broke the most brains.</h2>
-            <p class="lede findings-fooled__lede" data-reveal data-reveal-delay="120">
-              Three real photographs most often mistaken for AI-generated, and three AI images most often mistaken for real.
-            </p>
-          </div>
-          <div class="findings-fooled-grid" id="fooled-grid" data-reveal data-reveal-delay="180">
-            <!-- filled by findings.js -->
-          </div>
-        </div>
-      </section>
-
-      <!-- FINDING 07 — Faculty-only model -->
-      <section id="section-faculty">
-        <div class="shell">
-          <span class="eyebrow" data-reveal>Finding 07 — Faculty-only model</span>
-          <h2 class="section" data-reveal data-reveal-delay="60">The device gap disappears for faculty.</h2>
-          <div class="findings-submodel" data-reveal data-reveal-delay="100">
-            <div class="findings-submodel__callout">
-              <div class="findings-submodel__callout-n">subsample</div>
-              <div class="findings-submodel__callout-val">n=66</div>
-              <div class="findings-submodel__callout-label">Faculty &amp; Staff respondents</div>
-            </div>
-            <div class="findings-submodel__copy">
-              <p class="body-copy">When the ordered probit model is restricted to faculty and staff (n = 66), device type does not reach statistical significance for any score cutoff. The device gap that appears in the full sample is absent here — consistent with the interpretation that the gap is partly driven by age and experience rather than the device itself.</p>
-              <p class="body-copy">One structural pattern stands out in the faculty-only model: the cut-point gap between scores 7 and 8 is significantly wider than the others. The probability jump from scoring a 9 to scoring a 10 is the single hardest step for faculty to make — a ceiling effect that doesn't appear as clearly in the student subsample.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FINDING 08 — Student-only model -->
-      <section id="section-students">
-        <div class="shell">
-          <span class="eyebrow" data-reveal>Finding 08 — Student-only model</span>
-          <h2 class="section" data-reveal data-reveal-delay="60">Among students, the device effect survives the model.</h2>
-          <div class="findings-submodel" data-reveal data-reveal-delay="100">
-            <div class="findings-submodel__callout">
-              <div class="findings-submodel__callout-n">effect at top scores</div>
-              <div class="findings-submodel__callout-val">3–4pp</div>
-              <div class="findings-submodel__callout-label">reduction in P(score 9 or 10) for mobile users</div>
-            </div>
-            <div class="findings-submodel__copy">
-              <p class="body-copy">Restricted to students (n = 343), with age, device, and a familiarity × usage interaction, device type reaches statistical significance at scores 9 and 10 (p &lt; 0.05). Using a phone rather than a laptop reduces the probability of scoring a 9 or 10 by 3–4 percentage points.</p>
-              <p class="body-copy">This is where the device effect lives: not spread evenly across the score range, but concentrated at the top. Mobile users aren't broadly worse — they're specifically less likely to achieve near-perfect detection. Within individual student cohorts the effect doesn't reach significance, because cell sizes become too small to power the test. But across the student body as a whole, the signal is real.</p>
-            </div>
           </div>
         </div>
       </section>
@@ -396,9 +293,22 @@
       <!-- CONCLUSION -->
       <section id="section-conclusion" class="tight">
         <div class="shell">
-          <span class="eyebrow" data-reveal>In short</span>
+          <h2 class="section" data-reveal>Conclusion</h2>
           <div class="findings-conclusion" data-reveal data-reveal-delay="60">
-            <p class="body-copy">A real device gap appears in the pooled sample (laptop ≈ 0.5 points higher, p &lt; 0.001). The age effect is robust: being over 25 measurably reduces the chance of a top-three score. Within students, the device effect survives the model and concretely lowers the probability of scoring a 9 or 10. AI familiarity, by every measure we tried, doesn't help. The next step is a randomised controlled trial that assigns device condition directly — turning this correlational finding into a clean causal estimate. See <a href="../about/" style="color:var(--accent)">Future directions</a>.</p>
+            <p class="body-copy">A real device gap appears in the pooled sample (laptop ≈ 0.5 points higher, p &lt; 0.001). The age effect is robust: being over 25 measurably reduces the chance of a top-three score. Within students, the device effect survives the model and concretely lowers the probability of scoring a 9 or 10. AI familiarity, by every measure we tried, doesn't help. The next step is a randomised controlled trial that assigns device condition directly — turning this correlational finding into a clean causal estimate. See <a href="../about/#future-directions" style="color:var(--accent)">Future directions</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bonus finding — Most-fooled images -->
+      <section id="section-fooled">
+        <div class="shell">
+          <div class="findings-fooled__header">
+            <span class="eyebrow" data-reveal>Bonus finding</span>
+            <h2 class="section" data-reveal data-reveal-delay="60">Hardest images to detect</h2>
+          </div>
+          <div class="findings-fooled-grid" id="fooled-grid" data-reveal data-reveal-delay="180">
+            <!-- filled by findings.js -->
           </div>
         </div>
       </section>
@@ -407,8 +317,7 @@
       <section id="section-limits" class="tight">
         <div class="shell">
           <div class="findings-limits">
-            <span class="eyebrow" data-reveal>Limitations</span>
-            <h2 class="section" data-reveal data-reveal-delay="60">What this study can't tell you.</h2>
+            <h2 class="section" data-reveal data-reveal-delay="60">Limitations</h2>
             <div class="findings-limits__grid" data-reveal data-reveal-delay="120">
               <div class="findings-limits__item">
                 <h3 class="findings-limits__head">Device-year confound</h3>

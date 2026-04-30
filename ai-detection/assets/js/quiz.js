@@ -53,6 +53,8 @@ async function enterConstruct() {
   showStage("construct");
   const label = document.querySelector("#construct-wake span");
   if (label) typeWriter(label, "Knock, knock, Neo.");
+  const knock = new Audio(assetUrl("assets/audio/knock-knock.mp3"));
+  knock.play().catch(() => {});
 }
 
 function typeWriter(el, text, speed = 95) {
