@@ -41,7 +41,7 @@ const NAV_HTML_C = `
         <div class="site-nav__links" role="menubar">
           ${link("quiz/", "Take the test")}
           ${link("survey/", "Survey design")}
-          ${link("findings/", "Findings")}
+          ${link("findings/", "Results")}
           ${link("distribution/", "Distribution")}
           ${link("dataset/", "Dataset")}
           ${link("about/", "About")}
@@ -60,7 +60,7 @@ const NAV_HTML_C = `
     <div class="site-nav__drawer" data-menu-drawer>
       ${draw("quiz/", "Take the test")}
       ${draw("survey/", "Survey design")}
-      ${draw("findings/", "Findings")}
+      ${draw("findings/", "Results")}
       ${draw("distribution/", "Distribution")}
       ${draw("dataset/", "Dataset")}
       ${draw("about/", "About")}
@@ -79,7 +79,7 @@ const NAV_HTML_D = `
       <div class="site-nav__links hnav-pill__links" role="menubar">
         ${link("quiz/", "Take the test")}
         ${link("survey/", "Survey design")}
-        ${link("findings/", "Findings")}
+        ${link("findings/", "Results")}
         ${link("distribution/", "Distribution")}
         ${link("dataset/", "Dataset")}
         ${link("about/", "About")}
@@ -89,7 +89,7 @@ const NAV_HTML_D = `
     <div class="site-nav__drawer" data-menu-drawer>
       ${draw("quiz/", "Take the test")}
       ${draw("survey/", "Survey design")}
-      ${draw("findings/", "Findings")}
+      ${draw("findings/", "Results")}
       ${draw("distribution/", "Distribution")}
       ${draw("dataset/", "Dataset")}
       ${draw("about/", "About")}
@@ -104,7 +104,6 @@ const FOOTER_HTML = `
     <div class="shell">
       <div class="site-footer__meta">
         <span>DCS3850 · Bowdoin College · 2026</span>
-        <span>n = 508 · 80 images · 10 per participant</span>
       </div>
     </div>
   </footer>

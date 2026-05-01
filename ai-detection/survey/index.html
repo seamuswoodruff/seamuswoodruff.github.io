@@ -18,12 +18,12 @@
       <!-- Hero -->
       <section class="survey-hero">
         <div class="shell">
-          <span class="pill" data-reveal><span class="pill__dot"></span> Study design · DCS3850 · Spring 2026</span>
+          <span class="pill" data-reveal><span class="pill__dot"></span> DCS3850 · Spring 2026</span>
           <h1 class="hero display-wonk survey-hero__h1" data-reveal data-reveal-delay="80">
-            How the study<br>worked
+            Survey design
           </h1>
           <p class="lede survey-hero__lede" data-reveal data-reveal-delay="160">
-            Designed to isolate perception from knowledge, and defend against every source of bias we could anticipate. Survey flow, sampling pipeline, variables, and bias controls.
+            Survey flow, image pool, sampling pipeline, variables measured, bias controls, and data cleaning: all our pre-analysis steps detailed in visual form
           </p>
           <div class="survey-hero__stats" data-reveal data-reveal-delay="240">
             <div class="stat">
@@ -61,15 +61,15 @@
           </p>
           <div class="swhy-cards" data-reveal data-reveal-delay="140">
             <div class="swhy-card">
-              <div class="swhy-card__head">No usable datasets.</div>
+              <div class="swhy-card__head">No usable datasets</div>
               <p class="swhy-card__body">Existing datasets were built to train AI detectors, not to test human perception. No freely accessible option existed for human-detection studies at the time.</p>
             </div>
             <div class="swhy-card">
-              <div class="swhy-card__head">Dataset scale.</div>
+              <div class="swhy-card__head">Dataset scale</div>
               <p class="swhy-card__body">Typical datasets hold 10,000+ images per category — far too large for a survey where each participant only sees ~10 images.</p>
             </div>
             <div class="swhy-card">
-              <div class="swhy-card__head">Image quality.</div>
+              <div class="swhy-card__head">Image quality</div>
               <p class="swhy-card__body">Many images were too easy (obvious AI artifacts anyone could spot) or too hard (paintings and artworks requiring prior expertise). Neither suited an average participant.</p>
             </div>
           </div>
@@ -87,7 +87,7 @@
           <span class="eyebrow" data-reveal>02</span>
           <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-3) 0 var(--s-2)">Survey structure</h2>
           <p class="body-copy" data-reveal data-reveal-delay="100" style="margin-bottom: var(--s-5); max-width: 60ch">
-            Ten images across three blocks, each following the same four-step loop. Two attention checks, placed after the 3rd and 6th image, caught disengaged respondents before they reached the next set.
+            Ten images across three blocks, each following the same four-step loop. Two attention checks, placed after the 3rd and 6th image.
           </p>
           <p class="sstacks-step-label" data-reveal data-reveal-delay="130">Step 1 — From pool to stacks</p>
           <div class="sstacks" data-reveal data-reveal-delay="140">
@@ -395,7 +395,7 @@
               <div class="svars-item">
                 <div class="svars-item__name">Affiliation</div>
                 <span class="svars-type svars-type--cat">Categorical</span>
-                <div class="svars-item__desc">Student / Faculty / Staff</div>
+                <div class="svars-item__desc">Class year / Faculty and Staff</div>
               </div>
               <div class="svars-item">
                 <div class="svars-item__name">International</div>
@@ -445,7 +445,7 @@
                 </li>
                 <li class="sbias-item">
                   <div class="sbias-item__name">Fatigue</div>
-                  <div class="sbias-item__fix">Short survey (~4 min); varied question types</div>
+                  <div class="sbias-item__fix">Short survey (~15 min); varied question types</div>
                 </li>
               </ul>
             </div>
@@ -651,10 +651,10 @@
           <span class="eyebrow" data-reveal>08</span>
           <h2 class="section" data-reveal data-reveal-delay="60" style="margin: var(--s-3) 0 var(--s-2)">The timing variable</h2>
           <p class="body-copy" data-reveal data-reveal-delay="120" style="max-width: 66ch">
-            Average seconds per image was right-skewed in raw form — a handful of very slow respondents pulled the tail out. We used ln(seconds per image) instead. After log-transforming and trimming ±3 SD, the distribution is approximately normal, making it usable as a continuous predictor in the ordered probit model.
+            Average seconds per image was right-skewed in raw form, a handful of very slow respondents pulled the tail out. We used ln(seconds per image) instead. After log-transforming and trimming ±3 SD, the distribution is approximately normal, making it usable as a continuous predictor in the ordered probit model.
           </p>
           <p class="body-copy" data-reveal data-reveal-delay="160" style="max-width: 66ch">
-            The trim drops 5 respondents and changes the overall score statistics negligibly (mean 6.95 → 6.98). In the final model, log response time did not improve fit enough to justify including it — but the transformation was necessary to evaluate it fairly.
+            The trim drops 5 respondents and changes the overall score statistics negligibly (mean 6.95 → 6.98). In the final model, log response time did not improve fit enough to justify including it, but the transformation was necessary to evaluate it fairly.
           </p>
         </div>
       </section>
