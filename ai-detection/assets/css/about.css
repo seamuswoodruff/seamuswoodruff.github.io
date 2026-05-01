@@ -196,6 +196,50 @@ h2.about-section__title {
   word-break: break-word;
 }
 
+/* ---------- Appendix link ---------- */
+.about-appendix-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  padding: var(--s-5) var(--s-6);
+  text-decoration: none;
+  transition: border-color 160ms var(--ease-smooth), background 160ms var(--ease-smooth);
+}
+.about-appendix-link:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 5%, var(--surface));
+}
+.about-appendix-link__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.about-appendix-link__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.about-appendix-link__url {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.about-appendix-link__arrow {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform 160ms var(--ease-smooth);
+}
+.about-appendix-link:hover .about-appendix-link__arrow {
+  transform: translate(2px, -2px);
+}
+
 /* ---------- Contact banner ---------- */
 .about-contact {
   padding-bottom: var(--s-10);
