@@ -165,6 +165,17 @@ function buildConfidenceChart(pctCorrect, totals) {
 function buildTimingChart(points, r) {
   const t = chartTheme();
 
+  // Compute mean duration for each integer score
+  const byScore = {};
+  for (const p of points) {
+    if (!byScore[p.y]) byScore[p.y] = [];
+    byScore[p.y].push(p.x);
+  }
+  const means = Object.entries(byScore).map(([score, xs]) => ({
+    x: Math.round(xs.reduce((a, b) => a + b, 0) / xs.length),
+    y: Number(score),
+  }));
+
   new Chart(document.getElementById("chart-timing"), {
     type: "scatter",
     data: {
@@ -177,6 +188,18 @@ function buildTimingChart(points, r) {
           borderWidth: 1,
           pointRadius: 4,
           pointHoverRadius: 6,
+          order: 2,
+        },
+        {
+          label: "Mean duration",
+          data: means,
+          backgroundColor: t.real,
+          borderColor: t.real,
+          borderWidth: 2,
+          pointRadius: 7,
+          pointHoverRadius: 9,
+          pointStyle: "crossRot",
+          order: 1,
         },
       ],
     },
@@ -196,15 +219,26 @@ function buildTimingChart(points, r) {
           grid: { color: gridColor() },
           ticks: { color: chartTheme().muted },
           min: 0,
-          max: 10,
+          max: 10.6,
           stepSize: 1,
         },
       },
       plugins: {
-        legend: { display: false },
+        legend: {
+          display: true,
+          labels: {
+            color: chartTheme().muted,
+            usePointStyle: true,
+            pointStyleWidth: 10,
+            padding: 16,
+          },
+        },
         tooltip: {
           callbacks: {
-            label: (ctx) => ` ${Math.round(ctx.raw.x)}s · score ${ctx.raw.y}`,
+            label: (ctx) =>
+              ctx.datasetIndex === 1
+                ? ` Mean: ${Math.round(ctx.raw.x)}s at score ${ctx.raw.y}`
+                : ` ${Math.round(ctx.raw.x)}s · score ${ctx.raw.y}`,
           },
         },
       },
@@ -262,7 +296,7 @@ function buildAffiliationChart() {
 
   const groups = [
     { label: "Faculty / Staff", mean: 6.43, n: 74 },
-    { label: "Juniors", mean: 6.93, n: 54 },
+    { label: "Juniors", mean: 6.92, n: 54 },
     { label: "Sophomores", mean: 6.97, n: 89 },
     { label: "First-years", mean: 7.15, n: 93 },
     { label: "Seniors", mean: 7.19, n: 108 },

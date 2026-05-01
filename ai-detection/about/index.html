@@ -37,7 +37,7 @@
               <p class="body-copy">
                 AI-generated images have become increasingly difficult to distinguish from real photographs, and people encounter them frequently in news feeds, advertising, social media, and journalism. Much of this exposure occurs on mobile devices. It is therefore important to assess whether mobile users are systematically less accurate at detecting AI-generated images. Identifying the factors that predict detection performance is important for understanding and improving AI literacy.
               </p>
-              <h3 class="about-sub">Hypotheses</h3>
+              <h3 class="about-sub">Hypothesis</h3>
               <div class="about-hypotheses">
                 <div class="about-hypothesis">
                   <div class="about-hypothesis__head">
@@ -46,14 +46,6 @@
                   </div>
                   <p class="about-hypothesis__text">Viewing on a mobile phone, compared to a laptop, decreases detection ability.</p>
                   <p class="about-hypothesis__result">The t-test for the full sample supports this result, with average scores of 7.16 for laptop users and 6.63 for mobile users (p = 0.0008). Subgroup analyses for Juniors and First years were not statistically significant, likely due to smaller sample sizes, as the p-value steadily decreased with larger samples. For the ordered probit model estimated on the full sample and faculty sample, device type did not have statistically significant marginal effects. However, when we reran the models using the only student sample, using a phone rather than a laptop was associated with lower scores and highly statistically significant.</p>
-                </div>
-                <div class="about-hypothesis">
-                  <div class="about-hypothesis__head">
-                    <span class="about-hypothesis__label mono-label">H2</span>
-                    <span class="about-hypothesis__outcome about-hypothesis__outcome--null">Falsified</span>
-                  </div>
-                  <p class="about-hypothesis__text">Greater AI usage and familiarity with AI image generation increases detection ability.</p>
-                  <p class="about-hypothesis__result">Familiarity was measured four ways (a self-rated familiarity scale, an AI literacy scale, hours per week of usage, and AI course enrollment), plus an interaction term. None predicted accuracy. The null result held across all measures.</p>
                 </div>
               </div>
             </div>
@@ -167,7 +159,19 @@
               <p class="body-copy">
                 We estimated three sets of ordered probit models. The first set used the full analytical sample and included nine model specifications of increasing complexity. These ranged from a baseline model with gender and race controls to models that added age, device type, AI familiarity, social media use, and response time. Model selection was based on the Akaike Information Criterion (AIC), which balances model fit and complexity. The best performing model included gender, race, age over 25, and device type, and had the lowest AIC of 1507.66. We then estimated seven model specifications using only the faculty sample (n = 66). In this case, the best model included gender and race, along with age, device type, and AI familiarity. Finally, we estimated the same seven models using only the student sample (n=335). The best performing model included the baseline controls and device type.
               </p>
-              <h3 class="about-sub">Results</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr shell" />
+
+      <!-- Results -->
+      <section class="tight">
+        <div class="shell about-prose">
+          <div class="about-section" data-reveal>
+            <h2 class="section about-section__title">Results</h2>
+            <div class="about-section__body">
               <p class="body-copy">
                 A linear regression of score on response time shows no relationship between time and performance (p = 0.946), suggesting that time spent on the task did not meaningfully affect accuracy. While not central to our analysis, it may still be interesting to explore whether there is a nonlinear effect or threshold in response time where performance changes.
               </p>
@@ -271,16 +275,15 @@
               <div class="about-team">
                 <div class="about-team-member">
                   <div class="about-team-member__name">Lulu Linkas</div>
-                  <div class="about-team-member__role">Statistical analysis, survey design, image curation</div>
+                  <div class="about-team-member__role">Statistical analysis, survey design, appendix</div>
                 </div>
                 <div class="about-team-member">
                   <div class="about-team-member__name">Maddy Ohta</div>
-                  <div class="about-team-member__role">T-tests, exploratory findings</div>
+                  <div class="about-team-member__role">T-tests, exploratory findings, write-up</div>
                 </div>
                 <div class="about-team-member">
                   <div class="about-team-member__name">Seamus Woodruff</div>
-                  <div class="about-team-member__role">Website, data pipeline, visualisations</div>
-                  <a class="about-team-member__contact" href="mailto:swoodruff@bowdoin.edu">swoodruff@bowdoin.edu</a>
+                  <div class="about-team-member__role">Website, data pipeline, visualisations, image curation</div>
                 </div>
               </div>
             </div>
