@@ -41,6 +41,63 @@
       --sh-lg:     0 16px 48px rgba(27,26,23,0.1),  0 4px 16px rgba(27,26,23,0.05);
     }
 
+    /* ─── Dark mode overrides ─── */
+    [data-theme="dark"] {
+      --bg:        #121820;
+      --bg-2:      #161D27;
+      --bg-card:   #1A2232;
+      --text:      #DCE4F0;
+      --muted:     #7A8699;
+      --sage:      #4E8060;
+      --sage-d:    #3D6B4E;
+      --sage-p:    rgba(78,128,96,0.18);
+      --border:    rgba(220,228,240,0.08);
+      --border-m:  rgba(220,228,240,0.14);
+      --sh-sm:     0 1px 3px rgba(0,0,0,0.3),  0 2px 10px rgba(0,0,0,0.2);
+      --sh-md:     0 4px 20px rgba(0,0,0,0.36), 0 1px 5px rgba(0,0,0,0.22);
+      --sh-lg:     0 16px 48px rgba(0,0,0,0.46), 0 4px 16px rgba(0,0,0,0.28);
+    }
+    [data-theme="dark"] #vnav {
+      background: rgba(18,24,32,0.94);
+    }
+    [data-theme="dark"] #contact {
+      background: #141C28;
+    }
+    [data-theme="dark"] footer {
+      background: #111826;
+    }
+    [data-theme="dark"] footer span {
+      color: rgba(220,228,240,.28);
+    }
+    [data-theme="dark"] .card-bg::after {
+      background: linear-gradient(100deg, var(--bg-card) 18%, transparent 55%);
+    }
+
+    /* ─── Smooth theme transitions ─── */
+    body, #vnav, .card, footer, #contact, #about, #projects, #experience,
+    .btn, .skill, .tag, .tl-dot, .hero-wrap, .marquee-wrap {
+      transition: background-color 0.32s ease, border-color 0.32s ease, color 0.32s ease;
+    }
+
+    /* ─── Theme toggle button ─── */
+    .theme-toggle {
+      background: none; border: none; padding: 0;
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--sage); cursor: none;
+      transition: color 0.2s, opacity 0.2s;
+    }
+    .theme-toggle:hover { opacity: 0.65; }
+    .theme-toggle .icon-sun,
+    .theme-toggle .icon-moon {
+      position: absolute;
+      transition: opacity 0.25s ease, transform 0.35s cubic-bezier(.34,1.56,.64,1);
+    }
+    .theme-toggle .icon-sun  { opacity: 0; transform: rotate(90deg) scale(0.7); }
+    .theme-toggle .icon-moon { opacity: 1; transform: rotate(0deg)  scale(1);   }
+    [data-theme="dark"] .theme-toggle .icon-sun  { opacity: 1; transform: rotate(0deg)   scale(1);   }
+    [data-theme="dark"] .theme-toggle .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.7); }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -230,7 +287,7 @@
     .hero-wrap {
       position: relative; min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center;
-      overflow: hidden; background: var(--bg);
+      background: var(--bg);
     }
 
     /* Grain texture overlay — adds tactile depth without competing with content */
@@ -397,7 +454,7 @@
       font-weight: 200; line-height: .88; letter-spacing: -.04em;
       color: var(--text); margin-bottom: 2.25rem;
     }
-    .hero-name .line { display: block; overflow: hidden; }
+    .hero-name .line { display: block; }
     .hero-name .line-inner { display: block; }
     .hero-name .italic { font-style: italic; color: var(--sage); }
 
@@ -456,7 +513,7 @@
     .photo-frame { position: absolute; inset: 8px; border-radius: 50%; overflow: hidden; }
     .photo-frame img {
       width: 100%; height: 100%; object-fit: cover;
-      object-position: center 12%; display: block; will-change: transform;
+      object-position: center 12%; display: block;
     }
     .photo-caption {
       position: absolute; bottom: -2.2rem; left: 50%; transform: translateX(-50%);
@@ -474,8 +531,8 @@
     .marquee-strip { display: flex; overflow: hidden; padding: .7rem 0; }
     .marquee-strip + .marquee-strip { border-top: 1px solid rgba(255,255,255,.06); }
     .marquee-track { display: flex; white-space: nowrap; flex-shrink: 0; will-change: transform; }
-    .mtrack-l { animation: mLeft  26s linear infinite; }
-    .mtrack-r { animation: mRight 30s linear infinite; }
+    .mtrack-l { animation: mLeft  42s linear infinite; }
+    .mtrack-r { animation: mRight 48s linear infinite; }
     @keyframes mLeft  { 0%{transform:translateX(0)}    100%{transform:translateX(-50%)} }
     @keyframes mRight { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)}    }
     .m-item {
@@ -613,7 +670,7 @@
       position: relative; z-index: 1;
     }
 
-    .card-cta { font-size: .8rem; color: var(--sage-d); display: inline-flex; align-items: center; gap: .4rem; font-weight: 500; position: relative; }
+    .card-cta { font-size: .8rem; color: var(--sage-d); display: inline-flex; align-items: center; gap: .4rem; font-weight: 500; position: relative; text-decoration: none; }
     .card-cta::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background: var(--sage); transition: width .25s; }
     .card:hover .card-cta::after { width: 100%; }
     .card-cta svg { transition: transform .2s; }
@@ -747,7 +804,7 @@
     </div>
     <div class="pl-name">
       <span class="pl-name-line"><span class="pl-name-inner">Seamus</span></span>
-      <span class="pl-name-line"><span class="pl-name-inner">Woodruff.</span></span>
+      <span class="pl-name-line"><span class="pl-name-inner">Woodruff</span></span>
     </div>
     <div class="pl-bar-wrap">
       <div class="pl-bar"></div>
@@ -755,12 +812,29 @@
   </div>
 
   <!-- ░░ LOGO MARK ░░ -->
-  <a class="logo-mark" href="#">Seamus Woodruff</a>
+  <a class="logo-mark vnav-mono" href="#">SW</a>
 
   <!-- ░░ VERTICAL NAV ░░ -->
   <nav id="vnav">
     <div class="vnav-top">
-      <a class="vnav-mono" href="#">SW</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <!-- Sun — shown in dark mode -->
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4.5"/>
+          <line x1="12" y1="2"   x2="12" y2="5"/>
+          <line x1="12" y1="19"  x2="12" y2="22"/>
+          <line x1="4.22" y1="4.22"   x2="6.34" y2="6.34"/>
+          <line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/>
+          <line x1="2"  y1="12"  x2="5"  y2="12"/>
+          <line x1="19" y1="12"  x2="22" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/>
+          <line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Moon — shown in light mode -->
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
     </div>
     <div class="vnav-links">
       <a href="#about" class="vnav-link" data-c="sage">
@@ -804,11 +878,11 @@
       <div class="hero-text">
         <h1 class="hero-name">
           <span class="line"><span class="line-inner">Seamus</span></span>
-          <span class="line"><span class="line-inner italic">Woodruff.</span></span>
+          <span class="line"><span class="line-inner italic">Woodruff</span></span>
         </h1>
 
         <p class="hero-sub">
-          I study how technology shapes the world, and how to make it do better. At the intersection of data, ethics, and human consequence.
+          I'm interested in working at the intersection of technology and human interaction, and building tech solutions that are well aligned with their users.
         </p>
 
         <div class="hero-ctas">
@@ -848,19 +922,21 @@
     <div class="about-inner">
       <div class="reveal">
         <div class="label">About</div>
-        <h2 class="about-aside-title">Tech is easy to build.<br><em>Harder to get right.</em></h2>
+
         <div class="stats">
           <div class="stat"><div class="stat-val">3.7</div><div class="stat-lbl">GPA · Bowdoin College</div></div>
-          <div class="stat"><div class="stat-val">2</div><div class="stat-lbl">Majors: DCS + Dance</div></div>
-          <div class="stat"><div class="stat-val">May '26</div><div class="stat-lbl">Graduating &amp; ready</div></div>
+          <div class="stat"><div class="stat-val">2</div><div class="stat-lbl">Majors: Digital &amp; Computational Studies + Dance</div></div>
+          <div class="stat"><div class="stat-val">May '26</div><div class="stat-lbl">Graduated</div></div>
         </div>
       </div>
 
       <div class="about-body reveal d1">
-        <p>I'm a Digital and Computational Studies senior at Bowdoin College, studying a major that asks not just what technology can do, but <strong>what it should do and who it affects.</strong> I've spent four years at the intersection of data analysis, AI ethics, and digital humanities, looking for work where that question actually matters.</p>
-        <p>Right now, AI is compressing the time between idea and deployment faster than any technology in history. That pace doesn't make people who ask <em>should we?</em> less relevant. It makes them <strong>more necessary than ever.</strong> The bottleneck is not building quickly. It's understanding what you are building, for whom, and what happens when it scales. That's the work I'm trained for, and the work I want to do.</p>
-        <p>In practice that means experience in data analysis and NLP pipelines, geospatial visualization, behavioral design research, UX methodology, digital text analysis. Different tools, same question: <em>what is this system actually doing, and to whom?</em> I move between the technical and the interpretive because the problems we are facing as a society do not fit neatly on one side.</p>
-        <p>I also double-major in Dance, which has expanded how I think about bodies, systems, and what it means to communicate something to another person. Outside the classroom I've worked as a farm intern, a carpenter's assistant, a bike mechanic, and an outdoor guide. That breadth of experience is, I think, exactly the kind of thing that makes someone better at the work of thinking critically about technology, about people, about what we're actually building.</p>
+        <p>I grew up on a small working family farm in Brunswick, Maine, and spent most of my early life running through the woods and fields around my home and helping my parents with our livestock and gardens. For most of my childhood I had very little digital technology at home, and didn't even have my own smartphone until I was sixteen. But for years I've been fascinated by the ways that computers and phones operate, digging into their software to figure out what I could tweak and change about them to make them work better for me.</p>
+        <p>Because I now spend so much of my time working with computers and in more recent years various applications of Artificial Intelligence, I am increasingly grateful to my parents for the time they gave me with no exposure to it. That time allowed me to develop my own creativity and imagination, and also gave me the perspective to both appreciate the myriad ways in which technology can improve our lives and understand the ways it can harm us. It also allowed me to spend more time out in the world talking face to face with other people and building the skills that are increasingly necessary to work well with other people in the age of AI.</p>
+        <p>I've spent the last four years of my life at Bowdoin College, first studying Computer Science before pivoting to Digital and Computational Studies. I made this decision for multiple reasons: I realized that I didn't want to just be a software developer, and I also began to grasp how AI would change and shape the global economy, and my own life and career after Bowdoin. Right now, AI is compressing the time between idea and deployment faster than any technology in history. It's now possible for people who have never coded before to create applications or publish polished websites in just a couple of hours.</p>
+        <p>While the speed and ease of deployment now possible with AI is exciting, it also requires more mindfulness than ever towards what we're creating, for whom we're making it, and whether or not it's something that really serves a purpose. The bottleneck to making something is no longer time, technical skills, or imagination, but instead understanding the needs of the people you're building for, and how that changes with scale.</p>
+        <p>This requires not only creative thinking and agile design, but also the ability to communicate with the teams you're working with and those who will use your technology throughout the process. My life experiences and my time at Bowdoin have given me exactly the skills and perspective that I think are important to be successful in today's world. I have developed technical skills like coding, natural language processing, data science, and GIS, but I have also learned how to understand and anticipate the ways in which new and existing technologies affect the communities that use them, and better align technology with the real needs of its users.</p>
+        <p>I also double majored in Dance, which has expanded how I think about bodies, systems, and what it means to communicate something to another person. Outside the classroom I've worked as a farm intern, a carpenter's assistant, a bike mechanic, and an outdoor guide. That breadth of experience is, I think, exactly the kind of thing that makes someone better at the work of thinking critically about technology, about people, and about how the two can actually work well together.</p>
 
         <div class="skills">
           <span class="skill">Python</span>
@@ -962,13 +1038,201 @@
           </div>
           <div class="card-num">02 &nbsp;·&nbsp; FALL 2024</div>
           <h3 class="card-title">Ecology of Violence: Weather, Climate &amp; Crime in NYC</h3>
-          <p class="card-desc">An interactive geospatial analysis exploring how weather patterns correlate with violent crime rates across New York City, using ArcGIS to visualize temporal and environmental factors that influence social behavior at scale.</p>
+          <p class="card-desc">An interactive geospatial analysis exploring how seasons correlate with violent crime rates across New York City, using ArcGIS to visualize temporal and environmental factors that influence social behavior at scale.</p>
           <div class="card-tags">
             <span class="tag">ArcGIS</span><span class="tag">Geospatial Analysis</span>
             <span class="tag">Data Cleaning</span><span class="tag">Visualization</span>
           </div>
           <span class="card-cta">View project <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10L10 1.5M3 1.5h7.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
+
+        <a href="https://seamuswoodruff.github.io/ai-detection" target="_blank" rel="noopener" class="card reveal d3" style="cursor:none;">
+          <div class="card-accent-line"></div>
+          <!-- Image classification grid — AI detection theme -->
+          <div class="card-bg" aria-hidden="true">
+            <svg viewBox="0 0 380 300" fill="none" preserveAspectRatio="xMaxYMin meet">
+              <!-- Image frame grid -->
+              <rect x="198" y="18"  width="48" height="38" rx="3" stroke="#8E7FBE" stroke-width="1.1" fill="rgba(142,127,190,.05)"/>
+              <rect x="254" y="18"  width="48" height="38" rx="3" stroke="#8E7FBE" stroke-width="1.1" fill="rgba(142,127,190,.05)"/>
+              <rect x="310" y="18"  width="62" height="38" rx="3" stroke="#8E7FBE" stroke-width="1.3" fill="rgba(142,127,190,.08)"/>
+              <rect x="198" y="65"  width="48" height="38" rx="3" stroke="#8E7FBE" stroke-width="1.3" fill="rgba(142,127,190,.08)"/>
+              <rect x="254" y="65"  width="48" height="38" rx="3" stroke="#8E7FBE" stroke-width="1.1" fill="rgba(142,127,190,.05)"/>
+              <rect x="310" y="65"  width="62" height="38" rx="3" stroke="#8E7FBE" stroke-width="1.1" fill="rgba(142,127,190,.05)"/>
+              <rect x="198" y="112" width="48" height="38" rx="3" stroke="#8E7FBE" stroke-width="1.1" fill="rgba(142,127,190,.05)"/>
+              <rect x="254" y="112" width="48" height="38" rx="3" stroke="#8E7FBE" stroke-width="1.1" fill="rgba(142,127,190,.05)"/>
+              <rect x="310" y="112" width="62" height="38" rx="3" stroke="#8E7FBE" stroke-width="1.1" fill="rgba(142,127,190,.06)"/>
+              <!-- Scan-corner brackets on center frame -->
+              <path d="M252 63 L252 71 M252 63 L260 63" stroke="#8E7FBE" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M304 63 L304 71 M304 63 L296 63" stroke="#8E7FBE" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M252 105 L252 97 M252 105 L260 105" stroke="#8E7FBE" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M304 105 L304 97 M304 105 L296 105" stroke="#8E7FBE" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Horizontal scan line crossing the center frame -->
+              <line x1="252" y1="84" x2="304" y2="84" stroke="#8E7FBE" stroke-width="1.2" stroke-dasharray="3 2" opacity=".6"/>
+              <!-- Dot crosshair in center of scanned frame -->
+              <circle cx="278" cy="84" r="3" fill="#8E7FBE" opacity=".55"/>
+              <!-- Score gauge arc -->
+              <path d="M212 240 A60 60 0 0 1 368 240" stroke="#8E7FBE" stroke-width="1.2" opacity=".22" stroke-linecap="round"/>
+              <path d="M212 240 A60 60 0 0 1 340 183" stroke="#8E7FBE" stroke-width="2"   opacity=".6"  stroke-linecap="round"/>
+              <circle cx="340" cy="183" r="4" fill="#8E7FBE" opacity=".7"/>
+              <!-- Dashed connector lines between frames -->
+              <line x1="246" y1="37" x2="254" y2="37" stroke="#8E7FBE" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+              <line x1="302" y1="37" x2="310" y2="37" stroke="#8E7FBE" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+              <line x1="246" y1="84" x2="254" y2="84" stroke="#8E7FBE" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+              <line x1="302" y1="84" x2="310" y2="84" stroke="#8E7FBE" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+              <line x1="246" y1="131" x2="254" y2="131" stroke="#8E7FBE" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+              <line x1="302" y1="131" x2="310" y2="131" stroke="#8E7FBE" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+            </svg>
+            <!-- Labels overlay: REAL / AI GEN classifications -->
+            <svg class="card-bg-labels" viewBox="0 0 380 300" fill="none" preserveAspectRatio="xMaxYMin meet">
+              <text x="222" y="42"  text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5"  font-weight="600" fill="#8E7FBE" letter-spacing=".5">REAL</text>
+              <text x="278" y="42"  text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5"  fill="#8E7FBE" opacity=".65" letter-spacing=".3">AI GEN</text>
+              <text x="341" y="42"  text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5"  font-weight="600" fill="#8E7FBE" letter-spacing=".5">REAL</text>
+              <text x="222" y="89"  text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5"  fill="#8E7FBE" opacity=".65" letter-spacing=".3">AI GEN</text>
+              <text x="278" y="89"  text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5"  font-weight="600" fill="#8E7FBE" letter-spacing=".5">REAL</text>
+              <text x="341" y="89"  text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5"  fill="#8E7FBE" opacity=".65" letter-spacing=".3">AI GEN</text>
+              <text x="222" y="136" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5"  font-weight="600" fill="#8E7FBE" letter-spacing=".5">REAL</text>
+              <text x="278" y="136" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5"  font-weight="600" fill="#8E7FBE" letter-spacing=".5">REAL</text>
+              <text x="341" y="136" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5"  fill="#8E7FBE" opacity=".65" letter-spacing=".3">AI GEN</text>
+              <!-- Score -->
+              <text x="288" y="232" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="22" font-weight="600" fill="#8E7FBE" opacity=".75" letter-spacing="-.5">7.2</text>
+              <text x="288" y="248" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8E7FBE" opacity=".45" letter-spacing=".5">mean / 10</text>
+              <!-- n= -->
+              <text x="288" y="270" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#8E7FBE" opacity=".35" letter-spacing=".3">n = 508</text>
+            </svg>
+          </div>
+          <div class="card-num">03 &nbsp;·&nbsp; SPRING 2026</div>
+          <h3 class="card-title">Can You Still Tell What's Real? An AI Image Detection Study</h3>
+          <p class="card-desc">A mixed-methods research study run through DCS3850 at Bowdoin. We recruited 508 participants to distinguish real photographs from AI-generated images, then built ordered probit models to test whether device type, age, and AI familiarity predict detection accuracy. Laptop users outscored mobile users. Age mattered. Familiarity barely did.</p>
+          <div class="card-tags">
+            <span class="tag">Research Design</span><span class="tag">Statistical Analysis</span>
+            <span class="tag">Survey Methodology</span><span class="tag">Data Visualization</span>
+            <span class="tag">Web Design</span>
+          </div>
+          <span class="card-cta">View project <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10L10 1.5M3 1.5h7.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
+        <a href="https://weepingwillowco.com" target="_blank" rel="noopener" class="card reveal d4" style="cursor:none;">
+          <div class="card-accent-line"></div>
+          <!-- Botanical / honeysuckle motif — warm golden tones -->
+          <div class="card-bg" aria-hidden="true">
+            <svg viewBox="0 0 380 300" fill="none" preserveAspectRatio="xMaxYMin meet">
+              <!-- Main stem, slightly curved -->
+              <path d="M290 300 C288 240 292 180 285 120 C280 70 275 30 278 0" stroke="#C8A24A" stroke-width="1.6" stroke-linecap="round" opacity=".45"/>
+              <!-- Branch left 1 -->
+              <path d="M287 210 C268 195 248 188 230 178" stroke="#C8A24A" stroke-width="1.2" stroke-linecap="round" opacity=".4"/>
+              <!-- Branch right 1 -->
+              <path d="M286 170 C305 158 328 152 352 148" stroke="#C8A24A" stroke-width="1.2" stroke-linecap="round" opacity=".4"/>
+              <!-- Branch left 2 -->
+              <path d="M283 125 C262 114 242 108 220 100" stroke="#C8A24A" stroke-width="1.1" stroke-linecap="round" opacity=".35"/>
+              <!-- Branch right 2 -->
+              <path d="M282 88  C300 76  324 68  350 64" stroke="#C8A24A" stroke-width="1.1" stroke-linecap="round" opacity=".35"/>
+              <!-- Small leaf pairs on branch ends — left 1 -->
+              <ellipse cx="227" cy="176" rx="9" ry="5" transform="rotate(-20 227 176)" stroke="#C8A24A" stroke-width="1" fill="rgba(200,162,74,.07)" opacity=".6"/>
+              <ellipse cx="218" cy="181" rx="7" ry="4" transform="rotate(-35 218 181)" stroke="#C8A24A" stroke-width=".9" fill="rgba(200,162,74,.06)" opacity=".5"/>
+              <!-- Small leaf pairs on branch ends — right 1 -->
+              <ellipse cx="354" cy="147" rx="9" ry="5" transform="rotate(10 354 147)" stroke="#C8A24A" stroke-width="1" fill="rgba(200,162,74,.07)" opacity=".6"/>
+              <ellipse cx="363" cy="152" rx="7" ry="4" transform="rotate(22 363 152)" stroke="#C8A24A" stroke-width=".9" fill="rgba(200,162,74,.06)" opacity=".5"/>
+              <!-- Small leaf pairs — left 2 -->
+              <ellipse cx="217" cy="98" rx="8" ry="4.5" transform="rotate(-15 217 98)" stroke="#C8A24A" stroke-width=".9" fill="rgba(200,162,74,.06)" opacity=".5"/>
+              <!-- Small leaf pairs — right 2 -->
+              <ellipse cx="352" cy="63" rx="8" ry="4.5" transform="rotate(8 352 63)" stroke="#C8A24A" stroke-width=".9" fill="rgba(200,162,74,.06)" opacity=".5"/>
+              <!-- Honeysuckle flower clusters — tubular petals -->
+              <!-- Cluster at left 1 branch tip -->
+              <path d="M232 170 C228 163 230 156 235 154 C240 152 244 157 242 163 C240 170 234 172 232 170Z" stroke="#C8A24A" stroke-width="1" fill="rgba(200,162,74,.1)" opacity=".65"/>
+              <path d="M224 174 C220 167 222 160 227 158 C232 156 236 161 234 167 C232 174 226 176 224 174Z" stroke="#C8A24A" stroke-width=".9" fill="rgba(200,162,74,.08)" opacity=".55"/>
+              <!-- Cluster at right 1 branch tip -->
+              <path d="M348 142 C352 135 358 134 362 137 C366 140 364 147 359 149 C353 151 347 147 348 142Z" stroke="#C8A24A" stroke-width="1" fill="rgba(200,162,74,.1)" opacity=".65"/>
+              <path d="M356 150 C360 143 366 142 370 145 C374 148 372 155 367 157 C361 159 355 155 356 150Z" stroke="#C8A24A" stroke-width=".9" fill="rgba(200,162,74,.08)" opacity=".55"/>
+              <!-- Subtle radial glow behind the composition -->
+              <circle cx="300" cy="150" r="90" fill="radial-gradient" opacity=".03" stroke="none"/>
+            </svg>
+            <!-- Label overlay -->
+            <svg class="card-bg-labels" viewBox="0 0 380 300" fill="none" preserveAspectRatio="xMaxYMin meet">
+              <text x="310" y="240" text-anchor="middle" font-family="'Fraunces',serif" font-style="italic" font-size="18" font-weight="300" fill="#C8A24A" opacity=".55" letter-spacing="-.5">Honeysuckle</text>
+              <text x="310" y="258" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#C8A24A" opacity=".35" letter-spacing=".5">honey · lemon · ginger</text>
+            </svg>
+          </div>
+          <div class="card-num">04 &nbsp;·&nbsp; 2025</div>
+          <h3 class="card-title">Weeping Willow Co. — Honeysuckle</h3>
+          <p class="card-desc">Co-founded and built the brand, product, and website for Weeping Willow Co., a premium mocktail company. Honeysuckle, the flagship drink, is a botanical non-alcoholic cocktail built on honey, lemon, ginger, and gentian bitters. Responsible for brand identity, product positioning, and the full web presence</p>
+          <div class="card-tags">
+            <span class="tag">Co-Founder</span><span class="tag">Brand Identity</span>
+            <span class="tag">Web Design</span><span class="tag">Frontend</span>
+          </div>
+          <span class="card-cta">Visit site <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10L10 1.5M3 1.5h7.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
+        <div class="card reveal d1">
+          <div class="card-accent-line"></div>
+          <!-- Platform fighter — HP bars, silhouettes, crossed weapons -->
+          <div class="card-bg" aria-hidden="true">
+            <svg viewBox="0 0 380 300" fill="none" preserveAspectRatio="xMaxYMin meet">
+              <!-- HP bar track — player 1 -->
+              <rect x="198" y="22" width="88" height="9" rx="2" stroke="#C47A8A" stroke-width="1" fill="rgba(196,122,138,.06)"/>
+              <rect x="199" y="23" width="72" height="7" rx="1.5" fill="rgba(196,122,138,.35)"/>
+              <!-- HP bar track — player 2 -->
+              <rect x="294" y="22" width="78" height="9" rx="2" stroke="#C47A8A" stroke-width="1" fill="rgba(196,122,138,.06)"/>
+              <rect x="295" y="23" width="48" height="7" rx="1.5" fill="rgba(196,122,138,.25)"/>
+              <!-- HP labels -->
+              <text x="202" y="20" font-family="'JetBrains Mono',monospace" font-size="7" fill="#C47A8A" opacity=".5" letter-spacing=".08em">P1</text>
+              <text x="298" y="20" font-family="'JetBrains Mono',monospace" font-size="7" fill="#C47A8A" opacity=".5" letter-spacing=".08em">P2</text>
+              <!-- Platform / ground -->
+              <rect x="198" y="230" width="174" height="6" rx="3" fill="rgba(196,122,138,.18)" stroke="#C47A8A" stroke-width=".8"/>
+              <!-- Floating platform mid -->
+              <rect x="258" y="168" width="64" height="5" rx="2.5" fill="rgba(196,122,138,.12)" stroke="#C47A8A" stroke-width=".7"/>
+              <!-- Fighter silhouette LEFT — facing right, weapon raised -->
+              <!-- Body -->
+              <rect x="218" y="185" width="14" height="32" rx="3" fill="rgba(196,122,138,.18)" stroke="#C47A8A" stroke-width="1.1"/>
+              <!-- Head -->
+              <circle cx="225" cy="180" r="8" fill="rgba(196,122,138,.14)" stroke="#C47A8A" stroke-width="1.1"/>
+              <!-- Sword arm — raised diagonal -->
+              <line x1="232" y1="196" x2="252" y2="175" stroke="#C47A8A" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+              <!-- Sword blade -->
+              <line x1="252" y1="175" x2="268" y2="155" stroke="#C47A8A" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+              <!-- Fighter silhouette RIGHT — facing left, weapon raised -->
+              <!-- Body -->
+              <rect x="348" y="185" width="14" height="32" rx="3" fill="rgba(196,122,138,.12)" stroke="#C47A8A" stroke-width="1.1"/>
+              <!-- Head -->
+              <circle cx="355" cy="180" r="8" fill="rgba(196,122,138,.1)" stroke="#C47A8A" stroke-width="1.1"/>
+              <!-- Sword arm — raised diagonal -->
+              <line x1="348" y1="196" x2="328" y2="175" stroke="#C47A8A" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+              <!-- Sword blade -->
+              <line x1="328" y1="175" x2="310" y2="155" stroke="#C47A8A" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+              <!-- Clash sparks where weapons meet -->
+              <circle cx="290" cy="158" r="5" stroke="#C47A8A" stroke-width="1.2" fill="rgba(196,122,138,.15)" opacity=".8"/>
+              <line x1="290" y1="148" x2="290" y2="142" stroke="#C47A8A" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+              <line x1="283" y1="152" x2="278" y2="147" stroke="#C47A8A" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+              <line x1="297" y1="152" x2="302" y2="147" stroke="#C47A8A" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+              <line x1="283" y1="165" x2="278" y2="170" stroke="#C47A8A" stroke-width="1"   stroke-linecap="round" opacity=".45"/>
+              <line x1="297" y1="165" x2="302" y2="170" stroke="#C47A8A" stroke-width="1"   stroke-linecap="round" opacity=".45"/>
+              <!-- Legs left fighter -->
+              <line x1="222" y1="217" x2="218" y2="230" stroke="#C47A8A" stroke-width="1.4" stroke-linecap="round" opacity=".55"/>
+              <line x1="228" y1="217" x2="232" y2="230" stroke="#C47A8A" stroke-width="1.4" stroke-linecap="round" opacity=".55"/>
+              <!-- Legs right fighter -->
+              <line x1="352" y1="217" x2="348" y2="230" stroke="#C47A8A" stroke-width="1.4" stroke-linecap="round" opacity=".5"/>
+              <line x1="358" y1="217" x2="362" y2="230" stroke="#C47A8A" stroke-width="1.4" stroke-linecap="round" opacity=".5"/>
+            </svg>
+            <svg class="card-bg-labels" viewBox="0 0 380 300" fill="none" preserveAspectRatio="xMaxYMin meet">
+              <!-- Character roster dots — 12 characters -->
+              <text x="290" y="268" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#C47A8A" opacity=".4" letter-spacing=".4em">· · · · · · · · · · · ·</text>
+              <text x="290" y="282" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#C47A8A" opacity=".3" letter-spacing=".3">12 characters · 3 stages</text>
+              <!-- Godot label -->
+              <text x="371" y="48" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#C47A8A" opacity=".38" letter-spacing=".2">Godot 4.6</text>
+            </svg>
+          </div>
+          <div class="card-num">05 &nbsp;·&nbsp; SPRING 2026</div>
+          <h3 class="card-title">Of Shadows and Steel — 2D Platform Fighter</h3>
+          <p class="card-desc">A 2D local multiplayer platform fighter built from scratch in Godot 4.6.2 with no prior game development experience. Twelve playable characters across four combat archetypes, three hand-built stages, 2–4 player local multiplayer. Developed for DCS 247: AI in the World using Claude Code via MCP — operating as architect, designer, and quality controller while building ~40–50 hours of a working game.</p>
+          <div class="card-tags">
+            <span class="tag">Game Development</span><span class="tag">Godot / GDScript</span>
+            <span class="tag">AI-Assisted Build</span><span class="tag">Claude Code</span>
+          </div>
+          <div style="display:flex;gap:1.5rem;align-items:center;">
+            <a href="https://seamuswoodruf.itch.io/of-shadows-and-steel" target="_blank" rel="noopener" class="card-cta" style="cursor:none;">Play on itch.io <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10L10 1.5M3 1.5h7.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="https://github.com/seamuswoodruff/fantasy-fighter" target="_blank" rel="noopener" class="card-cta" style="cursor:none;">GitHub <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10L10 1.5M3 1.5h7.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -978,8 +1242,8 @@
     <div class="experience-inner">
       <div class="experience-aside reveal">
         <div class="label">Experience</div>
-        <h2 class="section-title" style="margin-bottom:1rem;">Where I've<br><em>been.</em></h2>
-        <p style="font-size:.87rem;color:var(--muted);line-height:1.76;margin-bottom:2rem;">A mix of data, land, and leadership. Exactly what makes me a more interesting analyst.</p>
+        <h2 class="section-title" style="margin-bottom:1rem;">What I've<br><em>done.</em></h2>
+        <p style="font-size:.87rem;color:var(--muted);line-height:1.76;margin-bottom:2rem;">A mix of entrepreurship, working in the trades, and leadership roles.</p>
         <a href="Resume_Woodruff_current.pdf" download class="btn btn-ghost" style="font-size:.82rem;cursor:none;">
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 1v8M2.5 7l4 4 4-4M1.5 12h10" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Download Resume
@@ -989,17 +1253,27 @@
       <div class="timeline reveal d1">
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-date">MAY 2025 – NOV 2025</div>
-          <h3 class="tl-title">Independent Land Manager</h3>
-          <p class="tl-org">Harpswell, ME</p>
+          <div class="tl-date">MAY 2024 – PRESENT</div>
+          <h3 class="tl-title">Cofounder</h3>
+          <p class="tl-org">Weeping Willow Co, Falmouth, ME</p>
           <ul class="tl-bullets">
-            <li>Managed forestry, landscaping, carpentry, and property maintenance across a 20-acre property</li>
-            <li>Operated chainsaws, chippers, tractors, portable sawmills, and aerial lifts. End-to-end project ownership.</li>
+            <li>Cofounded a small non-alcoholic cocktail brand currently selling in a variety of stores across Southern Maine.</li>
+            <li>Manage in person sales, delivery, built and maintained online presence.</li>
           </ul>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-date">MAY 2024 – AUG 2024</div>
+          <div class="tl-date">MAY 2025 – MAY 2026</div>
+          <h3 class="tl-title">Independent Land Manager</h3>
+          <p class="tl-org">Harpswell, ME</p>
+          <ul class="tl-bullets">
+            <li>Managed forestry, landscaping, carpentry, and property maintenance across a 20-acre property</li>
+            <li>Operated chainsaws, chippers, tractors, portable sawmills, and aerial lifts.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">MAY 2024 – SEP 2024</div>
           <h3 class="tl-title">Farm Operations Intern</h3>
           <p class="tl-org">Crystal Spring Farm, Brunswick, ME</p>
           <ul class="tl-bullets">
@@ -1009,7 +1283,7 @@
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-date">MAY 2023 – AUG 2023</div>
+          <div class="tl-date">MAY 2023 – SEP 2023</div>
           <h3 class="tl-title">Carpenter's Assistant</h3>
           <p class="tl-org">NE Construction, Topsham, ME</p>
           <ul class="tl-bullets">
@@ -1037,10 +1311,10 @@
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-date">2022 – PRESENT</div>
-          <h3 class="tl-title">Trip Leader · Raft Guide · Ski Instructor</h3>
+          <h3 class="tl-title">Trip Leader · Raft Guide · Ski Instructor · Bike Mechanic</h3>
           <p class="tl-org">Bowdoin Outing Club, Brunswick, ME</p>
           <ul class="tl-bullets">
-            <li>Plan and lead outdoor trips for student groups: mountain biking, whitewater rafting, backcountry skiing</li>
+            <li>Plan and lead outdoor trips for student groups: mountain biking, whitewater rafting, skiing, hiking, and canoeing</li>
             <li>Maintain a fleet of 20+ mountain bikes and full ski inventory; coordinate logistics, safety protocols, and equipment</li>
           </ul>
         </div>
@@ -1055,10 +1329,10 @@
     <div class="contact-inner">
       <div class="label reveal" style="justify-content:center;margin-bottom:1.5rem;">Get in touch</div>
       <h2 class="contact-title reveal d1">
-        Let's talk about<br>what <em>technology</em><br>should do.
+        I'd love to <em>talk</em>
       </h2>
       <p class="contact-body reveal d2">
-        I'm graduating in May 2026 and looking for roles in tech policy, data analysis, research, or digital strategy. If your work sits at the intersection of technology and people, I'd genuinely love to hear from you.
+        I just graduated and am looking for roles in tech, tech policy, artificial intelligence, data analysis, research, or digital strategy. If your work sits at the intersection of technology and people, or anything else that you think I might be a good fit for, I'd love to talk. I'm also always happy to just hop on a call if you'd like to pick my brain or want to talk about something you think is exciting.
       </p>
       <a href="mailto:seamuswoodruff@outlook.com" class="btn btn-primary reveal d3" style="margin:0 auto;cursor:none;">
         seamuswoodruff@outlook.com
@@ -1093,6 +1367,25 @@
   </footer>
 
   <script>
+    /* ─── Dark mode toggle ─────────────────────────────────────────── */
+    (function initTheme() {
+      const html    = document.documentElement;
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+      }
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          html.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+        } else {
+          html.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    })();
+
     /* ─── Hero name: char-by-char split ─────────────────────────────
        Runs immediately so the DOM is ready before site-loaded fires.
        Each character rises from below the overflow:hidden clip on .line.
@@ -1138,8 +1431,8 @@
     });
 
     /* ─── Marquee ─── */
-    const row1 = ['AI Ethics','Data Analysis','Digital Policy','Geospatial Research','Behavioral Design','Technology & Society','DCS · Bowdoin','NLP','UX Research','Digital Humanities','Digital Strategy'];
-    const row2 = ['Python','Stata','ArcGIS','Adobe Premiere','Critical Theory','Data Ethics','Visualization','Human-Computer Interaction','Research Methods','Systems Thinking','Claude Code'];
+    const row1 = ['AI Ethics','Data Analysis','Digital Policy','Geospatial Research','Behavioral Design','Technology & Society','Java','Claude Code','NLP','UX Research','Digital Humanities','Digital Strategy'];
+    const row2 = ['Python','Stata','ArcGIS','Adobe Premiere','Agentic AIs','Data Ethics','Visualization','Human-Computer Alignment','Research Methods','Systems Thinking','Claude Code'];
     function buildMarquee(id, items) {
       const t = document.getElementById(id);
       [...items, ...items].forEach(text => {
@@ -1187,11 +1480,7 @@
       });
     });
 
-    /* ─── Hero parallax ─── */
-    const heroImg = document.getElementById('heroImg');
-    window.addEventListener('scroll', () => {
-      if (heroImg) heroImg.style.transform = `translateY(${window.scrollY * 0.09}px)`;
-    }, { passive: true });
+    /* Hero parallax removed — caused gap at top of circle on scroll */
 
     /* ─── Radial fill buttons (feedagency.co) ─── */
     document.querySelectorAll('.btn').forEach(btn => {
